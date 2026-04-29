@@ -1,8 +1,8 @@
-﻿@model UniManage.Models.AssignmentModel
+@model UniManage.Models.AssignmentModel
 @{
     ViewData["Title"] = "Edit Assignment";
 }
-<div class="max-w-xl">
+<div class="max-w-xl mx-auto">
     <div class="page-card">
         <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
             <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center">
@@ -21,29 +21,29 @@
                 <select asp-for="ModuleId" asp-items="ViewBag.Modules" class="form-input"></select>
             </div>
             <div class="mb-4">
-                <label asp-for="Title" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-heading mr-1"></i></label>
+                <label asp-for="Title" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-heading mr-1"></i>Title</label>
                 <input asp-for="Title" class="form-input" required />
             </div>
             <div class="mb-4">
-                <label asp-for="Description" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-align-left mr-1"></i></label>
+                <label asp-for="Description" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-align-left mr-1"></i>Description</label>
                 <textarea asp-for="Description" rows="2" class="form-input"></textarea>
             </div>
             <div class="mb-4">
-                <label asp-for="Instructions" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-list-check mr-1"></i></label>
+                <label asp-for="Instructions" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-list-check mr-1"></i>Instructions</label>
                 <textarea asp-for="Instructions" rows="3" class="form-input"></textarea>
             </div>
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label asp-for="MaxMarks" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-star mr-1"></i></label>
+                    <label asp-for="MaxMarks" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-star mr-1"></i>Max Marks</label>
                     <input asp-for="MaxMarks" type="number" min="1" class="form-input" />
                 </div>
                 <div>
-                    <label asp-for="DeadlineDate" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-clock mr-1"></i></label>
+                    <label asp-for="DeadlineDate" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-clock mr-1"></i>Deadline</label>
                     <input asp-for="DeadlineDate" type="datetime-local" class="form-input" />
                 </div>
             </div>
             <div class="mb-4">
-                <label asp-for="ReleaseDate" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-calendar-check mr-1"></i></label>
+                <label asp-for="ReleaseDate" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-calendar-check mr-1"></i>Release Date</label>
                 <input asp-for="ReleaseDate" type="datetime-local" class="form-input" />
             </div>
             <div class="mb-6 flex items-center gap-2.5 p-3 bg-slate-50 rounded-lg">

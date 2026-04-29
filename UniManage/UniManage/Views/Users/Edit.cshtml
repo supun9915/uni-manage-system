@@ -1,9 +1,9 @@
-﻿@model UniManage.Models.UserModel
+@model UniManage.Models.UserModel
 @{
     ViewData["Title"] = "Edit User";
 }
 
-<div class="max-w-lg">
+<div class="max-w-lg mx-auto">
     <div class="page-card">
         <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
             <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center">
@@ -19,17 +19,17 @@
             <input type="hidden" asp-for="Id" />
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label asp-for="FirstName" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-user mr-1"></i></label>
+                    <label asp-for="FirstName" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-user mr-1"></i>First Name</label>
                     <input asp-for="FirstName" class="form-input" required />
                     <span asp-validation-for="FirstName" class="field-error"></span>
                 </div>
                 <div>
-                    <label asp-for="LastName" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-user mr-1"></i></label>
+                    <label asp-for="LastName" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-user mr-1"></i>Last Name</label>
                     <input asp-for="LastName" class="form-input" />
                 </div>
             </div>
             <div class="mb-4">
-                <label asp-for="Email" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-envelope mr-1"></i></label>
+                <label asp-for="Email" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-envelope mr-1"></i>Email Address</label>
                 <input asp-for="Email" type="email" class="form-input" />
             </div>
             <div class="mb-4">
@@ -43,7 +43,7 @@
                 <select asp-for="RoleId" asp-items="ViewBag.Roles" class="form-input"></select>
             </div>
             <div class="mb-4">
-                <label asp-for="Phone" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-phone mr-1"></i></label>
+                <label asp-for="Phone" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-phone mr-1"></i>Phone</label>
                 <input asp-for="Phone" class="form-input" />
             </div>
             <div class="mb-6 flex items-center gap-2.5 p-3 bg-slate-50 rounded-lg">
