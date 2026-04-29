@@ -1,0 +1,39 @@
+@model IEnumerable<UniManage.Models.RoleModel>
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+    <div class="flex items-center justify-between mb-5">
+        <h2 class="text-base font-semibold text-gray-800">All Roles</h2>
+        <a asp-action="Create" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">+ New Role</a>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+            <thead>
+                <tr class="text-left text-xs text-gray-500 border-b">
+                    <th class="pb-2 font-medium">ID</th>
+                    <th class="pb-2 font-medium">Name</th>
+                    <th class="pb-2 font-medium">Description</th>
+                    <th class="pb-2 font-medium">Users</th>
+                    <th class="pb-2 font-medium">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+                @foreach (var r in Model)
+                {
+                    <tr>
+                        <td class="py-2.5 text-gray-400">@r.Id</td>
+                        <td class="py-2.5 font-medium">@r.Name</td>
+                        <td class="py-2.5 text-gray-500">@r.Description</td>
+                        <td class="py-2.5">@r.Users.Count</td>
+                        <td class="py-2.5 flex gap-2">
+                            <a asp-action="Edit" asp-route-id="@r.Id" class="text-xs bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full hover:bg-yellow-100">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@r.Id" class="text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

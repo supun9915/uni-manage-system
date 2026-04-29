@@ -1,0 +1,45 @@
+@model IEnumerable<UniManage.Models.CourseModel>
+@{
+    ViewData["Title"] = "Courses";
+    var role = ViewBag.CurrentUserRole as string;
+}
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+    <div class="flex items-center justify-between mb-5">
+        <h2 class="text-base font-semibold text-gray-800">Courses</h2>
+        @if (role == "administrator")
+        {
+            <a asp-action="Create" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">+ New Course</a>
+        }
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        @foreach (var c in Model)
+        {
+            <div class="border border-gray-100 rounded-xl p-4 hover:shadow-md transition-shadow">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                        <span class="text-xs bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full">@c.Code</span>
+                        <h3 class="text-sm font-semibold text-gray-800 mt-1.5">@c.Title</h3>
+                        <p class="text-xs text-gray-400 mt-0.5">@c.Department?.Name</p>
+                        <p class="text-xs text-gray-500 mt-2 line-clamp-2">@c.Description</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-50">
+                    <span class="text-xs @(c.Status == "published" ? "bg-green-50 text-green-700" : "bg-gray-100 text-gray-500") px-2 py-0.5 rounded-full capitalize">@c.Status</span>
+                    <div class="flex gap-2">
+                        <a asp-action="Details" asp-route-id="@c.Id" class="text-xs text-indigo-600 hover:underline">View</a>
+                        @if (role == "administrator")
+                        {
+                            <a asp-action="Edit" asp-route-id="@c.Id" class="text-xs text-yellow-600 hover:underline">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@c.Id" class="text-xs text-red-600 hover:underline">Delete</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    @if (!Model.Any())
+    {
+        <p class="text-sm text-gray-400 text-center py-8">No courses found.</p>
+    }
+</div>

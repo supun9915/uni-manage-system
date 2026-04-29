@@ -1,0 +1,116 @@
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace UniManage.Migrations
+{
+    /// <inheritdoc />
+    public partial class SeedInitialData : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            // ── Roles ────────────────────────────────────────────────────────────
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "Name", "Description" },
+                values: new object[,]
+                {
+                    { 1, "Administrator", "Full system access" },
+                    { 2, "Lecturer",      "Can manage courses, modules, assignments and exams" },
+                    { 3, "Student",       "Can enroll in courses and submit assignments" }
+                });
+
+            // ── Super-admin user ─────────────────────────────────────────────────
+            var hasher = new PasswordHasher<Models.UserModel>();
+            var superAdmin = new Models.UserModel { Id = 1 };
+            var passwordHash = hasher.HashPassword(superAdmin, "superadmin");
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[]
+                {
+                    "Id", "RoleId", "FirstName", "LastName",
+                    "Email", "PasswordHash", "IsActive", "CreatedAt"
+                },
+                values: new object[]
+                {
+                    1, 1, "Super", "Admin",
+                    "superadmin@gmail.com", passwordHash, true, DateTime.UtcNow
+                });
+
+            // ── Departments ──────────────────────────────────────────────────────
+            migrationBuilder.InsertData(
+                table: "Departments",
+                columns: new[] { "Id", "Name", "Code", "Description" },
+                values: new object[,]
+                {
+                    { 1, "Computer Science",        "CS",  "Covers programming, algorithms, software engineering and AI" },
+                    { 2, "Business Administration", "BA",  "Covers management, finance, marketing and entrepreneurship" },
+                    { 3, "Information Technology",  "IT",  "Covers networking, systems administration and cyber security" }
+                });
+
+            // ── Courses ──────────────────────────────────────────────────────────
+            migrationBuilder.InsertData(
+                table: "Courses",
+                columns: new[]
+                {
+                    "Id", "DepartmentId", "CreatedBy", "Title", "Code",
+                    "Description", "Status", "CreatedAt"
+                },
+                values: new object[,]
+                {
+                    {
+                        1, 1, 1,
+                        "Introduction to Programming", "CS101",
+                        "Learn the fundamentals of programming using C# and object-oriented concepts.",
+                        "published", DateTime.UtcNow
+                    },
+                    {
+                        2, 2, 1,
+                        "Principles of Management", "BA101",
+                        "An overview of management theories, organisational behaviour and leadership.",
+                        "published", DateTime.UtcNow
+                    },
+                    {
+                        3, 3, 1,
+                        "Networking Fundamentals", "IT101",
+                        "Covers OSI model, TCP/IP, routing, switching and basic network security.",
+                        "published", DateTime.UtcNow
+                    }
+                });
+
+            // ── Modules ──────────────────────────────────────────────────────────
+            migrationBuilder.InsertData(
+                table: "Modules",
+                columns: new[] { "Id", "CourseId", "Title", "Description", "OrderIndex", "IsPublished" },
+                values: new object[,]
+                {
+                    // CS101 modules
+                    { 1,  1, "Variables & Data Types",   "Understanding primitive types, variables and constants in C#.",         1, true  },
+                    { 2,  1, "Control Flow",             "If-statements, loops and switch expressions.",                          2, true  },
+                    { 3,  1, "Methods & Functions",      "Defining and calling methods, parameters, return values and recursion.", 3, true  },
+                    // BA101 modules
+                    { 4,  2, "Introduction to Management", "History and schools of management thought.",                          1, true  },
+                    { 5,  2, "Organisational Structure",   "Types of organisational structures and their advantages.",             2, true  },
+                    { 6,  2, "Leadership & Motivation",    "Leadership styles, motivation theories and team dynamics.",            3, true  },
+                    // IT101 modules
+                    { 7,  3, "OSI & TCP/IP Models",      "Deep dive into the seven-layer OSI model and the TCP/IP stack.",        1, true  },
+                    { 8,  3, "IP Addressing & Subnetting","IPv4/IPv6 addressing, CIDR notation and subnetting exercises.",         2, true  },
+                    { 9,  3, "Network Security Basics",  "Firewalls, VPNs, intrusion detection and common attack vectors.",       3, true  }
+                });
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            // Remove in reverse dependency order
+            migrationBuilder.DeleteData(table: "Modules",     keyColumn: "Id", keyValues: new object[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+            migrationBuilder.DeleteData(table: "Courses",     keyColumn: "Id", keyValues: new object[] { 1, 2, 3 });
+            migrationBuilder.DeleteData(table: "Users",       keyColumn: "Id", keyValues: new object[] { 1 });
+            migrationBuilder.DeleteData(table: "Departments", keyColumn: "Id", keyValues: new object[] { 1, 2, 3 });
+            migrationBuilder.DeleteData(table: "Roles",       keyColumn: "Id", keyValues: new object[] { 1, 2, 3 });
+        }
+    }
+}

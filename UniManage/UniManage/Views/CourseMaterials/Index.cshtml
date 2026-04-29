@@ -1,0 +1,55 @@
+@model IEnumerable<UniManage.Models.CourseMaterialModel>
+@{
+    ViewData["Title"] = "Course Materials";
+    var role = ViewBag.CurrentUserRole as string;
+}
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+    <div class="flex items-center justify-between mb-5">
+        <h2 class="text-base font-semibold text-gray-800">Course Materials</h2>
+        @if (role != "student")
+        {
+            <a asp-action="Create" asp-route-moduleId="@ViewBag.ModuleId"
+               class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">+ Upload Material</a>
+        }
+    </div>
+    @if (!Model.Any())
+    {
+        <p class="text-sm text-gray-400 py-4">No materials found.</p>
+    }
+    else
+    {
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            @foreach (var m in Model)
+            {
+                <div class="border border-gray-100 rounded-xl p-4 hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-2">
+                        @{
+                            var icon = m.FileType switch {
+                                "pdf" => "??",
+                                "video" or "mp4" or "avi" => "??",
+                                "link" or "url" => "??",
+                                "pptx" or "ppt" => "??",
+                                _ => "??"
+                            };
+                        }
+                        <span class="text-2xl">@icon</span>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-gray-800 truncate">@m.Title</p>
+                            <p class="text-xs text-gray-400">@m.Module?.Course?.Title — @m.Module?.Title</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-50">
+                        <span class="text-xs text-gray-400">@m.UploadedAt.ToString("dd MMM yyyy")</span>
+                        <div class="flex gap-2">
+                            <a href="@m.FileUrl" target="_blank" class="text-xs bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full hover:bg-indigo-100">Open</a>
+                            @if (role != "student")
+                            {
+                                <a asp-action="Delete" asp-route-id="@m.Id" class="text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100">Delete</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

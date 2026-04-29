@@ -1,0 +1,60 @@
+@model IEnumerable<UniManage.Models.ModuleModel>
+@{
+    ViewData["Title"] = "Modules";
+    var role = ViewBag.CurrentUserRole as string;
+}
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+    <div class="flex items-center justify-between mb-5">
+        <h2 class="text-base font-semibold text-gray-800">Modules</h2>
+        @if (role != "student")
+        {
+            <a asp-action="Create" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">+ New Module</a>
+        }
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+            <thead>
+                <tr class="text-left text-xs text-gray-500 border-b">
+                    <th class="pb-2 font-medium">#</th>
+                    <th class="pb-2 font-medium">Title</th>
+                    <th class="pb-2 font-medium">Course</th>
+                    <th class="pb-2 font-medium">Published</th>
+                    <th class="pb-2 font-medium">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+                @foreach (var m in Model)
+                {
+                    <tr>
+                        <td class="py-2.5 text-gray-400">@m.OrderIndex</td>
+                        <td class="py-2.5 font-medium">@m.Title</td>
+                        <td class="py-2.5 text-gray-500">@m.Course?.Title</td>
+                        <td class="py-2.5">
+                            @if (m.IsPublished)
+                            {
+                                <span class="text-xs bg-green-50 text-green-700 px-2 py-0.5 rounded-full">Yes</span>
+                            }
+                            else
+                            {
+                                <span class="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">No</span>
+                            }
+                        </td>
+                        <td class="py-2.5">
+                            <div class="flex gap-2">
+                                <a asp-controller="CourseMaterials" asp-action="Index" asp-route-moduleId="@m.Id"
+                                   class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full hover:bg-blue-100">Materials</a>
+                                <a asp-controller="Assignments" asp-action="Index" asp-route-moduleId="@m.Id"
+                                   class="text-xs bg-orange-50 text-orange-600 px-3 py-1 rounded-full hover:bg-orange-100">Assignments</a>
+                                @if (role != "student")
+                                {
+                                    <a asp-action="Edit" asp-route-id="@m.Id" class="text-xs bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full hover:bg-yellow-100">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@m.Id" class="text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100">Delete</a>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

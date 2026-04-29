@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - UniManage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        [x-cloak] { display: none !important; }
+        .sidebar-link { @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors duration-150; }
+        .sidebar-link:hover { @apply bg-white/10; }
+        .sidebar-link.active { @apply bg-white/20; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+@{
+    var role = ViewBag.CurrentUserRole as string;
+    var isLoggedIn = ViewBag.CurrentUserId != null;
+}
+
+@if (isLoggedIn)
+{
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 flex-shrink-0 bg-indigo-800 text-white flex flex-col">
+            <div class="h-16 flex items-center px-6 border-b border-indigo-700">
+                <span class="text-xl font-bold tracking-tight">🎓 UniManage</span>
+            </div>
+            <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+                <a asp-controller="Dashboard" asp-action="Index"
+                   class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Dashboard" ? "active" : "")">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                    Dashboard
+                </a>
+                <a asp-controller="Courses" asp-action="Index"
+                   class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Courses" ? "active" : "")">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    Courses
+                </a>
+                @if (role != "student")
+                {
+                    <a asp-controller="Modules" asp-action="Index"
+                       class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Modules" ? "active" : "")">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        Modules
+                    </a>
+                }
+                <a asp-controller="CourseMaterials" asp-action="Index"
+                   class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "CourseMaterials" ? "active" : "")">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                    Materials
+                </a>
+                <a asp-controller="Assignments" asp-action="Index"
+                   class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Assignments" ? "active" : "")">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    Assignments
+                </a>
+                @if (role == "student")
+                {
+                    <a asp-controller="AssignmentSubmissions" asp-action="MyGrades"
+                       class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "AssignmentSubmissions" && ViewContext.RouteData.Values["action"]?.ToString() == "MyGrades" ? "active" : "")">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        My Grades
+                    </a>
+                }
+                <a asp-controller="Exams" asp-action="Index"
+                   class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Exams" ? "active" : "")">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+                    Exams
+                </a>
+                @if (role == "student")
+                {
+                    <a asp-controller="ExamResults" asp-action="Index"
+                       class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "ExamResults" ? "active" : "")">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                        Exam Results
+                    </a>
+                }
+                <a asp-controller="Announcements" asp-action="Index"
+                   class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Announcements" ? "active" : "")">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
+                    Announcements
+                </a>
+
+                @if (role == "administrator")
+                {
+                    <div class="pt-4 pb-1 px-3 text-xs font-semibold uppercase tracking-wider text-indigo-300">Admin</div>
+                    <a asp-controller="Users" asp-action="Index"
+                       class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Users" ? "active" : "")">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        Users
+                    </a>
+                    <a asp-controller="Departments" asp-action="Index"
+                       class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Departments" ? "active" : "")">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        Departments
+                    </a>
+                    <a asp-controller="Batches" asp-action="Index"
+                       class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Batches" ? "active" : "")">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Batches
+                    </a>
+                    <a asp-controller="Enrollments" asp-action="Index"
+                       class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Enrollments" ? "active" : "")">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+                        Enrollments
+                    </a>
+                    <a asp-controller="Roles" asp-action="Index"
+                       class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Roles" ? "active" : "")">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        Roles
+                    </a>
+                    <a asp-controller="ExamResults" asp-action="Index"
+                       class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "ExamResults" && role == "administrator" ? "active" : "")">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                        Exam Results
+                    </a>
+                }
+
+                @if (role == "lecturer")
+                {
+                    <a asp-controller="AssignmentSubmissions" asp-action="Index" asp-route-assignmentId="0"
+                       class="sidebar-link">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                        Submissions
+                    </a>
+                    <a asp-controller="ExamResults" asp-action="Index"
+                       class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "ExamResults" ? "active" : "")">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                        Exam Results
+                    </a>
+                    <a asp-controller="Enrollments" asp-action="Index"
+                       class="sidebar-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Enrollments" ? "active" : "")">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Enrollments
+                    </a>
+                }
+            </nav>
+            <div class="border-t border-indigo-700 p-4">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-9 h-9 rounded-full bg-indigo-600 flex items-center justify-center text-sm font-bold">
+                        @((ViewBag.CurrentUserName as string ?? "?").Substring(0, 1).ToUpper())
+                    </div>
+                    <div class="overflow-hidden">
+                        <p class="text-sm font-medium truncate">@ViewBag.CurrentUserName</p>
+                        <p class="text-xs text-indigo-300 capitalize">@ViewBag.CurrentUserRole</p>
+                    </div>
+                </div>
+                <a asp-controller="Account" asp-action="Logout"
+                   class="flex items-center gap-2 text-sm text-indigo-300 hover:text-white transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                    Sign Out
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <!-- Top bar -->
+            <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 flex-shrink-0">
+                <h1 class="text-lg font-semibold text-gray-800">@ViewData["Title"]</h1>
+                @if (TempData["Success"] != null)
+                {
+                    <div class="bg-green-50 border border-green-200 text-green-800 text-sm px-4 py-2 rounded-lg">
+                        ✅ @TempData["Success"]
+                    </div>
+                }
+                @if (TempData["Error"] != null)
+                {
+                    <div class="bg-red-50 border border-red-200 text-red-800 text-sm px-4 py-2 rounded-lg">
+                        ❌ @TempData["Error"]
+                    </div>
+                }
+            </header>
+            <main class="flex-1 overflow-y-auto p-6">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+}
+else
+{
+    @RenderBody()
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,1237 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\migrations\\20260428200000_seedinitialdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\migrations\\20260428200000_seedinitialdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Migrations\\20260429162233_db-seed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:UniManage\\Migrations\\20260429162233_db-seed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\migrations\\20260428190328_dbinitialize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\migrations\\20260428190328_dbinitialize.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\migrations\\20260428193304_seed-db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\migrations\\20260428193304_seed-db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\models\\batchmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\models\\batchmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\models\\modulemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\models\\modulemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\models\\rolemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\models\\rolemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\models\\userdepartmentmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\models\\userdepartmentmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\coursescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\batchescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\batchescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\modulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\modulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\coursematerialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\coursematerialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\assignmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\assignmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\assignmentsubmissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\assignmentsubmissionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\examscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\examscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\examresultscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\examresultscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\announcementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\announcementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\enrollmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\enrollmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\dashboard\\student.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\dashboard\\student.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\dashboard\\lecturer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\dashboard\\lecturer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\dashboard\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\dashboard\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\roles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\roles\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\roles\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\roles\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\roles\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\roles\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\roles\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\roles\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\users\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\users\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\users\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\users\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\users\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\departments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\departments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\departments\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\departments\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\departments\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\departments\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\departments\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\departments\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\courses\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\courses\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\courses\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\courses\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\courses\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\courses\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\courses\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\courses\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\courses\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\courses\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\batches\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\batches\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\batches\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\batches\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\batches\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\batches\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\batches\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\batches\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\modules\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\modules\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\modules\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\modules\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\modules\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\modules\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\modules\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\modules\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\coursematerials\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\coursematerials\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\coursematerials\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\coursematerials\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\coursematerials\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\coursematerials\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\assignments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\assignments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\assignments\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\assignments\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\assignments\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\assignments\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\assignments\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\assignments\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\assignments\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\assignments\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\assignmentsubmissions\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\assignmentsubmissions\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\assignmentsubmissions\\submit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\assignmentsubmissions\\submit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\views\\assignmentsubmissions\\grade.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\views\\assignmentsubmissions\\grade.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|d:\\top up\\ad\\coursework 2\\system\\unimanage\\unimanage\\migrations\\20260428200000_seedinitialdata.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D39D92D-45FC-4485-B241-5900719182AE}|UniManage\\UniManage.csproj|solutionrelative:unimanage\\migrations\\20260428200000_seedinitialdata.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "20260428200000_SeedInitialData.Designer.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Migrations\\20260428200000_SeedInitialData.Designer.cs",
+              "RelativeDocumentMoniker": "UniManage\\Migrations\\20260428200000_SeedInitialData.Designer.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Migrations\\20260428200000_SeedInitialData.Designer.cs",
+              "RelativeToolTip": "UniManage\\Migrations\\20260428200000_SeedInitialData.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4EAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T16:30:14.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20260429162233_db-seed.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Migrations\\20260429162233_db-seed.cs",
+              "RelativeDocumentMoniker": "UniManage\\Migrations\\20260429162233_db-seed.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Migrations\\20260429162233_db-seed.cs",
+              "RelativeToolTip": "UniManage\\Migrations\\20260429162233_db-seed.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T16:22:33.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\DashboardController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:25:07.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:24:52.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "BaseController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\BaseController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\BaseController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\BaseController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\BaseController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:24:43.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20260428200000_SeedInitialData.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Migrations\\20260428200000_SeedInitialData.cs",
+              "RelativeDocumentMoniker": "UniManage\\Migrations\\20260428200000_SeedInitialData.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Migrations\\20260428200000_SeedInitialData.cs",
+              "RelativeToolTip": "UniManage\\Migrations\\20260428200000_SeedInitialData.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAAO8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T19:17:56.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\RolesController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\RolesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:25:16.723Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "20260428190328_dbinitialize.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Migrations\\20260428190328_dbinitialize.cs",
+              "RelativeDocumentMoniker": "UniManage\\Migrations\\20260428190328_dbinitialize.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Migrations\\20260428190328_dbinitialize.cs",
+              "RelativeToolTip": "UniManage\\Migrations\\20260428190328_dbinitialize.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBoAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T19:03:28.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "Grade.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\AssignmentSubmissions\\Grade.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\AssignmentSubmissions\\Grade.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\AssignmentSubmissions\\Grade.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\AssignmentSubmissions\\Grade.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:37:24.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "Submit.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\AssignmentSubmissions\\Submit.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\AssignmentSubmissions\\Submit.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\AssignmentSubmissions\\Submit.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\AssignmentSubmissions\\Submit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:37:12.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\AssignmentSubmissions\\Index.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\AssignmentSubmissions\\Index.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\AssignmentSubmissions\\Index.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\AssignmentSubmissions\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:37:00.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Assignments\\Delete.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Assignments\\Delete.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Assignments\\Delete.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Assignments\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:36:45.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Assignments\\Edit.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Assignments\\Edit.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Assignments\\Edit.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Assignments\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:36:38.424Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Assignments\\Create.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Assignments\\Create.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Assignments\\Create.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Assignments\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:36:26.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Assignments\\Details.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Assignments\\Details.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Assignments\\Details.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Assignments\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:36:12.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Assignments\\Index.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Assignments\\Index.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Assignments\\Index.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Assignments\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:35:53.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\CourseMaterials\\Delete.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\CourseMaterials\\Delete.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\CourseMaterials\\Delete.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\CourseMaterials\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:35:39.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\CourseMaterials\\Create.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\CourseMaterials\\Create.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\CourseMaterials\\Create.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\CourseMaterials\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:35:33.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\CourseMaterials\\Index.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\CourseMaterials\\Index.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\CourseMaterials\\Index.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\CourseMaterials\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:35:21.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Modules\\Delete.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Modules\\Delete.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Modules\\Delete.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Modules\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:35:07.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Modules\\Edit.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Modules\\Edit.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Modules\\Edit.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Modules\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:35:00.866Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Modules\\Create.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Modules\\Create.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Modules\\Create.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Modules\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:34:49.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Modules\\Index.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Modules\\Index.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Modules\\Index.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Modules\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:34:38.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Batches\\Delete.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Batches\\Delete.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Batches\\Delete.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Batches\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:34:24.359Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Batches\\Edit.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Batches\\Edit.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Batches\\Edit.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Batches\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:34:17.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Batches\\Create.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Batches\\Create.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Batches\\Create.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Batches\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:34:07.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Batches\\Index.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Batches\\Index.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Batches\\Index.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Batches\\Index.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAIBJwEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:33:53.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Courses\\Delete.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Courses\\Delete.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Courses\\Delete.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Courses\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:33:39.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Courses\\Edit.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Courses\\Edit.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Courses\\Edit.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Courses\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:33:33.171Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Courses\\Create.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Courses\\Create.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Courses\\Create.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Courses\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:33:22.766Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Courses\\Details.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Courses\\Details.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Courses\\Details.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Courses\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:33:10.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Courses\\Index.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Courses\\Index.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Courses\\Index.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Courses\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:32:53.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Departments\\Delete.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Departments\\Delete.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Departments\\Delete.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Departments\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:32:41.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Departments\\Edit.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Departments\\Edit.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Departments\\Edit.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Departments\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:32:35.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Departments\\Create.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Departments\\Create.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Departments\\Create.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Departments\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:32:27.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Departments\\Index.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Departments\\Index.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Departments\\Index.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Departments\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:32:17.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Users\\Delete.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Users\\Delete.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Users\\Delete.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Users\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:32:07.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Users\\Edit.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Users\\Edit.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Users\\Edit.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Users\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:31:59.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Users\\Create.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Users\\Create.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Users\\Create.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Users\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:31:47.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Users\\Index.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Users\\Index.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Users\\Index.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Users\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:31:33.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Roles\\Delete.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Roles\\Delete.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Roles\\Delete.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Roles\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:31:19.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Roles\\Edit.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Roles\\Edit.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Roles\\Edit.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Roles\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:31:12.967Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Roles\\Create.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Roles\\Create.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Roles\\Create.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Roles\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:31:05.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Roles\\Index.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Roles\\Index.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Roles\\Index.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Roles\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:30:57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Admin.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Dashboard\\Admin.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Dashboard\\Admin.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Dashboard\\Admin.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Dashboard\\Admin.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:30:47.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Lecturer.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Dashboard\\Lecturer.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Dashboard\\Lecturer.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Dashboard\\Lecturer.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Dashboard\\Lecturer.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:30:30.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Student.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Dashboard\\Student.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Dashboard\\Student.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Dashboard\\Student.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Dashboard\\Student.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:30:15.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Account\\Login.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:29:53.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "UniManage\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "UniManage\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAsAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T15:29:38.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:28:28.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "EnrollmentsController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\EnrollmentsController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\EnrollmentsController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\EnrollmentsController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\EnrollmentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:28:23.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AnnouncementsController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\AnnouncementsController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\AnnouncementsController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\AnnouncementsController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\AnnouncementsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:28:07.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ExamResultsController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\ExamResultsController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\ExamResultsController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\ExamResultsController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\ExamResultsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:27:51.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ExamsController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\ExamsController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\ExamsController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\ExamsController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\ExamsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:27:33.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AssignmentSubmissionsController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\AssignmentSubmissionsController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\AssignmentSubmissionsController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\AssignmentSubmissionsController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\AssignmentSubmissionsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:27:15.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "AssignmentsController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\AssignmentsController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\AssignmentsController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\AssignmentsController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\AssignmentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:26:56.995Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "CourseMaterialsController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\CourseMaterialsController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\CourseMaterialsController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\CourseMaterialsController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\CourseMaterialsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:26:39.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ModulesController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\ModulesController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\ModulesController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\ModulesController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\ModulesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:26:20.275Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "BatchesController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\BatchesController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\BatchesController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\BatchesController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\BatchesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:26:05.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CoursesController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\CoursesController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\CoursesController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\CoursesController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\CoursesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:25:52.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DepartmentsController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\DepartmentsController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\DepartmentsController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\DepartmentsController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\DepartmentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:25:40.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "UniManage\\Controllers\\UsersController.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "UniManage\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T15:25:31.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "20260428193304_seed-db.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Migrations\\20260428193304_seed-db.cs",
+              "RelativeDocumentMoniker": "UniManage\\Migrations\\20260428193304_seed-db.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Migrations\\20260428193304_seed-db.cs",
+              "RelativeToolTip": "UniManage\\Migrations\\20260428193304_seed-db.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T19:33:04.359Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationDbContextModelSnapshot.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "UniManage\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeToolTip": "UniManage\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T19:34:14.278Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BatchModel.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Models\\BatchModel.cs",
+              "RelativeDocumentMoniker": "UniManage\\Models\\BatchModel.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Models\\BatchModel.cs",
+              "RelativeToolTip": "UniManage\\Models\\BatchModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T18:56:19.613Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "UniManage\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "UniManage\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA1wCEAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T18:08:30.425Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Program.cs",
+              "RelativeDocumentMoniker": "UniManage\\Program.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Program.cs",
+              "RelativeToolTip": "UniManage\\Program.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAIBJwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T18:06:50.125Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserModel.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Models\\UserModel.cs",
+              "RelativeDocumentMoniker": "UniManage\\Models\\UserModel.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Models\\UserModel.cs",
+              "RelativeToolTip": "UniManage\\Models\\UserModel.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBgAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T18:01:11.301Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\appsettings.json",
+              "RelativeDocumentMoniker": "UniManage\\appsettings.json",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\appsettings.json",
+              "RelativeToolTip": "UniManage\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-28T18:06:22.198Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ModuleModel.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Models\\ModuleModel.cs",
+              "RelativeDocumentMoniker": "UniManage\\Models\\ModuleModel.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Models\\ModuleModel.cs",
+              "RelativeToolTip": "UniManage\\Models\\ModuleModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T18:01:20.866Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RoleModel.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Models\\RoleModel.cs",
+              "RelativeDocumentMoniker": "UniManage\\Models\\RoleModel.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Models\\RoleModel.cs",
+              "RelativeToolTip": "UniManage\\Models\\RoleModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T18:01:19.957Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserDepartmentModel.cs",
+              "DocumentMoniker": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Models\\UserDepartmentModel.cs",
+              "RelativeDocumentMoniker": "UniManage\\Models\\UserDepartmentModel.cs",
+              "ToolTip": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\Models\\UserDepartmentModel.cs",
+              "RelativeToolTip": "UniManage\\Models\\UserDepartmentModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T18:00:58.635Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

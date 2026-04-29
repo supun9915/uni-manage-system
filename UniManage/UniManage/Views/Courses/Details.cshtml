@@ -1,0 +1,94 @@
+@model UniManage.Models.CourseModel
+@{
+    ViewData["Title"] = "Course Details";
+    var enrollments = ViewBag.Enrollments as List<UniManage.Models.EnrollmentModel> ?? new();
+    var role = ViewBag.CurrentUserRole as string;
+}
+
+<div class="space-y-6">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <div class="flex items-start justify-between">
+            <div>
+                <span class="text-xs bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full">@Model.Code</span>
+                <h2 class="text-xl font-bold text-gray-800 mt-2">@Model.Title</h2>
+                <p class="text-sm text-gray-500">@Model.Department?.Name</p>
+                <p class="text-sm text-gray-600 mt-3">@Model.Description</p>
+            </div>
+            <span class="text-xs @(Model.Status == "published" ? "bg-green-50 text-green-700" : "bg-gray-100 text-gray-500") px-2 py-1 rounded-full capitalize">@Model.Status</span>
+        </div>
+    </div>
+
+    <!-- Modules -->
+    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-base font-semibold text-gray-800">Modules (@Model.Modules.Count)</h3>
+            @if (role != "student")
+            {
+                <a asp-controller="Modules" asp-action="Create" asp-route-courseId="@Model.Id"
+                   class="text-xs bg-indigo-50 text-indigo-600 px-3 py-1.5 rounded-lg hover:bg-indigo-100">+ Add Module</a>
+            }
+        </div>
+        @if (!Model.Modules.Any())
+        {
+            <p class="text-sm text-gray-400">No modules yet.</p>
+        }
+        else
+        {
+            <ul class="space-y-2">
+                @foreach (var m in Model.Modules.OrderBy(m => m.OrderIndex))
+                {
+                    <li class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div>
+                            <p class="text-sm font-medium text-gray-800">@m.OrderIndex. @m.Title</p>
+                            <p class="text-xs text-gray-400">@m.CourseMaterials.Count materials · @m.Assignments.Count assignments</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <a asp-controller="CourseMaterials" asp-action="Index" asp-route-moduleId="@m.Id"
+                               class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full hover:bg-blue-100">Materials</a>
+                            <a asp-controller="Assignments" asp-action="Index" asp-route-moduleId="@m.Id"
+                               class="text-xs bg-orange-50 text-orange-600 px-3 py-1 rounded-full hover:bg-orange-100">Assignments</a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+
+    <!-- Enrollments -->
+    @if (role != "student")
+    {
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-base font-semibold text-gray-800">Enrolled Students (@enrollments.Count)</h3>
+                @if (role == "administrator")
+                {
+                    <a asp-controller="Enrollments" asp-action="Create"
+                       class="text-xs bg-green-50 text-green-600 px-3 py-1.5 rounded-lg hover:bg-green-100">+ Enroll</a>
+                }
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="text-left text-xs text-gray-500 border-b">
+                            <th class="pb-2 font-medium">Student</th>
+                            <th class="pb-2 font-medium">Batch</th>
+                            <th class="pb-2 font-medium">Enrolled</th>
+                            <th class="pb-2 font-medium">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-50">
+                        @foreach (var e in enrollments)
+                        {
+                            <tr>
+                                <td class="py-2">@e.User?.FirstName @e.User?.LastName</td>
+                                <td class="py-2 text-gray-500">@e.Batch?.Name</td>
+                                <td class="py-2 text-gray-400">@e.EnrolledAt.ToString("dd MMM yyyy")</td>
+                                <td class="py-2"><span class="text-xs bg-green-50 text-green-700 px-2 py-0.5 rounded-full">@e.Status</span></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>

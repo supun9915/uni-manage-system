@@ -1,0 +1,93 @@
+@{
+    ViewData["Title"] = "Lecturer Dashboard";
+    var courses = ViewBag.Courses as List<UniManage.Models.CourseModel> ?? new();
+    var recentSubmissions = ViewBag.RecentSubmissions as List<UniManage.Models.AssignmentSubmissionModel> ?? new();
+    var assignments = ViewBag.Assignments as List<UniManage.Models.AssignmentModel> ?? new();
+    int pendingGrading = ViewBag.PendingGrading ?? 0;
+}
+
+<div class="space-y-6">
+    <!-- Stats -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <p class="text-sm text-gray-500">My Courses</p>
+            <p class="text-3xl font-bold text-indigo-600 mt-1">@courses.Count</p>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <p class="text-sm text-gray-500">Assignments</p>
+            <p class="text-3xl font-bold text-orange-500 mt-1">@assignments.Count</p>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+            <p class="text-sm text-gray-500">Pending Grading</p>
+            <p class="text-3xl font-bold text-red-500 mt-1">@pendingGrading</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- My Courses -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-base font-semibold text-gray-800">My Courses</h2>
+                <a asp-controller="Courses" asp-action="Index" class="text-xs text-indigo-600 hover:underline">Manage</a>
+            </div>
+            @if (!courses.Any())
+            {
+                <p class="text-sm text-gray-400">No courses assigned to you yet.</p>
+            }
+            else
+            {
+                <ul class="space-y-2">
+                    @foreach (var c in courses)
+                    {
+                        <li class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <p class="text-sm font-medium text-gray-800">@c.Title</p>
+                                <p class="text-xs text-gray-400">@c.Department?.Name · @c.Code</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <a asp-controller="Modules" asp-action="Index" asp-route-courseId="@c.Id"
+                                   class="text-xs bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full hover:bg-indigo-100">Modules</a>
+                                <a asp-controller="Assignments" asp-action="Index" asp-route-moduleId=""
+                                   class="text-xs bg-orange-50 text-orange-600 px-3 py-1 rounded-full hover:bg-orange-100">Assignments</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+
+        <!-- Recent Submissions -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-base font-semibold text-gray-800">Recent Submissions</h2>
+            </div>
+            @if (!recentSubmissions.Any())
+            {
+                <p class="text-sm text-gray-400">No submissions yet.</p>
+            }
+            else
+            {
+                <ul class="space-y-2">
+                    @foreach (var s in recentSubmissions)
+                    {
+                        <li class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <p class="text-sm font-medium text-gray-800">@s.Student?.FirstName @s.Student?.LastName</p>
+                                <p class="text-xs text-gray-400">@s.Assignment?.Title · @s.SubmittedAt.ToString("dd MMM HH:mm")</p>
+                            </div>
+                            @if (s.Status == "submitted" || s.Status == "late")
+                            {
+                                <a asp-controller="AssignmentSubmissions" asp-action="Grade" asp-route-id="@s.Id"
+                                   class="text-xs bg-green-50 text-green-600 px-3 py-1 rounded-full hover:bg-green-100">Grade</a>
+                            }
+                            else
+                            {
+                                <span class="text-xs bg-gray-100 text-gray-500 px-3 py-1 rounded-full">Graded</span>
+                            }
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+</div>

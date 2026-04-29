@@ -1,0 +1,63 @@
+@model IEnumerable<UniManage.Models.AssignmentModel>
+@{
+    ViewData["Title"] = "Assignments";
+    var role = ViewBag.CurrentUserRole as string;
+}
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+    <div class="flex items-center justify-between mb-5">
+        <h2 class="text-base font-semibold text-gray-800">Assignments</h2>
+        @if (role != "student")
+        {
+            <a asp-action="Create" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">+ New Assignment</a>
+        }
+    </div>
+    @if (!Model.Any())
+    {
+        <p class="text-sm text-gray-400 py-4">No assignments found.</p>
+    }
+    else
+    {
+        <div class="space-y-3">
+            @foreach (var a in Model)
+            {
+                var overdue = a.DeadlineDate.HasValue && a.DeadlineDate < DateTime.UtcNow;
+                <div class="border border-gray-100 rounded-xl p-4 hover:shadow-sm transition-shadow">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-800">@a.Title</h3>
+                            <p class="text-xs text-gray-400 mt-0.5">@a.Module?.Course?.Title — @a.Module?.Title</p>
+                            <p class="text-xs text-gray-500 mt-1">@a.Description</p>
+                        </div>
+                        <div class="flex flex-col items-end gap-1 flex-shrink-0 ml-4">
+                            @if (a.DeadlineDate.HasValue)
+                            {
+                                <span class="text-xs @(overdue ? "text-red-500" : "text-gray-500")">
+                                    ?? @a.DeadlineDate.Value.ToString("dd MMM yyyy HH:mm")
+                                </span>
+                            }
+                            <span class="text-xs text-gray-400">Max: @a.MaxMarks marks</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 mt-3 pt-3 border-t border-gray-50">
+                        <a asp-action="Details" asp-route-id="@a.Id"
+                           class="text-xs bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full hover:bg-indigo-100">View</a>
+                        @if (role == "student")
+                        {
+                            <a asp-controller="AssignmentSubmissions" asp-action="Submit" asp-route-assignmentId="@a.Id"
+                               class="text-xs bg-green-50 text-green-600 px-3 py-1 rounded-full hover:bg-green-100">Submit</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="AssignmentSubmissions" asp-action="Index" asp-route-assignmentId="@a.Id"
+                               class="text-xs bg-purple-50 text-purple-600 px-3 py-1 rounded-full hover:bg-purple-100">Submissions</a>
+                            <a asp-action="Edit" asp-route-id="@a.Id"
+                               class="text-xs bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full hover:bg-yellow-100">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@a.Id"
+                               class="text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100">Delete</a>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
