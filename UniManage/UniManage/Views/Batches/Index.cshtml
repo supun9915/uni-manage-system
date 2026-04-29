@@ -1,11 +1,11 @@
-@model IEnumerable<UniManage.Models.BatchModel>
+﻿@model IEnumerable<UniManage.Models.BatchModel>
 @{
     ViewData["Title"] = "Batches";
     var role = ViewBag.CurrentUserRole as string;
 }
 <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
     <div class="flex items-center justify-between mb-5">
-        <h2 class="text-base font-semibold text-gray-800">Batches</h2>
+        <h2 class="text-base text-gray-800">Batches</h2>
         @if (role == "administrator")
         {
             <a asp-action="Create" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">+ New Batch</a>

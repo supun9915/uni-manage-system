@@ -1,19 +1,24 @@
-@model IEnumerable<UniManage.Models.AssignmentModel>
+ï»¿@model IEnumerable<UniManage.Models.AssignmentModel>
 @{
     ViewData["Title"] = "Assignments";
     var role = ViewBag.CurrentUserRole as string;
 }
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+<div class="page-card">
     <div class="flex items-center justify-between mb-5">
-        <h2 class="text-base font-semibold text-gray-800">Assignments</h2>
+        <h2 class="text-sm text-slate-700 flex items-center gap-2">
+            <i class="fa-solid fa-clipboard-list text-blue-700"></i> Assignments
+        </h2>
         @if (role != "student")
         {
-            <a asp-action="Create" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">+ New Assignment</a>
+            <a asp-action="Create" class="btn-primary"><i class="fa-solid fa-plus"></i> New Assignment</a>
         }
     </div>
     @if (!Model.Any())
     {
-        <p class="text-sm text-gray-400 py-4">No assignments found.</p>
+        <div class="flex flex-col items-center py-12 text-slate-400">
+            <i class="fa-solid fa-clipboard-list text-4xl mb-3 opacity-30"></i>
+            <p class="text-sm">No assignments found.</p>
+        </div>
     }
     else
     {
@@ -21,39 +26,44 @@
             @foreach (var a in Model)
             {
                 var overdue = a.DeadlineDate.HasValue && a.DeadlineDate < DateTime.UtcNow;
-                <div class="border border-gray-100 rounded-xl p-4 hover:shadow-sm transition-shadow">
+                <div class="border border-slate-100 rounded-xl p-4 hover:shadow-sm hover:border-blue-100 transition-all bg-white">
                     <div class="flex items-start justify-between">
                         <div>
-                            <h3 class="text-sm font-semibold text-gray-800">@a.Title</h3>
-                            <p class="text-xs text-gray-400 mt-0.5">@a.Module?.Course?.Title — @a.Module?.Title</p>
-                            <p class="text-xs text-gray-500 mt-1">@a.Description</p>
+                            <h3 class="text-sm text-slate-800">@a.Title</h3>
+                            <p class="text-xs text-slate-400 mt-0.5"><i class="fa-solid fa-book-open mr-1"></i>@a.Module?.Course?.Title &mdash; <i class="fa-solid fa-layer-group mr-1"></i>@a.Module?.Title</p>
+                            @if (!string.IsNullOrEmpty(a.Description))
+                            {
+                                <p class="text-xs text-slate-500 mt-1.5 line-clamp-1">@a.Description</p>
+                            }
                         </div>
-                        <div class="flex flex-col items-end gap-1 flex-shrink-0 ml-4">
+                        <div class="flex flex-col items-end gap-1.5 flex-shrink-0 ml-4">
                             @if (a.DeadlineDate.HasValue)
                             {
-                                <span class="text-xs @(overdue ? "text-red-500" : "text-gray-500")">
-                                    ?? @a.DeadlineDate.Value.ToString("dd MMM yyyy HH:mm")
+                                <span class="inline-flex items-center gap-1 text-xs @(overdue ? "bg-red-50 text-red-600" : "bg-slate-50 text-slate-500") px-2.5 py-0.5 rounded-full">
+                                    <i class="fa-solid fa-clock text-xs"></i> @a.DeadlineDate.Value.ToString("dd MMM yyyy HH:mm")
                                 </span>
                             }
-                            <span class="text-xs text-gray-400">Max: @a.MaxMarks marks</span>
+                            <span class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-2.5 py-0.5 rounded-full">
+                                <i class="fa-solid fa-star text-xs"></i> @a.MaxMarks marks
+                            </span>
                         </div>
                     </div>
-                    <div class="flex gap-2 mt-3 pt-3 border-t border-gray-50">
+                    <div class="flex gap-2 mt-3 pt-3 border-t border-slate-50 flex-wrap">
                         <a asp-action="Details" asp-route-id="@a.Id"
-                           class="text-xs bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full hover:bg-indigo-100">View</a>
+                           class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full hover:bg-blue-100 transition-colors"><i class="fa-solid fa-eye text-xs"></i>View</a>
                         @if (role == "student")
                         {
                             <a asp-controller="AssignmentSubmissions" asp-action="Submit" asp-route-assignmentId="@a.Id"
-                               class="text-xs bg-green-50 text-green-600 px-3 py-1 rounded-full hover:bg-green-100">Submit</a>
+                               class="inline-flex items-center gap-1 text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full hover:bg-emerald-100 transition-colors"><i class="fa-solid fa-paper-plane text-xs"></i>Submit</a>
                         }
                         else
                         {
                             <a asp-controller="AssignmentSubmissions" asp-action="Index" asp-route-assignmentId="@a.Id"
-                               class="text-xs bg-purple-50 text-purple-600 px-3 py-1 rounded-full hover:bg-purple-100">Submissions</a>
+                               class="inline-flex items-center gap-1 text-xs bg-purple-50 text-purple-700 px-3 py-1 rounded-full hover:bg-purple-100 transition-colors"><i class="fa-solid fa-inbox text-xs"></i>Submissions</a>
                             <a asp-action="Edit" asp-route-id="@a.Id"
-                               class="text-xs bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full hover:bg-yellow-100">Edit</a>
+                               class="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full hover:bg-amber-100 transition-colors"><i class="fa-solid fa-pen text-xs"></i>Edit</a>
                             <a asp-action="Delete" asp-route-id="@a.Id"
-                               class="text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100">Delete</a>
+                               class="inline-flex items-center gap-1 text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100 transition-colors"><i class="fa-solid fa-trash text-xs"></i>Delete</a>
                         }
                     </div>
                 </div>

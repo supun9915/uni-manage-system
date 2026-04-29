@@ -1,11 +1,11 @@
-@model UniManage.Models.RoleModel
+﻿@model UniManage.Models.RoleModel
 @{
     ViewData["Title"] = "Create Role";
 }
 
 <div class="max-w-lg">
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <h2 class="text-base font-semibold text-gray-800 mb-5">Create New Role</h2>
+        <h2 class="text-base text-gray-800 mb-5">Create New Role</h2>
         <form asp-action="Create" method="post">
             @Html.AntiForgeryToken()
             <div class="mb-4">

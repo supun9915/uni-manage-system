@@ -1,52 +1,60 @@
-@model UniManage.Models.UserModel
+﻿@model UniManage.Models.UserModel
 @{
     ViewData["Title"] = "Create User";
 }
 
 <div class="max-w-lg">
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <h2 class="text-base font-semibold text-gray-800 mb-5">Create New User</h2>
-        <form asp-action="Create" method="post">
+    <div class="page-card">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                <i class="fa-solid fa-user-plus text-blue-700"></i>
+            </div>
+            <div>
+                <h2 class="text-base text-slate-800">Create New User</h2>
+                <p class="text-xs text-slate-400">Fill in the user details below</p>
+            </div>
+        </div>
+        <form asp-action="Create" method="post" data-val="true">
             @Html.AntiForgeryToken()
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label asp-for="FirstName" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                    <input asp-for="FirstName" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-                    <span asp-validation-for="FirstName" class="text-xs text-red-600"></span>
+                    <label asp-for="FirstName" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-user mr-1"></i></label>
+                    <input asp-for="FirstName" class="form-input" placeholder="First name" required />
+                    <span asp-validation-for="FirstName" class="field-error"></span>
                 </div>
                 <div>
-                    <label asp-for="LastName" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                    <input asp-for="LastName" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-                    <span asp-validation-for="LastName" class="text-xs text-red-600"></span>
+                    <label asp-for="LastName" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-user mr-1"></i></label>
+                    <input asp-for="LastName" class="form-input" placeholder="Last name" required />
+                    <span asp-validation-for="LastName" class="field-error"></span>
                 </div>
             </div>
             <div class="mb-4">
-                <label asp-for="Email" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                <input asp-for="Email" type="email" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-                <span asp-validation-for="Email" class="text-xs text-red-600"></span>
+                <label asp-for="Email" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-envelope mr-1"></i></label>
+                <input asp-for="Email" type="email" class="form-input" placeholder="email@university.edu" required />
+                <span asp-validation-for="Email" class="field-error"></span>
             </div>
             <div class="mb-4">
-                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                <input type="password" name="password" required class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                <label for="password" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-lock mr-1"></i>Password</label>
+                <input type="password" name="password" required class="form-input" placeholder="Min. 8 characters" minlength="6" />
             </div>
             <div class="mb-4">
-                <label asp-for="RoleId" class="block text-sm font-medium text-gray-700 mb-1">Role</label>
-                <select asp-for="RoleId" asp-items="ViewBag.Roles" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <label asp-for="RoleId" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-shield-halved mr-1"></i>Role</label>
+                <select asp-for="RoleId" asp-items="ViewBag.Roles" class="form-input" required>
                     <option value="">-- Select Role --</option>
                 </select>
-                <span asp-validation-for="RoleId" class="text-xs text-red-600"></span>
+                <span asp-validation-for="RoleId" class="field-error"></span>
             </div>
             <div class="mb-4">
-                <label asp-for="Phone" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                <input asp-for="Phone" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                <label asp-for="Phone" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-phone mr-1"></i></label>
+                <input asp-for="Phone" class="form-input" placeholder="+1 234 567 8900" />
             </div>
-            <div class="mb-6 flex items-center gap-2">
-                <input asp-for="IsActive" type="checkbox" class="w-4 h-4 text-indigo-600 rounded" />
-                <label asp-for="IsActive" class="text-sm text-gray-700">Active</label>
+            <div class="mb-6 flex items-center gap-2.5 p-3 bg-slate-50 rounded-lg">
+                <input asp-for="IsActive" type="checkbox" class="w-4 h-4 rounded accent-blue-700" />
+                <label asp-for="IsActive" class="text-sm text-slate-600 font-medium cursor-pointer"><i class="fa-solid fa-circle-check mr-1 text-emerald-500"></i>Active account</label>
             </div>
-            <div class="flex gap-3">
-                <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-5 py-2 rounded-lg transition-colors">Create</button>
-                <a asp-action="Index" class="text-sm font-medium text-gray-500 hover:text-gray-700 px-5 py-2">Cancel</a>
+            <div class="flex gap-3 pt-4 border-t border-slate-100">
+                <button type="submit" class="btn-primary"><i class="fa-solid fa-floppy-disk"></i> Create User</button>
+                <a asp-action="Index" class="btn-secondary"><i class="fa-solid fa-arrow-left"></i> Cancel</a>
             </div>
         </form>
     </div>

@@ -1,6 +1,0 @@
-﻿namespace UniManage.Models
-{
-    public class RoleModel
-    {
-    }
-}

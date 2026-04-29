@@ -1,17 +1,29 @@
-@model UniManage.Models.CourseModel
+﻿@model UniManage.Models.CourseModel
 @{
     ViewData["Title"] = "Delete Course";
 }
 <div class="max-w-lg">
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <h2 class="text-base font-semibold text-gray-800 mb-2">Delete Course</h2>
-        <p class="text-sm text-gray-500 mb-5">Are you sure you want to delete <strong>@Model.Title</strong>?</p>
+    <div class="page-card">
+        <div class="flex items-start gap-4 mb-5">
+            <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-triangle-exclamation text-red-600 text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-base text-slate-800">Delete Course</h2>
+                <p class="text-sm text-slate-500 mt-0.5">This action is permanent and cannot be undone.</p>
+            </div>
+        </div>
+        <div class="bg-red-50 border border-red-100 rounded-lg p-4 mb-5 text-sm space-y-2">
+            <p><span class="text-slate-500"><i class="fa-solid fa-book-open mr-1"></i>Title:</span> <strong class="text-slate-800">@Model.Title</strong></p>
+            <p><span class="text-slate-500"><i class="fa-solid fa-tag mr-1"></i>Code:</span> <span class="font-mono">@Model.Code</span></p>
+            <p><span class="text-slate-500"><i class="fa-solid fa-building mr-1"></i>Department:</span> @Model.Department?.Name</p>
+        </div>
         <form asp-action="Delete" method="post">
             @Html.AntiForgeryToken()
             <input type="hidden" asp-for="Id" />
             <div class="flex gap-3">
-                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white text-sm font-medium px-5 py-2 rounded-lg transition-colors">Delete</button>
-                <a asp-action="Index" class="text-sm font-medium text-gray-500 hover:text-gray-700 px-5 py-2">Cancel</a>
+                <button type="submit" class="btn-danger"><i class="fa-solid fa-trash"></i> Delete Permanently</button>
+                <a asp-action="Index" class="btn-secondary"><i class="fa-solid fa-arrow-left"></i> Cancel</a>
             </div>
         </form>
     </div>

@@ -1,4 +1,4 @@
-@{
+ï»¿@{
     ViewData["Title"] = "Lecturer Dashboard";
     var courses = ViewBag.Courses as List<UniManage.Models.CourseModel> ?? new();
     var recentSubmissions = ViewBag.RecentSubmissions as List<UniManage.Models.AssignmentSubmissionModel> ?? new();
@@ -9,46 +9,73 @@
 <div class="space-y-6">
     <!-- Stats -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-            <p class="text-sm text-gray-500">My Courses</p>
-            <p class="text-3xl font-bold text-indigo-600 mt-1">@courses.Count</p>
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-blue-50 hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between mb-3">
+                <p class="text-xs text-slate-400 uppercase tracking-wide">My Courses</p>
+                <div class="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
+                    <i class="fa-solid fa-book-open text-blue-700 text-sm"></i>
+                </div>
+            </div>
+            <p class="text-3xl text-blue-700">@courses.Count</p>
+            <a asp-controller="Courses" asp-action="Index" class="text-xs text-blue-600 hover:underline mt-1 inline-block">Manage &rarr;</a>
         </div>
-        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-            <p class="text-sm text-gray-500">Assignments</p>
-            <p class="text-3xl font-bold text-orange-500 mt-1">@assignments.Count</p>
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-amber-50 hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between mb-3">
+                <p class="text-xs text-slate-400 uppercase tracking-wide">Assignments</p>
+                <div class="w-9 h-9 rounded-lg bg-amber-50 flex items-center justify-center">
+                    <i class="fa-solid fa-clipboard-list text-amber-600 text-sm"></i>
+                </div>
+            </div>
+            <p class="text-3xl text-amber-600">@assignments.Count</p>
+            <a asp-controller="Assignments" asp-action="Index" class="text-xs text-amber-600 hover:underline mt-1 inline-block">View all &rarr;</a>
         </div>
-        <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
-            <p class="text-sm text-gray-500">Pending Grading</p>
-            <p class="text-3xl font-bold text-red-500 mt-1">@pendingGrading</p>
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-red-50 hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between mb-3">
+                <p class="text-xs text-slate-400 uppercase tracking-wide">Pending Grading</p>
+                <div class="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center">
+                    <i class="fa-solid fa-hourglass-half text-red-500 text-sm"></i>
+                </div>
+            </div>
+            <p class="text-3xl text-red-500">@pendingGrading</p>
+            <a asp-controller="AssignmentSubmissions" asp-action="Index" asp-route-assignmentId="0" class="text-xs text-red-500 hover:underline mt-1 inline-block">Grade now &rarr;</a>
         </div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <!-- My Courses -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+        <div class="page-card">
             <div class="flex items-center justify-between mb-4">
-                <h2 class="text-base font-semibold text-gray-800">My Courses</h2>
-                <a asp-controller="Courses" asp-action="Index" class="text-xs text-indigo-600 hover:underline">Manage</a>
+                <h2 class="text-sm text-slate-700 flex items-center gap-2">
+                    <i class="fa-solid fa-book-open text-blue-700"></i> My Courses
+                </h2>
+                <a asp-controller="Courses" asp-action="Index" class="text-xs text-blue-700 hover:underline font-medium">Manage &rarr;</a>
             </div>
             @if (!courses.Any())
             {
-                <p class="text-sm text-gray-400">No courses assigned to you yet.</p>
+                <div class="flex flex-col items-center py-8 text-slate-400">
+                    <i class="fa-solid fa-book-open text-3xl mb-2 opacity-30"></i>
+                    <p class="text-sm">No courses assigned to you yet.</p>
+                </div>
             }
             else
             {
                 <ul class="space-y-2">
                     @foreach (var c in courses)
                     {
-                        <li class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <li class="flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-blue-50 transition-colors">
                             <div>
-                                <p class="text-sm font-medium text-gray-800">@c.Title</p>
-                                <p class="text-xs text-gray-400">@c.Department?.Name · @c.Code</p>
+                                <p class="text-sm text-slate-800">@c.Title</p>
+                                <p class="text-xs text-slate-400 mt-0.5"><i class="fa-solid fa-building mr-1"></i>@c.Department?.Name &mdash; <span class="font-mono">@c.Code</span></p>
                             </div>
                             <div class="flex gap-2">
                                 <a asp-controller="Modules" asp-action="Index" asp-route-courseId="@c.Id"
-                                   class="text-xs bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full hover:bg-indigo-100">Modules</a>
+                                   class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full hover:bg-blue-100 transition-colors">
+                                    <i class="fa-solid fa-layer-group text-xs"></i> Modules
+                                </a>
                                 <a asp-controller="Assignments" asp-action="Index" asp-route-moduleId=""
-                                   class="text-xs bg-orange-50 text-orange-600 px-3 py-1 rounded-full hover:bg-orange-100">Assignments</a>
+                                   class="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full hover:bg-amber-100 transition-colors">
+                                    <i class="fa-solid fa-clipboard-list text-xs"></i> Assign.
+                                </a>
                             </div>
                         </li>
                     }
@@ -57,32 +84,41 @@
         </div>
 
         <!-- Recent Submissions -->
-        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
+        <div class="page-card">
             <div class="flex items-center justify-between mb-4">
-                <h2 class="text-base font-semibold text-gray-800">Recent Submissions</h2>
+                <h2 class="text-sm text-slate-700 flex items-center gap-2">
+                    <i class="fa-solid fa-inbox text-blue-700"></i> Recent Submissions
+                </h2>
             </div>
             @if (!recentSubmissions.Any())
             {
-                <p class="text-sm text-gray-400">No submissions yet.</p>
+                <div class="flex flex-col items-center py-8 text-slate-400">
+                    <i class="fa-solid fa-inbox text-3xl mb-2 opacity-30"></i>
+                    <p class="text-sm">No submissions yet.</p>
+                </div>
             }
             else
             {
                 <ul class="space-y-2">
                     @foreach (var s in recentSubmissions)
                     {
-                        <li class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <li class="flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-blue-50 transition-colors">
                             <div>
-                                <p class="text-sm font-medium text-gray-800">@s.Student?.FirstName @s.Student?.LastName</p>
-                                <p class="text-xs text-gray-400">@s.Assignment?.Title · @s.SubmittedAt.ToString("dd MMM HH:mm")</p>
+                                <p class="text-sm text-slate-800">@s.Student?.FirstName @s.Student?.LastName</p>
+                                <p class="text-xs text-slate-400 mt-0.5"><i class="fa-solid fa-file-lines mr-1"></i>@s.Assignment?.Title &mdash; @s.SubmittedAt.ToString("dd MMM HH:mm")</p>
                             </div>
                             @if (s.Status == "submitted" || s.Status == "late")
                             {
                                 <a asp-controller="AssignmentSubmissions" asp-action="Grade" asp-route-id="@s.Id"
-                                   class="text-xs bg-green-50 text-green-600 px-3 py-1 rounded-full hover:bg-green-100">Grade</a>
+                                   class="inline-flex items-center gap-1 text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full hover:bg-emerald-100 transition-colors">
+                                    <i class="fa-solid fa-star text-xs"></i> Grade
+                                </a>
                             }
                             else
                             {
-                                <span class="text-xs bg-gray-100 text-gray-500 px-3 py-1 rounded-full">Graded</span>
+                                <span class="inline-flex items-center gap-1 text-xs bg-slate-100 text-slate-500 px-3 py-1 rounded-full">
+                                    <i class="fa-solid fa-check text-xs"></i> Graded
+                                </span>
                             }
                         </li>
                     }

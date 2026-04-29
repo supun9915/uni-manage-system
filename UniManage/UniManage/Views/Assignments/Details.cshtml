@@ -1,4 +1,4 @@
-@model UniManage.Models.AssignmentModel
+ï»¿@model UniManage.Models.AssignmentModel
 @{
     ViewData["Title"] = Model.Title;
     var role = ViewBag.CurrentUserRole as string;
@@ -7,8 +7,8 @@
 
 <div class="space-y-6">
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <h2 class="text-xl font-bold text-gray-800">@Model.Title</h2>
-        <p class="text-sm text-gray-400 mt-1">@Model.Module?.Course?.Title — @Model.Module?.Title</p>
+        <h2 class="text-xl text-gray-800">@Model.Title</h2>
+        <p class="text-sm text-gray-400 mt-1">@Model.Module?.Course?.Title ï¿½ @Model.Module?.Title</p>
         @if (!string.IsNullOrEmpty(Model.Description))
         {
             <p class="text-sm text-gray-600 mt-3">@Model.Description</p>
@@ -16,7 +16,7 @@
         @if (!string.IsNullOrEmpty(Model.Instructions))
         {
             <div class="mt-4 p-4 bg-blue-50 rounded-lg">
-                <p class="text-xs font-semibold text-blue-800 mb-1">Instructions</p>
+                <p class="text-xs text-blue-800 mb-1">Instructions</p>
                 <p class="text-sm text-blue-700">@Model.Instructions</p>
             </div>
         }
@@ -32,7 +32,7 @@
     @if (role == "student")
     {
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-            <h3 class="text-base font-semibold text-gray-800 mb-3">My Submission</h3>
+            <h3 class="text-base text-gray-800 mb-3">My Submission</h3>
             @if (mySubmission != null)
             {
                 <div class="space-y-2 text-sm">
@@ -68,7 +68,7 @@
     {
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
             <div class="flex items-center justify-between mb-4">
-                <h3 class="text-base font-semibold text-gray-800">Submissions (@Model.Submissions.Count)</h3>
+                <h3 class="text-base text-gray-800">Submissions (@Model.Submissions.Count)</h3>
                 <a asp-controller="AssignmentSubmissions" asp-action="Index" asp-route-assignmentId="@Model.Id"
                    class="text-xs bg-purple-50 text-purple-600 px-3 py-1.5 rounded-lg hover:bg-purple-100">View All</a>
             </div>

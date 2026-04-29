@@ -1,39 +1,54 @@
-@model IEnumerable<UniManage.Models.DepartmentModel>
+﻿@model IEnumerable<UniManage.Models.DepartmentModel>
 @{
     ViewData["Title"] = "Departments";
 }
 
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+<div class="page-card">
     <div class="flex items-center justify-between mb-5">
-        <h2 class="text-base font-semibold text-gray-800">Departments</h2>
-        <a asp-action="Create" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">+ New Department</a>
+        <h2 class="text-sm text-slate-700 flex items-center gap-2">
+            <i class="fa-solid fa-building text-blue-700"></i> Departments
+        </h2>
+        <a asp-action="Create" class="btn-primary"><i class="fa-solid fa-plus"></i> New Department</a>
     </div>
     <div class="overflow-x-auto">
         <table class="w-full text-sm">
-            <thead>
-                <tr class="text-left text-xs text-gray-500 border-b">
-                    <th class="pb-2 font-medium">Name</th>
-                    <th class="pb-2 font-medium">Code</th>
-                    <th class="pb-2 font-medium">Description</th>
-                    <th class="pb-2 font-medium">Courses</th>
-                    <th class="pb-2 font-medium">Actions</th>
+            <thead class="table-header">
+                <tr>
+                    <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-building mr-1"></i>Name</th>
+                    <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-hashtag mr-1"></i>Code</th>
+                    <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-align-left mr-1"></i>Description</th>
+                    <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-book-open mr-1"></i>Courses</th>
+                    <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider">Actions</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-gray-50">
+            <tbody class="divide-y divide-slate-100">
                 @foreach (var d in Model)
                 {
-                    <tr>
-                        <td class="py-2.5 font-medium">@d.Name</td>
-                        <td class="py-2.5"><span class="text-xs bg-gray-100 px-2 py-0.5 rounded">@d.Code</span></td>
-                        <td class="py-2.5 text-gray-500">@d.Description</td>
-                        <td class="py-2.5">@d.Courses.Count</td>
-                        <td class="py-2.5 flex gap-2">
-                            <a asp-action="Edit" asp-route-id="@d.Id" class="text-xs bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full hover:bg-yellow-100">Edit</a>
-                            <a asp-action="Delete" asp-route-id="@d.Id" class="text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100">Delete</a>
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-4 py-3 text-slate-800">@d.Name</td>
+                        <td class="px-4 py-3"><span class="text-xs bg-blue-50 text-blue-700 px-2.5 py-0.5 rounded-full font-mono ">@d.Code</span></td>
+                        <td class="px-4 py-3 text-slate-500">@d.Description</td>
+                        <td class="px-4 py-3">
+                            <span class="inline-flex items-center gap-1 text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">
+                                <i class="fa-solid fa-book-open text-xs"></i> @d.Courses.Count
+                            </span>
+                        </td>
+                        <td class="px-4 py-3">
+                            <div class="flex gap-2">
+                                <a asp-action="Edit" asp-route-id="@d.Id" class="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full hover:bg-amber-100 transition-colors"><i class="fa-solid fa-pen text-xs"></i>Edit</a>
+                                <a asp-action="Delete" asp-route-id="@d.Id" class="inline-flex items-center gap-1 text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100 transition-colors"><i class="fa-solid fa-trash text-xs"></i>Delete</a>
+                            </div>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
+        @if (!Model.Any())
+        {
+            <div class="flex flex-col items-center py-12 text-slate-400">
+                <i class="fa-solid fa-building text-4xl mb-3 opacity-30"></i>
+                <p class="text-sm">No departments found.</p>
+            </div>
+        }
     </div>
 </div>

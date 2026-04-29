@@ -1,4 +1,4 @@
-@model UniManage.Models.CourseModel
+ï»¿@model UniManage.Models.CourseModel
 @{
     ViewData["Title"] = "Course Details";
     var enrollments = ViewBag.Enrollments as List<UniManage.Models.EnrollmentModel> ?? new();
@@ -6,11 +6,122 @@
 }
 
 <div class="space-y-6">
+    <div class="page-card">
+        <div class="flex items-start justify-between">
+            <div>
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-2.5 py-0.5 rounded-full font-mono ">
+                        <i class="fa-solid fa-tag text-xs"></i>@Model.Code
+                    </span>
+                    <span class="text-xs @(Model.Status == "published" ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-500") px-2 py-0.5 rounded-full capitalize font-medium">@Model.Status</span>
+                </div>
+                <h2 class="text-xl text-slate-800">@Model.Title</h2>
+                <p class="text-sm text-slate-500 mt-0.5"><i class="fa-solid fa-building mr-1"></i>@Model.Department?.Name</p>
+                @if (!string.IsNullOrEmpty(Model.Description))
+                {
+                    <p class="text-sm text-slate-600 mt-3">@Model.Description</p>
+                }
+            </div>
+            @if (role == "administrator")
+            {
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn-secondary flex-shrink-0 ml-4"><i class="fa-solid fa-pen"></i> Edit</a>
+            }
+        </div>
+    </div>
+
+    <!-- Modules -->
+    <div class="page-card">
+        <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm text-slate-700 flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-blue-700"></i> Modules
+                <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-medium">@Model.Modules.Count</span>
+            </h3>
+            @if (role != "student")
+            {
+                <a asp-controller="Modules" asp-action="Create" asp-route-courseId="@Model.Id"
+                   class="btn-primary text-xs py-1.5 px-3"><i class="fa-solid fa-plus"></i> Add Module</a>
+            }
+        </div>
+        @if (!Model.Modules.Any())
+        {
+            <div class="flex flex-col items-center py-8 text-slate-400">
+                <i class="fa-solid fa-layer-group text-3xl mb-2 opacity-30"></i>
+                <p class="text-sm">No modules yet.</p>
+            </div>
+        }
+        else
+        {
+            <ul class="space-y-2">
+                @foreach (var m in Model.Modules.OrderBy(m => m.OrderIndex))
+                {
+                    <li class="flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-blue-50 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <div class="w-7 h-7 rounded-lg bg-blue-700 flex items-center justify-center text-white text-xs flex-shrink-0">@m.OrderIndex</div>
+                            <div>
+                                <p class="text-sm text-slate-800">@m.Title</p>
+                                <p class="text-xs text-slate-400"><i class="fa-solid fa-file-lines mr-1"></i>@m.CourseMaterials.Count materials &mdash; <i class="fa-solid fa-clipboard-list mr-1"></i>@m.Assignments.Count assignments</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <a asp-controller="CourseMaterials" asp-action="Index" asp-route-moduleId="@m.Id"
+                               class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full hover:bg-blue-100 transition-colors"><i class="fa-solid fa-file-lines text-xs"></i>Materials</a>
+                            <a asp-controller="Assignments" asp-action="Index" asp-route-moduleId="@m.Id"
+                               class="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full hover:bg-amber-100 transition-colors"><i class="fa-solid fa-clipboard-list text-xs"></i>Assignments</a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+
+    <!-- Enrollments -->
+    @if (role != "student")
+    {
+        <div class="page-card">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-sm text-slate-700 flex items-center gap-2">
+                    <i class="fa-solid fa-user-graduate text-blue-700"></i> Enrolled Students
+                    <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-medium">@enrollments.Count</span>
+                </h3>
+                @if (role == "administrator")
+                {
+                    <a asp-controller="Enrollments" asp-action="Create"
+                       class="btn-primary text-xs py-1.5 px-3"><i class="fa-solid fa-user-plus"></i> Enroll</a>
+                }
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead class="table-header">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-user mr-1"></i>Student</th>
+                            <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-people-group mr-1"></i>Batch</th>
+                            <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-calendar mr-1"></i>Enrolled</th>
+                            <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-circle-dot mr-1"></i>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        @foreach (var e in enrollments)
+                        {
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="px-4 py-3 font-medium text-slate-800">@e.User?.FirstName @e.User?.LastName</td>
+                                <td class="px-4 py-3 text-slate-500">@e.Batch?.Name</td>
+                                <td class="px-4 py-3 text-slate-400">@e.EnrolledAt.ToString("dd MMM yyyy")</td>
+                                <td class="px-4 py-3"><span class="inline-flex items-center gap-1 text-xs bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-full font-medium"><i class="fa-solid fa-circle-check text-xs"></i>@e.Status</span></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="space-y-6">
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         <div class="flex items-start justify-between">
             <div>
                 <span class="text-xs bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full">@Model.Code</span>
-                <h2 class="text-xl font-bold text-gray-800 mt-2">@Model.Title</h2>
+                <h2 class="text-xl text-gray-800 mt-2">@Model.Title</h2>
                 <p class="text-sm text-gray-500">@Model.Department?.Name</p>
                 <p class="text-sm text-gray-600 mt-3">@Model.Description</p>
             </div>
@@ -21,7 +132,7 @@
     <!-- Modules -->
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-base font-semibold text-gray-800">Modules (@Model.Modules.Count)</h3>
+            <h3 class="text-base text-gray-800">Modules (@Model.Modules.Count)</h3>
             @if (role != "student")
             {
                 <a asp-controller="Modules" asp-action="Create" asp-route-courseId="@Model.Id"
@@ -40,7 +151,7 @@
                     <li class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                         <div>
                             <p class="text-sm font-medium text-gray-800">@m.OrderIndex. @m.Title</p>
-                            <p class="text-xs text-gray-400">@m.CourseMaterials.Count materials · @m.Assignments.Count assignments</p>
+                            <p class="text-xs text-gray-400">@m.CourseMaterials.Count materials ï¿½ @m.Assignments.Count assignments</p>
                         </div>
                         <div class="flex gap-2">
                             <a asp-controller="CourseMaterials" asp-action="Index" asp-route-moduleId="@m.Id"
@@ -59,7 +170,7 @@
     {
         <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
             <div class="flex items-center justify-between mb-4">
-                <h3 class="text-base font-semibold text-gray-800">Enrolled Students (@enrollments.Count)</h3>
+                <h3 class="text-base text-gray-800">Enrolled Students (@enrollments.Count)</h3>
                 @if (role == "administrator")
                 {
                     <a asp-controller="Enrollments" asp-action="Create"

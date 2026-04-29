@@ -1,54 +1,56 @@
-@model IEnumerable<UniManage.Models.ModuleModel>
+﻿@model IEnumerable<UniManage.Models.ModuleModel>
 @{
     ViewData["Title"] = "Modules";
     var role = ViewBag.CurrentUserRole as string;
 }
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+<div class="page-card">
     <div class="flex items-center justify-between mb-5">
-        <h2 class="text-base font-semibold text-gray-800">Modules</h2>
+        <h2 class="text-sm text-slate-700 flex items-center gap-2">
+            <i class="fa-solid fa-layer-group text-blue-700"></i> Modules
+        </h2>
         @if (role != "student")
         {
-            <a asp-action="Create" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">+ New Module</a>
+            <a asp-action="Create" class="btn-primary"><i class="fa-solid fa-plus"></i> New Module</a>
         }
     </div>
     <div class="overflow-x-auto">
         <table class="w-full text-sm">
-            <thead>
-                <tr class="text-left text-xs text-gray-500 border-b">
-                    <th class="pb-2 font-medium">#</th>
-                    <th class="pb-2 font-medium">Title</th>
-                    <th class="pb-2 font-medium">Course</th>
-                    <th class="pb-2 font-medium">Published</th>
-                    <th class="pb-2 font-medium">Actions</th>
+            <thead class="table-header">
+                <tr>
+                    <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-hashtag mr-1"></i>#</th>
+                    <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-layer-group mr-1"></i>Title</th>
+                    <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-book-open mr-1"></i>Course</th>
+                    <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-eye mr-1"></i>Published</th>
+                    <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider">Actions</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-gray-50">
+            <tbody class="divide-y divide-slate-100">
                 @foreach (var m in Model)
                 {
-                    <tr>
-                        <td class="py-2.5 text-gray-400">@m.OrderIndex</td>
-                        <td class="py-2.5 font-medium">@m.Title</td>
-                        <td class="py-2.5 text-gray-500">@m.Course?.Title</td>
-                        <td class="py-2.5">
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-4 py-3 text-slate-400 font-mono">@m.OrderIndex</td>
+                        <td class="px-4 py-3 text-slate-800">@m.Title</td>
+                        <td class="px-4 py-3 text-slate-500">@m.Course?.Title</td>
+                        <td class="px-4 py-3">
                             @if (m.IsPublished)
                             {
-                                <span class="text-xs bg-green-50 text-green-700 px-2 py-0.5 rounded-full">Yes</span>
+                                <span class="inline-flex items-center gap-1 text-xs bg-emerald-50 text-emerald-700 px-2.5 py-0.5 rounded-full font-medium"><i class="fa-solid fa-circle-check text-xs"></i>Published</span>
                             }
                             else
                             {
-                                <span class="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">No</span>
+                                <span class="inline-flex items-center gap-1 text-xs bg-slate-100 text-slate-500 px-2.5 py-0.5 rounded-full font-medium"><i class="fa-solid fa-circle-minus text-xs"></i>Draft</span>
                             }
                         </td>
-                        <td class="py-2.5">
-                            <div class="flex gap-2">
+                        <td class="px-4 py-3">
+                            <div class="flex gap-2 flex-wrap">
                                 <a asp-controller="CourseMaterials" asp-action="Index" asp-route-moduleId="@m.Id"
-                                   class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full hover:bg-blue-100">Materials</a>
+                                   class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full hover:bg-blue-100 transition-colors"><i class="fa-solid fa-file-lines text-xs"></i>Materials</a>
                                 <a asp-controller="Assignments" asp-action="Index" asp-route-moduleId="@m.Id"
-                                   class="text-xs bg-orange-50 text-orange-600 px-3 py-1 rounded-full hover:bg-orange-100">Assignments</a>
+                                   class="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full hover:bg-amber-100 transition-colors"><i class="fa-solid fa-clipboard-list text-xs"></i>Assignments</a>
                                 @if (role != "student")
                                 {
-                                    <a asp-action="Edit" asp-route-id="@m.Id" class="text-xs bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full hover:bg-yellow-100">Edit</a>
-                                    <a asp-action="Delete" asp-route-id="@m.Id" class="text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100">Delete</a>
+                                    <a asp-action="Edit" asp-route-id="@m.Id" class="inline-flex items-center gap-1 text-xs bg-slate-50 text-slate-600 px-3 py-1 rounded-full hover:bg-slate-100 border border-slate-200 transition-colors"><i class="fa-solid fa-pen text-xs"></i>Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@m.Id" class="inline-flex items-center gap-1 text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100 transition-colors"><i class="fa-solid fa-trash text-xs"></i>Delete</a>
                                 }
                             </div>
                         </td>
@@ -56,5 +58,12 @@
                 }
             </tbody>
         </table>
+        @if (!Model.Any())
+        {
+            <div class="flex flex-col items-center py-12 text-slate-400">
+                <i class="fa-solid fa-layer-group text-4xl mb-3 opacity-30"></i>
+                <p class="text-sm">No modules found.</p>
+            </div>
+        }
     </div>
 </div>

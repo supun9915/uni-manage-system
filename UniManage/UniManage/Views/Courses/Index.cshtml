@@ -1,45 +1,55 @@
-@model IEnumerable<UniManage.Models.CourseModel>
+﻿@model IEnumerable<UniManage.Models.CourseModel>
 @{
     ViewData["Title"] = "Courses";
     var role = ViewBag.CurrentUserRole as string;
 }
 
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+<div class="page-card">
     <div class="flex items-center justify-between mb-5">
-        <h2 class="text-base font-semibold text-gray-800">Courses</h2>
+        <h2 class="text-sm text-slate-700 flex items-center gap-2">
+            <i class="fa-solid fa-book-open text-blue-700"></i> Courses
+        </h2>
         @if (role == "administrator")
         {
-            <a asp-action="Create" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">+ New Course</a>
-        }
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        @foreach (var c in Model)
-        {
-            <div class="border border-gray-100 rounded-xl p-4 hover:shadow-md transition-shadow">
-                <div class="flex items-start justify-between">
-                    <div class="flex-1">
-                        <span class="text-xs bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full">@c.Code</span>
-                        <h3 class="text-sm font-semibold text-gray-800 mt-1.5">@c.Title</h3>
-                        <p class="text-xs text-gray-400 mt-0.5">@c.Department?.Name</p>
-                        <p class="text-xs text-gray-500 mt-2 line-clamp-2">@c.Description</p>
-                    </div>
-                </div>
-                <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-50">
-                    <span class="text-xs @(c.Status == "published" ? "bg-green-50 text-green-700" : "bg-gray-100 text-gray-500") px-2 py-0.5 rounded-full capitalize">@c.Status</span>
-                    <div class="flex gap-2">
-                        <a asp-action="Details" asp-route-id="@c.Id" class="text-xs text-indigo-600 hover:underline">View</a>
-                        @if (role == "administrator")
-                        {
-                            <a asp-action="Edit" asp-route-id="@c.Id" class="text-xs text-yellow-600 hover:underline">Edit</a>
-                            <a asp-action="Delete" asp-route-id="@c.Id" class="text-xs text-red-600 hover:underline">Delete</a>
-                        }
-                    </div>
-                </div>
-            </div>
+            <a asp-action="Create" class="btn-primary"><i class="fa-solid fa-plus"></i> New Course</a>
         }
     </div>
     @if (!Model.Any())
     {
-        <p class="text-sm text-gray-400 text-center py-8">No courses found.</p>
+        <div class="flex flex-col items-center py-12 text-slate-400">
+            <i class="fa-solid fa-book-open text-4xl mb-3 opacity-30"></i>
+            <p class="text-sm">No courses found.</p>
+        </div>
+    }
+    else
+    {
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            @foreach (var c in Model)
+            {
+                <div class="border border-slate-100 rounded-xl p-4 hover:shadow-md hover:border-blue-100 transition-all bg-white">
+                    <div class="flex items-start justify-between mb-2">
+                        <span class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-2.5 py-0.5 rounded-full font-mono ">
+                            <i class="fa-solid fa-tag text-xs"></i>@c.Code
+                        </span>
+                        <span class="text-xs @(c.Status == "published" ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-500") px-2 py-0.5 rounded-full capitalize font-medium">
+                            @if (c.Status == "published") { <i class="fa-solid fa-circle-check mr-0.5 text-xs"></i> }
+                            else { <i class="fa-solid fa-circle-minus mr-0.5 text-xs"></i> }
+                            @c.Status
+                        </span>
+                    </div>
+                    <h3 class="text-sm text-slate-800 mt-2 leading-tight">@c.Title</h3>
+                    <p class="text-xs text-slate-400 mt-0.5"><i class="fa-solid fa-building mr-1"></i>@c.Department?.Name</p>
+                    <p class="text-xs text-slate-500 mt-2 line-clamp-2 min-h-[2rem]">@c.Description</p>
+                    <div class="flex items-center justify-end gap-2 mt-3 pt-3 border-t border-slate-50">
+                        <a asp-action="Details" asp-route-id="@c.Id" class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full hover:bg-blue-100 transition-colors"><i class="fa-solid fa-eye text-xs"></i>View</a>
+                        @if (role == "administrator")
+                        {
+                            <a asp-action="Edit" asp-route-id="@c.Id" class="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full hover:bg-amber-100 transition-colors"><i class="fa-solid fa-pen text-xs"></i>Edit</a>
+                            <a asp-action="Delete" asp-route-id="@c.Id" class="inline-flex items-center gap-1 text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100 transition-colors"><i class="fa-solid fa-trash text-xs"></i>Delete</a>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
     }
 </div>

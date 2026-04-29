@@ -17,201 +17,201 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = UniManage
 build_property.RootNamespace = UniManage
-build_property.ProjectDir = D:\Top Up\AD\Coursework 2\System\UniManage\UniManage\
+build_property.ProjectDir = D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Top Up\AD\Coursework 2\System\UniManage\UniManage
+build_property.MSBuildProjectDirectory = D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Account/Login.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/AssignmentSubmissions/Grade.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/AssignmentSubmissions/Grade.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzaWdubWVudFN1Ym1pc3Npb25zXEdyYWRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/AssignmentSubmissions/Index.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/AssignmentSubmissions/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzaWdubWVudFN1Ym1pc3Npb25zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/AssignmentSubmissions/Submit.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/AssignmentSubmissions/Submit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzaWdubWVudFN1Ym1pc3Npb25zXFN1Ym1pdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Assignments/Create.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Assignments/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzaWdubWVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Assignments/Delete.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Assignments/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzaWdubWVudHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Assignments/Details.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Assignments/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzaWdubWVudHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Assignments/Edit.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Assignments/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzaWdubWVudHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Assignments/Index.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Assignments/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzaWdubWVudHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Batches/Create.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Batches/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmF0Y2hlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Batches/Delete.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Batches/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmF0Y2hlc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Batches/Edit.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Batches/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmF0Y2hlc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Batches/Index.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Batches/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmF0Y2hlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/CourseMaterials/Create.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/CourseMaterials/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlTWF0ZXJpYWxzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/CourseMaterials/Delete.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/CourseMaterials/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlTWF0ZXJpYWxzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/CourseMaterials/Index.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/CourseMaterials/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlTWF0ZXJpYWxzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Courses/Create.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Courses/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Courses/Delete.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Courses/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Courses/Details.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Courses/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Courses/Edit.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Courses/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Courses/Index.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Courses/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Dashboard/Admin.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Dashboard/Admin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEFkbWluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Dashboard/Lecturer.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Dashboard/Lecturer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXExlY3R1cmVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Dashboard/Student.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Dashboard/Student.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXFN0dWRlbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Departments/Create.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Departments/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Departments/Delete.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Departments/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Departments/Edit.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Departments/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Departments/Index.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Departments/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Home/Index.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Home/Privacy.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Modules/Create.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Modules/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Modules/Delete.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Modules/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxlc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Modules/Edit.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Modules/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxlc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Modules/Index.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Modules/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW9kdWxlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Roles/Create.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Roles/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Roles/Delete.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Roles/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Roles/Edit.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Roles/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Roles/Index.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Roles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Shared/Error.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Users/Create.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Users/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Users/Delete.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Users/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Users/Edit.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Users/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Users/Index.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Users/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/_ViewImports.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/_ViewStart.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Top Up/AD/Coursework 2/System/UniManage/UniManage/Views/Shared/_Layout.cshtml]
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-80qb7qactk

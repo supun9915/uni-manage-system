@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\UniManage.csproj": {}
+    "D:\\Top Up\\AD\\Coursework 2\\System\\uni-manage-system\\UniManage\\UniManage\\UniManage.csproj": {}
   },
   "projects": {
-    "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\UniManage.csproj": {
+    "D:\\Top Up\\AD\\Coursework 2\\System\\uni-manage-system\\UniManage\\UniManage\\UniManage.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\UniManage.csproj",
+        "projectUniqueName": "D:\\Top Up\\AD\\Coursework 2\\System\\uni-manage-system\\UniManage\\UniManage\\UniManage.csproj",
         "projectName": "UniManage",
-        "projectPath": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\UniManage.csproj",
+        "projectPath": "D:\\Top Up\\AD\\Coursework 2\\System\\uni-manage-system\\UniManage\\UniManage\\UniManage.csproj",
         "packagesPath": "C:\\Users\\supun\\.nuget\\packages\\",
-        "outputPath": "D:\\Top Up\\AD\\Coursework 2\\System\\UniManage\\UniManage\\obj\\",
+        "outputPath": "D:\\Top Up\\AD\\Coursework 2\\System\\uni-manage-system\\UniManage\\UniManage\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,53 +1,61 @@
-@model UniManage.Models.AssignmentModel
+﻿@model UniManage.Models.AssignmentModel
 @{
     ViewData["Title"] = "Create Assignment";
 }
 <div class="max-w-xl">
-    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <h2 class="text-base font-semibold text-gray-800 mb-5">Create Assignment</h2>
-        <form asp-action="Create" method="post">
+    <div class="page-card">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                <i class="fa-solid fa-clipboard-list text-blue-700"></i>
+            </div>
+            <div>
+                <h2 class="text-base text-slate-800">Create Assignment</h2>
+                <p class="text-xs text-slate-400">Set up a new assignment for students</p>
+            </div>
+        </div>
+        <form asp-action="Create" method="post" data-val="true">
             @Html.AntiForgeryToken()
             <div class="mb-4">
-                <label asp-for="ModuleId" class="block text-sm font-medium text-gray-700 mb-1">Module</label>
-                <select asp-for="ModuleId" asp-items="ViewBag.Modules" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <label asp-for="ModuleId" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-layer-group mr-1"></i>Module</label>
+                <select asp-for="ModuleId" asp-items="ViewBag.Modules" class="form-input" required>
                     <option value="">-- Select Module --</option>
                 </select>
-                <span asp-validation-for="ModuleId" class="text-xs text-red-600"></span>
+                <span asp-validation-for="ModuleId" class="field-error"></span>
             </div>
             <div class="mb-4">
-                <label asp-for="Title" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                <input asp-for="Title" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-                <span asp-validation-for="Title" class="text-xs text-red-600"></span>
+                <label asp-for="Title" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-heading mr-1"></i></label>
+                <input asp-for="Title" class="form-input" placeholder="Assignment title" required />
+                <span asp-validation-for="Title" class="field-error"></span>
             </div>
             <div class="mb-4">
-                <label asp-for="Description" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                <textarea asp-for="Description" rows="2" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                <label asp-for="Description" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-align-left mr-1"></i></label>
+                <textarea asp-for="Description" rows="2" class="form-input" placeholder="Brief description"></textarea>
             </div>
             <div class="mb-4">
-                <label asp-for="Instructions" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                <textarea asp-for="Instructions" rows="3" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                <label asp-for="Instructions" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-list-check mr-1"></i></label>
+                <textarea asp-for="Instructions" rows="3" class="form-input" placeholder="Detailed instructions for students"></textarea>
             </div>
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label asp-for="MaxMarks" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                    <input asp-for="MaxMarks" type="number" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                    <label asp-for="MaxMarks" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-star mr-1"></i></label>
+                    <input asp-for="MaxMarks" type="number" min="1" class="form-input" placeholder="100" required />
                 </div>
                 <div>
-                    <label asp-for="DeadlineDate" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                    <input asp-for="DeadlineDate" type="datetime-local" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                    <label asp-for="DeadlineDate" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-clock mr-1"></i></label>
+                    <input asp-for="DeadlineDate" type="datetime-local" class="form-input" />
                 </div>
             </div>
             <div class="mb-4">
-                <label asp-for="ReleaseDate" class="block text-sm font-medium text-gray-700 mb-1"></label>
-                <input asp-for="ReleaseDate" type="datetime-local" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                <label asp-for="ReleaseDate" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-calendar-check mr-1"></i></label>
+                <input asp-for="ReleaseDate" type="datetime-local" class="form-input" />
             </div>
-            <div class="mb-6 flex items-center gap-2">
-                <input asp-for="AllowLateSubmit" type="checkbox" class="w-4 h-4 text-indigo-600 rounded" />
-                <label asp-for="AllowLateSubmit" class="text-sm text-gray-700">Allow Late Submission</label>
+            <div class="mb-6 flex items-center gap-2.5 p-3 bg-slate-50 rounded-lg">
+                <input asp-for="AllowLateSubmit" type="checkbox" class="w-4 h-4 rounded accent-blue-700" />
+                <label asp-for="AllowLateSubmit" class="text-sm text-slate-600 font-medium cursor-pointer"><i class="fa-solid fa-clock-rotate-left mr-1 text-amber-500"></i>Allow Late Submission</label>
             </div>
-            <div class="flex gap-3">
-                <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-5 py-2 rounded-lg transition-colors">Create</button>
-                <a asp-action="Index" class="text-sm font-medium text-gray-500 hover:text-gray-700 px-5 py-2">Cancel</a>
+            <div class="flex gap-3 pt-4 border-t border-slate-100">
+                <button type="submit" class="btn-primary"><i class="fa-solid fa-floppy-disk"></i> Create</button>
+                <a asp-action="Index" class="btn-secondary"><i class="fa-solid fa-arrow-left"></i> Cancel</a>
             </div>
         </form>
     </div>

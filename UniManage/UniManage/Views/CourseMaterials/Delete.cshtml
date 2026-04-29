@@ -1,10 +1,10 @@
-@model UniManage.Models.CourseMaterialModel
+﻿@model UniManage.Models.CourseMaterialModel
 @{
     ViewData["Title"] = "Delete Material";
 }
 <div class="max-w-lg">
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-        <h2 class="text-base font-semibold text-gray-800 mb-2">Delete Material</h2>
+        <h2 class="text-base text-gray-800 mb-2">Delete Material</h2>
         <p class="text-sm text-gray-500 mb-5">Are you sure you want to delete <strong>@Model.Title</strong>?</p>
         <form asp-action="Delete" method="post">
             @Html.AntiForgeryToken()
