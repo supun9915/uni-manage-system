@@ -16,7 +16,7 @@
         <form asp-action="Create" method="post" data-val="true">
             @Html.AntiForgeryToken()
             <div class="mb-4">
-                <label asp-for="Title" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-heading mr-1"></i>Title</label>
+                <label asp-for="Title" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-heading mr-1"></i>Course Title</label>
                 <input asp-for="Title" class="form-input" placeholder="Course title" required />
                 <span asp-validation-for="Title" class="field-error"></span>
             </div>

@@ -2,54 +2,198 @@
 @{
     ViewData["Title"] = "Courses";
     var role = ViewBag.CurrentUserRole as string;
+    string[] cardAccents = { "from-blue-600 to-blue-800", "from-indigo-600 to-indigo-800", "from-violet-600 to-violet-800", "from-sky-600 to-sky-800", "from-teal-600 to-teal-800", "from-cyan-600 to-cyan-800" };
+    int cardIdx = 0;
+    var departments = Model.Select(c => c.Department?.Name ?? "No Department").Distinct().OrderBy(d => d).ToList();
 }
 
 <div class="page-card">
-    <div class="flex items-center justify-between mb-5">
-        <h2 class="text-sm text-slate-700 flex items-center gap-2">
-            <i class="fa-solid fa-book-open text-blue-700"></i> Courses
-        </h2>
-        @if (role == "administrator")
-        {
-            <a asp-action="Create" class="btn-primary"><i class="fa-solid fa-plus"></i> New Course</a>
-        }
+
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-700 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-book-open text-white text-sm"></i>
+            </div>
+            <div>
+                <h2 class="text-sm font-semibold text-slate-800">Courses</h2>
+                <p id="courseCountLabel" class="text-xs text-slate-400">@Model.Count() course(s) across @departments.Count department(s)</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+            <!-- Department filter -->
+            <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none">
+                    <i class="fa-solid fa-building"></i>
+                </span>
+                <select id="deptFilter" class="form-input pl-8 pr-8 py-2 text-xs w-48 appearance-none cursor-pointer">
+                    <option value="">All Departments</option>
+                    @foreach (var dept in departments)
+                    {
+                        <option value="@dept.ToLower()">@dept</option>
+                    }
+                </select>
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </span>
+            </div>
+            <!-- Search -->
+            <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input id="courseSearch" type="text" placeholder="Search courses..."
+                       class="form-input pl-8 pr-4 py-2 text-xs w-48" />
+            </div>
+            @if (role == "administrator")
+            {
+                <a asp-action="Create" class="btn-primary text-xs"><i class="fa-solid fa-plus"></i> New Course</a>
+            }
+        </div>
     </div>
+
+    <!-- Empty state -->
     @if (!Model.Any())
     {
-        <div class="flex flex-col items-center py-12 text-slate-400">
-            <i class="fa-solid fa-book-open text-4xl mb-3 opacity-30"></i>
-            <p class="text-sm">No courses found.</p>
+        <div class="flex flex-col items-center py-16 text-slate-400">
+            <div class="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mb-4">
+                <i class="fa-solid fa-book-open text-2xl opacity-40"></i>
+            </div>
+            <p class="text-sm font-medium text-slate-500">No courses found</p>
+            <p class="text-xs text-slate-400 mt-1">Get started by creating the first course</p>
         </div>
     }
     else
     {
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- No results message (shown by JS) -->
+        <div id="noResults" class="hidden flex-col items-center py-12 text-slate-400">
+            <i class="fa-solid fa-magnifying-glass text-3xl mb-3 opacity-30"></i>
+            <p class="text-sm">No courses match your search.</p>
+        </div>
+
+        <div id="courseGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             @foreach (var c in Model)
             {
-                <div class="border border-slate-100 rounded-xl p-4 hover:shadow-md hover:border-blue-100 transition-all bg-white">
-                    <div class="flex items-start justify-between mb-2">
-                        <span class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-2.5 py-0.5 rounded-full font-mono ">
-                            <i class="fa-solid fa-tag text-xs"></i>@c.Code
-                        </span>
-                        <span class="text-xs @(c.Status == "published" ? "bg-emerald-50 text-emerald-700" : "bg-slate-100 text-slate-500") px-2 py-0.5 rounded-full capitalize font-medium">
-                            @if (c.Status == "published") { <i class="fa-solid fa-circle-check mr-0.5 text-xs"></i> }
-                            else { <i class="fa-solid fa-circle-minus mr-0.5 text-xs"></i> }
+                var accent = cardAccents[cardIdx % cardAccents.Length];
+                cardIdx++;
+                var initial = string.IsNullOrWhiteSpace(c.Title)
+                ? "?"
+                : c.Title.Split(' ')[0];
+                <div class="course-card group bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                     data-title="@c.Title?.ToLower()" data-code="@c.Code?.ToLower()" data-dept="@c.Department?.Name?.ToLower()">
+
+                    <!-- Coloured top band -->
+                    <div class="h-24 bg-blue-50 relative flex items-center px-5 gap-4 border-b border-blue-100">
+                        <!-- Icon/Initial Container: Changed to a darker blue background with slate text -->
+                        <div class="w-12 h-12 rounded-xl bg-blue-900 flex items-center justify-center text-white text-lg font-bold flex-shrink-0 shadow-sm">
+                            @initial
+                        </div>
+
+                        <div class="overflow-hidden">
+                            <!-- Subtitle: Changed from white/70 to slate-500 -->
+                            <p class="text-slate-500 text-[0.65rem] uppercase tracking-widest font-semibold">@c.Code</p>
+                            <!-- Title: Changed from white to slate-900 -->
+                            <h3 class="text-slate-500 text-sm font-bold leading-tight line-clamp-2">@c.Title</h3>
+                        </div>
+
+                        <!-- Status badge top-right: Adjusted background opacities and text weight for light mode -->
+                        <span class="absolute top-3 right-3 text-[0.65rem] font-bold px-2.5 py-0.5 rounded-full
+                @(c.Status == "published" ? "bg-emerald-100 text-emerald-700 border border-emerald-200"
+                                      : c.Status == "archived" ? "bg-slate-200 text-slate-700 border border-slate-300"
+                                      : "bg-amber-100 text-amber-700 border border-amber-200") capitalize">
+
+                    @if (c.Status == "published")
+                            {
+                                <i class="fa-solid fa-circle-check mr-1"></i>
+                            }
+                            else if (c.Status == "archived")
+                            {
+
+                                <i class="fa-solid fa-box-archive mr-1"></i>
+                            }
+                            else
+                            {
+
+                                <i class="fa-solid fa-pen-ruler mr-1"></i>
+                            }
+
                             @c.Status
                         </span>
                     </div>
-                    <h3 class="text-sm text-slate-800 mt-2 leading-tight">@c.Title</h3>
-                    <p class="text-xs text-slate-400 mt-0.5"><i class="fa-solid fa-building mr-1"></i>@c.Department?.Name</p>
-                    <p class="text-xs text-slate-500 mt-2 line-clamp-2 min-h-[2rem]">@c.Description</p>
-                    <div class="flex items-center justify-end gap-2 mt-3 pt-3 border-t border-slate-50">
-                        <a asp-action="Details" asp-route-id="@c.Id" class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full hover:bg-blue-100 transition-colors"><i class="fa-solid fa-eye text-xs"></i>View</a>
-                        @if (role == "administrator")
-                        {
-                            <a asp-action="Edit" asp-route-id="@c.Id" class="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full hover:bg-amber-100 transition-colors"><i class="fa-solid fa-pen text-xs"></i>Edit</a>
-                            <a asp-action="Delete" asp-route-id="@c.Id" class="inline-flex items-center gap-1 text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100 transition-colors"><i class="fa-solid fa-trash text-xs"></i>Delete</a>
-                        }
+
+                    <!-- Card body -->
+                    <div class="p-4">
+                        <div class="flex items-center gap-1.5 text-xs text-slate-400 mb-2">
+                            <i class="fa-solid fa-building text-slate-300"></i>
+                            <span>@(c.Department?.Name ?? "No Department")</span>
+                        </div>
+                        <p class="text-xs text-slate-500 line-clamp-2 min-h-[2.5rem] leading-relaxed">
+                            @(string.IsNullOrWhiteSpace(c.Description) ? "No description provided." : c.Description)
+                        </p>
+
+                        <!-- Footer actions -->
+                        <div class="flex items-center justify-between mt-4 pt-3 border-t border-slate-100">
+                            <a asp-action="Details" asp-route-id="@c.Id"
+                               class="inline-flex items-center gap-1.5 text-xs font-medium text-blue-700 hover:text-blue-900 transition-colors">
+                                <i class="fa-solid fa-eye"></i> View Details
+                            </a>
+                            @if (role == "administrator")
+                            {
+                                <div class="flex items-center gap-1.5">
+                                    <a asp-action="Edit" asp-route-id="@c.Id"
+                                       class="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 px-2.5 py-1 rounded-lg hover:bg-amber-100 transition-colors font-medium">
+                                        <i class="fa-solid fa-pen text-xs"></i> Edit
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@c.Id"
+                                       class="inline-flex items-center gap-1 text-xs bg-red-50 text-red-600 px-2.5 py-1 rounded-lg hover:bg-red-100 transition-colors font-medium">
+                                        <i class="fa-solid fa-trash text-xs"></i> Delete
+                                    </a>
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
             }
         </div>
     }
 </div>
+
+<script>
+    const searchInput  = document.getElementById('courseSearch');
+    const deptFilter   = document.getElementById('deptFilter');
+    const noResults    = document.getElementById('noResults');
+    const courseGrid   = document.getElementById('courseGrid');
+    const countLabel   = document.getElementById('courseCountLabel');
+
+    function applyFilters() {
+        const q    = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        const dept = deptFilter  ? deptFilter.value.toLowerCase().trim()  : '';
+        const cards = courseGrid ? courseGrid.querySelectorAll('.course-card') : [];
+        let visible = 0;
+
+        cards.forEach(function (card) {
+            const matchSearch = !q
+                || card.dataset.title.includes(q)
+                || card.dataset.code.includes(q)
+                || card.dataset.dept.includes(q);
+            const matchDept = !dept || card.dataset.dept === dept;
+
+            const show = matchSearch && matchDept;
+            card.style.display = show ? '' : 'none';
+            if (show) visible++;
+        });
+
+        if (noResults) {
+            noResults.style.display = visible === 0 ? 'flex' : 'none';
+        }
+        if (countLabel) {
+            const deptLabel = dept
+                ? deptFilter.options[deptFilter.selectedIndex].text
+                : 'all departments';
+            countLabel.textContent = visible + ' course(s) in ' + deptLabel;
+        }
+    }
+
+    if (searchInput) searchInput.addEventListener('input',  applyFilters);
+    if (deptFilter)  deptFilter.addEventListener('change', applyFilters);
+</script>
