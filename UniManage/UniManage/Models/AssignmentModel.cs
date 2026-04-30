@@ -30,6 +30,16 @@ namespace UniManage.Models
 
         public bool AllowLateSubmit { get; set; } = false;
 
+        public byte[]? FileData { get; set; }
+
+        [MaxLength(255)]
+        public string? FileName { get; set; }
+
+        public int? FileSize { get; set; }
+
+        [MaxLength(100)]
+        public string? ContentType { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation

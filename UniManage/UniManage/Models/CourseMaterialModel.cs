@@ -16,8 +16,13 @@ namespace UniManage.Models
         [MaxLength(200)]
         public string Title { get; set; } = string.Empty;
 
-        [Required]
-        public string FileUrl { get; set; } = string.Empty;
+        public byte[]? FileData { get; set; }
+
+        [MaxLength(255)]
+        public string? FileName { get; set; }
+
+        [MaxLength(100)]
+        public string? ContentType { get; set; }
 
         [MaxLength(20)]
         public string? FileType { get; set; } // pdf, video, link, etc

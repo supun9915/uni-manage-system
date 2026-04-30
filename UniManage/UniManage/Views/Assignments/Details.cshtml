@@ -9,6 +9,15 @@
     <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         <h2 class="text-xl text-gray-800">@Model.Title</h2>
         <p class="text-sm text-gray-400 mt-1">@Model.Module?.Course?.Title � @Model.Module?.Title</p>
+        @if (!string.IsNullOrEmpty(Model.FileName))
+        {
+            <div class="mt-4">
+                <a asp-controller="Assignments" asp-action="Download" asp-route-id="@Model.Id"
+                   class="inline-flex items-center gap-2 text-sm text-blue-700 bg-blue-50 px-4 py-2 rounded-lg hover:bg-blue-100">
+                    <i class="fa-solid fa-file-arrow-down"></i> Download Brief: @Model.FileName
+                </a>
+            </div>
+        }
         @if (!string.IsNullOrEmpty(Model.Description))
         {
             <p class="text-sm text-gray-600 mt-3">@Model.Description</p>
@@ -41,7 +50,10 @@
                     </p>
                     @if (!string.IsNullOrEmpty(mySubmission.FileName))
                     {
-                        <p><span class="text-gray-500">File:</span> <a href="@mySubmission.FileUrl" target="_blank" class="text-indigo-600 hover:underline">@mySubmission.FileName</a></p>
+                        <p><span class="text-gray-500">File:</span>
+                            <a asp-controller="AssignmentSubmissions" asp-action="Download" asp-route-id="@mySubmission.Id"
+                               class="text-indigo-600 hover:underline">@mySubmission.FileName</a>
+                        </p>
                     }
                     <p><span class="text-gray-500">Submitted:</span> @mySubmission.SubmittedAt.ToString("dd MMM yyyy HH:mm")</p>
                     @if (mySubmission.MarksObtained.HasValue)

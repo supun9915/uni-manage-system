@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UniManage.Data;
 using UniManage.Models;
@@ -8,12 +9,10 @@ namespace UniManage.Controllers
     public class AssignmentSubmissionsController : BaseController
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _env;
 
-        public AssignmentSubmissionsController(ApplicationDbContext context, IWebHostEnvironment env)
+        public AssignmentSubmissionsController(ApplicationDbContext context)
         {
             _context = context;
-            _env = env;
         }
 
         // Lecturer/Admin: view all submissions for an assignment
@@ -50,6 +49,8 @@ namespace UniManage.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
+        [RequestSizeLimit(52_428_800)]
+        [RequestFormLimits(MultipartBodyLengthLimit = 52_428_800)]
         public async Task<IActionResult> Submit(int assignmentId, IFormFile? file)
         {
             if (!IsStudent) return Forbid();
@@ -59,29 +60,36 @@ namespace UniManage.Controllers
             var existing = await _context.AssignmentSubmissions
                 .FirstOrDefaultAsync(s => s.AssignmentId == assignmentId && s.StudentId == CurrentUserId);
 
-            string? fileUrl = existing?.FileUrl;
             string? fileName = existing?.FileName;
             int? fileSize = existing?.FileSize;
+            string? contentType = existing?.ContentType;
+            byte[]? fileData = existing?.FileData;
 
             if (file != null && file.Length > 0)
             {
-                var dir = Path.Combine(_env.WebRootPath, "uploads", "submissions");
-                Directory.CreateDirectory(dir);
-                var fn = $"{Guid.NewGuid()}_{Path.GetFileName(file.FileName)}";
-                using (var fs = new FileStream(Path.Combine(dir, fn), FileMode.Create))
-                    await file.CopyToAsync(fs);
-                fileUrl = $"/uploads/submissions/{fn}";
-                fileName = file.FileName;
-                fileSize = (int)(file.Length / 1024);
+                using var ms = new MemoryStream();
+                await file.CopyToAsync(ms);
+                fileData    = ms.ToArray();
+                fileName    = file.FileName;
+                fileSize    = (int)(file.Length / 1024);
+                contentType = file.ContentType;
+            }
+            else if (file != null && file.Length == 0)
+            {
+                TempData["Error"] = "The uploaded file is empty. Please upload a valid Word document or file.";
+                ViewBag.Assignment = assignment;
+                ViewBag.Existing = existing;
+                return View();
             }
 
             bool isLate = assignment.DeadlineDate.HasValue && DateTime.UtcNow > assignment.DeadlineDate.Value;
 
             if (existing != null)
             {
-                existing.FileUrl = fileUrl;
-                existing.FileName = fileName;
-                existing.FileSize = fileSize;
+                existing.FileData    = fileData;
+                existing.FileName    = fileName;
+                existing.FileSize    = fileSize;
+                existing.ContentType = contentType;
                 existing.SubmittedAt = DateTime.UtcNow;
                 existing.Status = isLate ? "late" : "submitted";
             }
@@ -90,12 +98,13 @@ namespace UniManage.Controllers
                 _context.AssignmentSubmissions.Add(new AssignmentSubmissionModel
                 {
                     AssignmentId = assignmentId,
-                    StudentId = CurrentUserId!.Value,
-                    FileUrl = fileUrl,
-                    FileName = fileName,
-                    FileSize = fileSize,
-                    SubmittedAt = DateTime.UtcNow,
-                    Status = isLate ? "late" : "submitted"
+                    StudentId    = CurrentUserId!.Value,
+                    FileData     = fileData,
+                    FileName     = fileName,
+                    FileSize     = fileSize,
+                    ContentType  = contentType,
+                    SubmittedAt  = DateTime.UtcNow,
+                    Status       = isLate ? "late" : "submitted"
                 });
             }
             await _context.SaveChangesAsync();
@@ -130,6 +139,14 @@ namespace UniManage.Controllers
             await _context.SaveChangesAsync();
             TempData["Success"] = "Submission graded.";
             return RedirectToAction(nameof(Index), new { assignmentId = submission.AssignmentId });
+        }
+
+        public async Task<IActionResult> Download(int id)
+        {
+            var submission = await _context.AssignmentSubmissions.FindAsync(id);
+            if (submission == null || submission.FileData == null) return NotFound();
+            return File(submission.FileData, submission.ContentType ?? "application/octet-stream",
+                        submission.FileName ?? "submission");
         }
 
         // Student: my grades

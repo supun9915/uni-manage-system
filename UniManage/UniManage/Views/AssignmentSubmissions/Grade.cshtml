@@ -20,10 +20,11 @@
             <p><span class="text-slate-400"><i class="fa-solid fa-clipboard-list mr-1"></i>Assignment:</span> <span class="text-slate-700">@Model.Assignment?.Title</span></p>
             <p><span class="text-slate-400"><i class="fa-solid fa-star mr-1"></i>Max Marks:</span> <span class="text-blue-700 ">@Model.Assignment?.MaxMarks</span></p>
             <p><span class="text-slate-400"><i class="fa-solid fa-clock mr-1"></i>Submitted:</span> <span class="text-slate-700">@Model.SubmittedAt.ToString("dd MMM yyyy HH:mm")</span></p>
-            @if (!string.IsNullOrEmpty(Model.FileUrl))
+            @if (Model.FileData != null)
             {
                 <p><span class="text-slate-400"><i class="fa-solid fa-file mr-1"></i>File:</span>
-                    <a href="@Model.FileUrl" target="_blank" class="text-blue-700 hover:underline inline-flex items-center gap-1">
+                    <a asp-action="Download" asp-route-id="@Model.Id"
+                       class="text-blue-700 hover:underline inline-flex items-center gap-1">
                         <i class="fa-solid fa-file-arrow-down text-xs"></i> @(Model.FileName ?? "Download")
                     </a>
                 </p>

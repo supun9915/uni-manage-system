@@ -15,7 +15,7 @@
         </div>
         <form asp-action="Create" method="post" enctype="multipart/form-data" data-val="true">
             @Html.AntiForgeryToken()
-            <input type="hidden" asp-for="ModuleId" />
+            <div asp-validation-summary="All" class="mb-4 p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700"></div>
             <div class="mb-4">
                 <label asp-for="ModuleId" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-layer-group mr-1"></i>Module</label>
                 <select asp-for="ModuleId" asp-items="ViewBag.Modules" class="form-input">
@@ -28,14 +28,11 @@
                 <input asp-for="Title" class="form-input" placeholder="e.g. Lecture Notes Week 1" />
                 <span asp-validation-for="Title" class="field-error"></span>
             </div>
-            <div class="mb-4">
-                <label class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-upload mr-1"></i>Upload File</label>
-                <input type="file" name="file" class="form-input text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
-            </div>
             <div class="mb-6">
-                <label asp-for="FileUrl" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-link mr-1"></i>Or External URL <span class="normal-case font-normal text-slate-400">(if no file)</span></label>
-                <input asp-for="FileUrl" placeholder="https://..." class="form-input" />
-                <span asp-validation-for="FileUrl" class="field-error"></span>
+                <label class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-upload mr-1"></i>Upload File <span class="normal-case font-normal text-slate-400">(required)</span></label>
+                <input type="file" name="file" required
+                       class="form-input text-slate-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100" />
+                <p class="text-xs text-slate-400 mt-1.5"><i class="fa-solid fa-info-circle mr-1"></i>PDF, Word, PowerPoint, images, ZIP, etc.</p>
             </div>
             <div class="flex gap-3 pt-4 border-t border-slate-100">
                 <button type="submit" class="btn-primary"><i class="fa-solid fa-upload"></i> Upload Material</button>

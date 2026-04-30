@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using UniManage.Data;
@@ -9,12 +10,10 @@ namespace UniManage.Controllers
     public class CourseMaterialsController : BaseController
     {
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _env;
 
-        public CourseMaterialsController(ApplicationDbContext context, IWebHostEnvironment env)
+        public CourseMaterialsController(ApplicationDbContext context)
         {
             _context = context;
-            _env = env;
         }
 
         public async Task<IActionResult> Index(int? moduleId)
@@ -52,25 +51,34 @@ namespace UniManage.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
+        [RequestSizeLimit(52_428_800)]          // 50 MB
+        [RequestFormLimits(MultipartBodyLengthLimit = 52_428_800)]
         public async Task<IActionResult> Create(CourseMaterialModel material, IFormFile? file)
         {
             if (!IsAdmin && !IsLecturer) return Forbid();
-            ModelState.Remove("FileUrl");
+
+            // Clear programmatically assigned fields from ModelState
+            ModelState.Remove(nameof(CourseMaterialModel.FileData));
+            ModelState.Remove(nameof(CourseMaterialModel.FileName));
+            ModelState.Remove(nameof(CourseMaterialModel.ContentType));
+            ModelState.Remove(nameof(CourseMaterialModel.FileType));
+            ModelState.Remove(nameof(CourseMaterialModel.FileSize));
+            ModelState.Remove(nameof(CourseMaterialModel.UploadedAt));
 
             if (file != null && file.Length > 0)
             {
-                var uploadDir = Path.Combine(_env.WebRootPath, "uploads", "materials");
-                Directory.CreateDirectory(uploadDir);
-                var fileName = $"{Guid.NewGuid()}_{Path.GetFileName(file.FileName)}";
-                var filePath = Path.Combine(uploadDir, fileName);
-                using (var fs = new FileStream(filePath, FileMode.Create))
-                    await file.CopyToAsync(fs);
-                material.FileUrl = $"/uploads/materials/{fileName}";
-                material.FileSize = (int)(file.Length / 1024);
-                material.FileType = Path.GetExtension(file.FileName).TrimStart('.').ToLower();
+                using var ms = new MemoryStream();
+                await file.CopyToAsync(ms);
+                material.FileData    = ms.ToArray();
+                material.FileName    = Path.GetFileName(file.FileName);
+                material.ContentType = file.ContentType;
+                material.FileSize    = (int)(file.Length / 1024);
+                material.FileType    = Path.GetExtension(file.FileName).TrimStart('.').ToLower();
             }
-            else if (string.IsNullOrWhiteSpace(material.FileUrl))
-                ModelState.AddModelError("FileUrl", "Please upload a file or provide a URL.");
+            else
+            {
+                ModelState.AddModelError("file", "Please upload a file.");
+            }
 
             if (ModelState.IsValid)
             {
@@ -87,6 +95,14 @@ namespace UniManage.Controllers
                     .Where(m => m.Course != null && m.Course.CreatedBy == CurrentUserId).ToListAsync();
             ViewBag.Modules = new SelectList(modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} – {m.Title}" }), "Id", "Name", material.ModuleId);
             return View(material);
+        }
+
+        public async Task<IActionResult> Download(int id)
+        {
+            var material = await _context.CourseMaterials.FindAsync(id);
+            if (material == null || material.FileData == null) return NotFound();
+            return File(material.FileData, material.ContentType ?? "application/octet-stream",
+                        material.FileName ?? "download");
         }
 
         public async Task<IActionResult> Delete(int id)

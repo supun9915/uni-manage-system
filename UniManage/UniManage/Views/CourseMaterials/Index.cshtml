@@ -44,7 +44,9 @@
                     <div class="flex items-center justify-between mt-3 pt-3 border-t border-gray-50">
                         <span class="text-xs text-gray-400">@m.UploadedAt.ToString("dd MMM yyyy")</span>
                         <div class="flex gap-2">
-                            <a href="@m.FileUrl" target="_blank" class="text-xs bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full hover:bg-indigo-100">Open</a>
+                            <a asp-action="Download" asp-route-id="@m.Id" class="text-xs bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full hover:bg-indigo-100">
+                                <i class="fa-solid fa-download text-xs mr-0.5"></i>Download
+                            </a>
                             @if (role != "student")
                             {
                                 <a asp-action="Delete" asp-route-id="@m.Id" class="text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100">Delete</a>

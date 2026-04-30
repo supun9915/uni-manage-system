@@ -46,9 +46,12 @@
                                 </div>
                             </td>
                             <td class="px-4 py-3">
-                                @if (!string.IsNullOrEmpty(s.FileUrl))
+                                @if (s.FileData != null)
                                 {
-                                    <a href="@s.FileUrl" target="_blank" class="inline-flex items-center gap-1 text-xs text-blue-700 hover:underline"><i class="fa-solid fa-file-arrow-down"></i>@(s.FileName ?? "Download")</a>
+                                    <a asp-action="Download" asp-route-id="@s.Id"
+                                       class="inline-flex items-center gap-1 text-xs text-blue-700 hover:underline">
+                                        <i class="fa-solid fa-file-arrow-down"></i>@(s.FileName ?? "Download")
+                                    </a>
                                 }
                                 else
                                 {

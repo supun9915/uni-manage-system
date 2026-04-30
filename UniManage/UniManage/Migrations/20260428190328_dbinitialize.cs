@@ -472,6 +472,12 @@ namespace UniManage.Migrations
                     ReleaseDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     DeadlineDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
                     AllowLateSubmit = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    FileData = table.Column<byte[]>(type: "longblob", nullable: true),
+                    FileName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    FileSize = table.Column<int>(type: "int", nullable: true),
+                    ContentType = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CreatedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
@@ -500,7 +506,10 @@ namespace UniManage.Migrations
                     ModuleId = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    FileUrl = table.Column<string>(type: "longtext", nullable: false)
+                    FileData = table.Column<byte[]>(type: "longblob", nullable: true),
+                    FileName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ContentType = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     FileType = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -562,11 +571,12 @@ namespace UniManage.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     AssignmentId = table.Column<int>(type: "int", nullable: false),
                     StudentId = table.Column<int>(type: "int", nullable: false),
-                    FileUrl = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    FileData = table.Column<byte[]>(type: "longblob", nullable: true),
                     FileName = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     FileSize = table.Column<int>(type: "int", nullable: true),
+                    ContentType = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     SubmittedAt = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     MarksObtained = table.Column<int>(type: "int", nullable: true),
                     Feedback = table.Column<string>(type: "longtext", nullable: true)

@@ -271,6 +271,10 @@ namespace UniManage.Migrations
                     b.Property<bool>("AllowLateSubmit")
                         .HasColumnType("tinyint(1)");
 
+                    b.Property<string>("ContentType")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
@@ -282,6 +286,16 @@ namespace UniManage.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
+
+                    b.Property<byte[]>("FileData")
+                        .HasColumnType("longblob");
+
+                    b.Property<string>("FileName")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<int?>("FileSize")
+                        .HasColumnType("int");
 
                     b.Property<string>("Instructions")
                         .HasColumnType("longtext");
@@ -320,6 +334,13 @@ namespace UniManage.Migrations
                     b.Property<int>("AssignmentId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ContentType")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<byte[]>("FileData")
+                        .HasColumnType("longblob");
+
                     b.Property<string>("Feedback")
                         .HasColumnType("longtext");
 
@@ -329,9 +350,6 @@ namespace UniManage.Migrations
 
                     b.Property<int?>("FileSize")
                         .HasColumnType("int");
-
-                    b.Property<string>("FileUrl")
-                        .HasColumnType("longtext");
 
                     b.Property<DateTime?>("GradedAt")
                         .HasColumnType("datetime(6)");
@@ -407,16 +425,23 @@ namespace UniManage.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("ContentType")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<byte[]>("FileData")
+                        .HasColumnType("longblob");
+
+                    b.Property<string>("FileName")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)");
+
                     b.Property<int?>("FileSize")
                         .HasColumnType("int");
 
                     b.Property<string>("FileType")
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
-
-                    b.Property<string>("FileUrl")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<int>("ModuleId")
                         .HasColumnType("int");

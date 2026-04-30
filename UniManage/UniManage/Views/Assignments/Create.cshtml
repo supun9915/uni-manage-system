@@ -13,7 +13,7 @@
                 <p class="text-xs text-slate-400">Set up a new assignment for students</p>
             </div>
         </div>
-        <form asp-action="Create" method="post" data-val="true">
+        <form asp-action="Create" method="post" enctype="multipart/form-data" data-val="true">
             @Html.AntiForgeryToken()
             <div class="mb-4">
                 <label asp-for="ModuleId" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-layer-group mr-1"></i>Module</label>
@@ -52,6 +52,12 @@
             <div class="mb-6 flex items-center gap-2.5 p-3 bg-slate-50 rounded-lg">
                 <input asp-for="AllowLateSubmit" type="checkbox" class="w-4 h-4 rounded accent-blue-700" />
                 <label asp-for="AllowLateSubmit" class="text-sm text-slate-600 font-medium cursor-pointer"><i class="fa-solid fa-clock-rotate-left mr-1 text-amber-500"></i>Allow Late Submission</label>
+            </div>
+            <div class="mb-6">
+                <label class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-paperclip mr-1"></i>Assignment Brief / Attachment <span class="normal-case font-normal text-slate-400">(optional)</span></label>
+                <input type="file" name="file"
+                       class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:bg-blue-700 file:text-white hover:file:bg-blue-800 file:transition-colors" />
+                <p class="text-xs text-slate-400 mt-1.5"><i class="fa-solid fa-info-circle mr-1"></i>Attach a brief, rubric or any supporting document.</p>
             </div>
             <div class="flex gap-3 pt-4 border-t border-slate-100">
                 <button type="submit" class="btn-primary"><i class="fa-solid fa-floppy-disk"></i> Create</button>

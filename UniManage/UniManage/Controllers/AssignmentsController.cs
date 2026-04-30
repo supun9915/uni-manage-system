@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using UniManage.Data;
@@ -62,9 +63,33 @@ namespace UniManage.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(AssignmentModel assignment)
+        [RequestSizeLimit(52_428_800)]
+        [RequestFormLimits(MultipartBodyLengthLimit = 52_428_800)]
+        public async Task<IActionResult> Create(AssignmentModel assignment, IFormFile? file)
         {
             if (!IsAdmin && !IsLecturer) return Forbid();
+
+            // Clear programmatically assigned fields from ModelState
+            ModelState.Remove(nameof(AssignmentModel.FileData));
+            ModelState.Remove(nameof(AssignmentModel.FileName));
+            ModelState.Remove(nameof(AssignmentModel.FileSize));
+            ModelState.Remove(nameof(AssignmentModel.ContentType));
+            ModelState.Remove(nameof(AssignmentModel.CreatedBy));
+            ModelState.Remove(nameof(AssignmentModel.CreatedAt));
+
+            if (file != null && file.Length > 0)
+            {
+                using var ms = new MemoryStream();
+                await file.CopyToAsync(ms);
+                assignment.FileData    = ms.ToArray();
+                assignment.FileName    = Path.GetFileName(file.FileName);
+                assignment.FileSize    = (int)(file.Length / 1024);
+                assignment.ContentType = file.ContentType;
+            }
+            else if (file != null && file.Length == 0)
+            {
+                ModelState.AddModelError("file", "The uploaded file is empty. Please upload a valid document.");
+            }
             if (ModelState.IsValid)
             {
                 assignment.CreatedBy = CurrentUserId!.Value;
@@ -96,10 +121,38 @@ namespace UniManage.Controllers
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, AssignmentModel assignment)
+        [RequestSizeLimit(52_428_800)]
+        [RequestFormLimits(MultipartBodyLengthLimit = 52_428_800)]
+        public async Task<IActionResult> Edit(int id, AssignmentModel assignment, IFormFile? file)
         {
             if (!IsAdmin && !IsLecturer) return Forbid();
             if (id != assignment.Id) return NotFound();
+
+            // Clear programmatically assigned fields from ModelState
+            ModelState.Remove(nameof(AssignmentModel.FileData));
+            ModelState.Remove(nameof(AssignmentModel.FileName));
+            ModelState.Remove(nameof(AssignmentModel.FileSize));
+            ModelState.Remove(nameof(AssignmentModel.ContentType));
+            ModelState.Remove(nameof(AssignmentModel.CreatedBy));
+            ModelState.Remove(nameof(AssignmentModel.CreatedAt));
+
+            if (file != null && file.Length > 0)
+            {
+                using var ms = new MemoryStream();
+                await file.CopyToAsync(ms);
+                assignment.FileData    = ms.ToArray();
+                assignment.FileName    = Path.GetFileName(file.FileName);
+                assignment.FileSize    = (int)(file.Length / 1024);
+                assignment.ContentType = file.ContentType;
+            }
+            else
+            {
+                var existing = await _context.Assignments.AsNoTracking().FirstOrDefaultAsync(a => a.Id == id);
+                assignment.FileData    = existing?.FileData;
+                assignment.FileName    = existing?.FileName;
+                assignment.FileSize    = existing?.FileSize;
+                assignment.ContentType = existing?.ContentType;
+            }
             if (ModelState.IsValid)
             {
                 _context.Update(assignment);
@@ -113,6 +166,14 @@ namespace UniManage.Controllers
                     .Where(m => m.Course != null && m.Course.CreatedBy == CurrentUserId).ToListAsync();
             ViewBag.Modules = new SelectList(modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} – {m.Title}" }), "Id", "Name", assignment.ModuleId);
             return View(assignment);
+        }
+
+        public async Task<IActionResult> Download(int id)
+        {
+            var assignment = await _context.Assignments.FindAsync(id);
+            if (assignment == null || assignment.FileData == null) return NotFound();
+            return File(assignment.FileData, assignment.ContentType ?? "application/octet-stream",
+                        assignment.FileName ?? "assignment");
         }
 
         public async Task<IActionResult> Delete(int id)
