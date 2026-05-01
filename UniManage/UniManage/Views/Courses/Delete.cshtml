@@ -22,8 +22,8 @@
             @Html.AntiForgeryToken()
             <input type="hidden" asp-for="Id" />
             <div class="flex gap-3">
-                <button type="submit" class="btn-danger"><i class="fa-solid fa-trash"></i> Delete Permanently</button>
-                <a asp-action="Index" class="btn-secondary"><i class="fa-solid fa-arrow-left"></i> Cancel</a>
+                <button type="submit" class="text-sm bg-red-600 hover:bg-red-700 px-6 py-1 text-white rounded-lg border border-red-600"><i class="fa-solid fa-trash"></i> Delete Permanently</button>
+                <a asp-action="Index" class="btn-secondary py-1"><i class="fa-solid fa-arrow-left"></i> Cancel</a>
             </div>
         </form>
     </div>

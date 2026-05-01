@@ -192,18 +192,8 @@
 
             <!-- User footer -->
             <div class="p-4" style="border-top:1px solid rgba(255,255,255,0.08);">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-sm text-white flex-shrink-0">
-                        @((ViewBag.CurrentUserName as string ?? "?")[0].ToString().ToUpper())
-                    </div>
-                    <div class="overflow-hidden flex-1">
-                        <p class="text-sm text-white truncate">@ViewBag.CurrentUserName</p>
-                        <p class="text-xs capitalize" style="color:rgba(255,255,255,0.45);">@ViewBag.CurrentUserRole</p>
-                    </div>
-                </div>
                 <a asp-controller="Account" asp-action="Logout"
-                   class="flex items-center gap-2 text-xs transition-colors px-2 py-1.5 rounded-md hover:bg-white/10"
-                   style="color:rgba(255,255,255,0.55);">
+                   class="flex items-center gap-2 text-sm text-white transition-colors px-3 py-2 rounded-md bg-red-500 hover:bg-red-600">
                     <i class="fa-solid fa-right-from-bracket"></i> Sign Out
                 </a>
             </div>

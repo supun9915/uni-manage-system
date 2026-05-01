@@ -10,9 +10,7 @@
         </h2>
         @if (role != "student")
         {
-            <a asp-action="Create" asp-route-moduleId="@ViewBag.ModuleId" class="btn-primary">
-                <i class="fa-solid fa-upload"></i> Upload Material
-            </a>
+            <a asp-action="Create" asp-route-moduleId="@ViewBag.ModuleId" class="text-sm bg-blue-900 px-8 py-1 text-white rounded-lg border border-blue-700"><i class="fa-solid fa-upload text-sm"></i> Upload Material</a>
         }
     </div>
     @if (!Model.Any())
