@@ -23,9 +23,14 @@ namespace UniManage.Models
 
         public bool IsPublished { get; set; } = false;
 
+        public int? LecturerId { get; set; }
+
         // Navigation
         [ForeignKey(nameof(CourseId))]
         public CourseModel? Course { get; set; }
+
+        [ForeignKey(nameof(LecturerId))]
+        public UserModel? Lecturer { get; set; }
 
         public ICollection<CourseMaterialModel> CourseMaterials { get; set; } = new List<CourseMaterialModel>();
         public ICollection<AssignmentModel> Assignments { get; set; } = new List<AssignmentModel>();

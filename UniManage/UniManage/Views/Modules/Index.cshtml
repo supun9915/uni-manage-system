@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<UniManage.Models.ModuleModel>
+@using Microsoft.AspNetCore.Mvc.Rendering
 @{
     ViewData["Title"] = "Modules";
     var role = ViewBag.CurrentUserRole as string;
@@ -20,6 +21,7 @@
                     <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-hashtag mr-1"></i>#</th>
                     <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-layer-group mr-1"></i>Title</th>
                     <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-book-open mr-1"></i>Course</th>
+                    <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-chalkboard-user mr-1"></i>Lecturer</th>
                     <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-eye mr-1"></i>Published</th>
                     <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider">Actions</th>
                 </tr>
@@ -31,6 +33,18 @@
                         <td class="px-4 py-3 text-slate-400 font-mono">@m.OrderIndex</td>
                         <td class="px-4 py-3 text-slate-800">@m.Title</td>
                         <td class="px-4 py-3 text-slate-500">@m.Course?.Title</td>
+                        <td class="px-4 py-3">
+                            @if (m.Lecturer != null)
+                            {
+                                <span class="inline-flex items-center gap-1 text-xs bg-indigo-50 text-indigo-700 px-2.5 py-0.5 rounded-full font-medium">
+                                    <i class="fa-solid fa-chalkboard-user text-xs"></i>@m.Lecturer.FirstName @m.Lecturer.LastName
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="text-slate-300 text-xs">&mdash;</span>
+                            }
+                        </td>
                         <td class="px-4 py-3">
                             @if (m.IsPublished)
                             {
@@ -66,4 +80,31 @@
             </div>
         }
     </div>
+    @if (role == "administrator" && Model.Any())
+    {
+        <div class="mt-6 border-t border-slate-100 pt-5">
+            <h4 class="text-xs text-slate-500 uppercase tracking-wide mb-3"><i class="fa-solid fa-chalkboard-user mr-1"></i>Assign Lecturer to Module</h4>
+            <div class="space-y-2">
+                @foreach (var m in Model)
+                {
+                    <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
+                        <span class="text-xs text-slate-700 font-medium w-48 truncate">@m.Title</span>
+                        <span class="text-xs text-indigo-600 w-36 truncate">
+                            @(m.Lecturer != null ? $"{m.Lecturer.FirstName} {m.Lecturer.LastName}" : "—")
+                        </span>
+                        <form asp-action="AssignLecturer" method="post" class="flex items-center gap-2">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="moduleId" value="@m.Id" />
+                            <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
+                            @Html.DropDownList("lecturerId",
+                                ViewBag.Lecturers as SelectList,
+                                "-- Unassign --",
+                                new { @class = "text-xs border border-slate-200 rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-blue-300 text-slate-600" })
+                            <button type="submit" class="text-xs bg-blue-900 hover:bg-blue-950 text-white px-3 py-1 rounded-lg border border-blue-900">Assign</button>
+                        </form>
+                    </div>
+                }
+            </div>
+        </div>
+    }
 </div>

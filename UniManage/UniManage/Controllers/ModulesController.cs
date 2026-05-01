@@ -13,7 +13,10 @@ namespace UniManage.Controllers
 
         public async Task<IActionResult> Index(int? courseId)
         {
-            var query = _context.Modules.Include(m => m.Course).AsQueryable();
+            var query = _context.Modules
+                .Include(m => m.Course)
+                .Include(m => m.Lecturer)
+                .AsQueryable();
 
             if (IsStudent)
             {
@@ -29,6 +32,15 @@ namespace UniManage.Controllers
 
             ViewBag.CourseId = courseId;
             ViewBag.Courses = new SelectList(await _context.Courses.ToListAsync(), "Id", "Title");
+
+            var lecturers = await _context.Users
+                .Include(u => u.Role)
+                .Where(u => u.Role != null && u.Role.Name.ToLower() == "lecturer" && u.IsActive)
+                .ToListAsync();
+            ViewBag.Lecturers = new SelectList(
+                lecturers.Select(u => new { u.Id, Name = $"{u.FirstName} {u.LastName}" }),
+                "Id", "Name");
+
             return View(await query.OrderBy(m => m.CourseId).ThenBy(m => m.OrderIndex).ToListAsync());
         }
 
@@ -108,6 +120,21 @@ namespace UniManage.Controllers
             if (module != null) { _context.Modules.Remove(module); await _context.SaveChangesAsync(); }
             TempData["Success"] = "Module deleted.";
             return RedirectToAction(nameof(Index), new { courseId = cId });
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> AssignLecturer(int moduleId, int? lecturerId, string? returnUrl)
+        {
+            if (!IsAdmin) return Forbid();
+            var module = await _context.Modules.FindAsync(moduleId);
+            if (module == null) return NotFound();
+            module.LecturerId = lecturerId == 0 ? null : lecturerId;
+            await _context.SaveChangesAsync();
+            TempData["Success"] = lecturerId.HasValue && lecturerId > 0
+                ? "Lecturer assigned to module."
+                : "Lecturer unassigned from module.";
+            if (!string.IsNullOrEmpty(returnUrl)) return Redirect(returnUrl);
+            return RedirectToAction(nameof(Index), new { courseId = module.CourseId });
         }
     }
 }

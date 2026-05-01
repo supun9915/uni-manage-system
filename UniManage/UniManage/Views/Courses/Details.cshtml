@@ -1,4 +1,5 @@
 ﻿@model UniManage.Models.CourseModel
+@using Microsoft.AspNetCore.Mvc.Rendering
 @{
     ViewData["Title"] = "Course Details";
     var enrollments = ViewBag.Enrollments as List<UniManage.Models.EnrollmentModel> ?? new();
@@ -60,13 +61,36 @@
                             <div>
                                 <p class="text-sm text-slate-800">@m.Title</p>
                                 <p class="text-xs text-slate-400"><i class="fa-solid fa-file-lines mr-1"></i>@m.CourseMaterials.Count materials &mdash; <i class="fa-solid fa-clipboard-list mr-1"></i>@m.Assignments.Count assignments</p>
+                                @if (m.Lecturer != null)
+                                {
+                                    <p class="text-xs text-indigo-600 mt-0.5"><i class="fa-solid fa-chalkboard-user mr-1"></i>@m.Lecturer.FirstName @m.Lecturer.LastName</p>
+                                }
+                                else
+                                {
+                                    <p class="text-xs text-slate-300 mt-0.5"><i class="fa-solid fa-chalkboard-user mr-1"></i>No lecturer assigned</p>
+                                }
                             </div>
                         </div>
-                        <div class="flex gap-2">
-                            <a asp-controller="CourseMaterials" asp-action="Index" asp-route-moduleId="@m.Id"
-                               class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full hover:bg-blue-100 transition-colors"><i class="fa-solid fa-file-lines text-xs"></i>Materials</a>
-                            <a asp-controller="Assignments" asp-action="Index" asp-route-moduleId="@m.Id"
-                               class="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full hover:bg-amber-100 transition-colors"><i class="fa-solid fa-clipboard-list text-xs"></i>Assignments</a>
+                        <div class="flex flex-col items-end gap-2">
+                            <div class="flex gap-2">
+                                <a asp-controller="CourseMaterials" asp-action="Index" asp-route-moduleId="@m.Id"
+                                   class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full hover:bg-blue-100 transition-colors"><i class="fa-solid fa-file-lines text-xs"></i>Materials</a>
+                                <a asp-controller="Assignments" asp-action="Index" asp-route-moduleId="@m.Id"
+                                   class="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full hover:bg-amber-100 transition-colors"><i class="fa-solid fa-clipboard-list text-xs"></i>Assignments</a>
+                            </div>
+                            @if (role == "administrator")
+                            {
+                                <form asp-controller="Modules" asp-action="AssignLecturer" method="post" class="flex items-center gap-1.5">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="moduleId" value="@m.Id" />
+                                    <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+                                    @Html.DropDownList("lecturerId",
+                                        ViewBag.Lecturers as SelectList,
+                                        "-- Unassign --",
+                                        new { @class = "text-xs border border-slate-200 rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-blue-300 text-slate-600" })
+                                    <button type="submit" class="text-xs bg-blue-900 hover:bg-blue-950 text-white px-3 py-1 rounded-lg border border-blue-900"><i class="fa-solid fa-chalkboard-user mr-1"></i>Assign</button>
+                                </form>
+                            }
                         </div>
                     </li>
                 }

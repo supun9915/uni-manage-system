@@ -34,11 +34,19 @@ namespace UniManage.Controllers
                 .Include(c => c.Department)
                 .Include(c => c.Modules).ThenInclude(m => m.CourseMaterials)
                 .Include(c => c.Modules).ThenInclude(m => m.Assignments)
+                .Include(c => c.Modules).ThenInclude(m => m.Lecturer)
                 .FirstOrDefaultAsync(c => c.Id == id);
             if (course == null) return NotFound();
             ViewBag.Enrollments = await _context.Enrollments
                 .Include(e => e.User).Include(e => e.Batch)
                 .Where(e => e.CourseId == id).ToListAsync();
+            var lecturers = await _context.Users
+                .Include(u => u.Role)
+                .Where(u => u.Role != null && u.Role.Name.ToLower() == "lecturer" && u.IsActive)
+                .ToListAsync();
+            ViewBag.Lecturers = new SelectList(
+                lecturers.Select(u => new { u.Id, Name = $"{u.FirstName} {u.LastName}" }),
+                "Id", "Name");
             return View(course);
         }
 
