@@ -1,0 +1,48 @@
+@model UniManage.Models.EnrollmentModel
+@{
+    ViewData["Title"] = "Enroll Student";
+}
+<div class="max-w-xl mx-auto">
+    <div class="page-card">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                <i class="fa-solid fa-user-plus text-blue-700"></i>
+            </div>
+            <div>
+                <h2 class="text-base text-slate-800">Enroll Student</h2>
+                <p class="text-xs text-slate-400">Add a student to a course batch</p>
+            </div>
+        </div>
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-xs text-red-600 mb-4"></div>
+            <div class="mb-4">
+                <label asp-for="UserId" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-user mr-1"></i>Student</label>
+                <select asp-for="UserId" asp-items="ViewBag.Students" class="form-input" required>
+                    <option value="">-- Select Student --</option>
+                </select>
+                <span asp-validation-for="UserId" class="field-error"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="CourseId" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-book mr-1"></i>Course</label>
+                <select asp-for="CourseId" asp-items="ViewBag.Courses" class="form-input" required>
+                    <option value="">-- Select Course --</option>
+                </select>
+                <span asp-validation-for="CourseId" class="field-error"></span>
+            </div>
+            <div class="mb-6">
+                <label asp-for="BatchId" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-layer-group mr-1"></i>Batch</label>
+                <select asp-for="BatchId" asp-items="ViewBag.Batches" class="form-input" required>
+                    <option value="">-- Select Batch --</option>
+                </select>
+                <span asp-validation-for="BatchId" class="field-error"></span>
+            </div>
+            <div class="flex gap-3">
+                <button type="submit" class="btn-primary">
+                    <i class="fa-solid fa-user-plus mr-1"></i> Enroll
+                </button>
+                <a asp-action="Index" class="btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

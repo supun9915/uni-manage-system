@@ -27,15 +27,18 @@
                 <div class="border border-gray-100 rounded-xl p-4 hover:shadow-md transition-shadow">
                     <div class="flex items-center gap-3 mb-2">
                         @{
-                            var icon = m.FileType switch {
-                                "pdf" => "??",
-                                "video" or "mp4" or "avi" => "??",
-                                "link" or "url" => "??",
-                                "pptx" or "ppt" => "??",
-                                _ => "??"
+                            var (iconClass, iconColor) = m.FileType?.ToLower() switch {
+                                "pdf"                    => ("fa-solid fa-file-pdf",        "text-red-500"),
+                                "video" or "mp4" or "avi"=> ("fa-solid fa-circle-play",     "text-purple-500"),
+                                "link"  or "url"         => ("fa-solid fa-link",             "text-blue-500"),
+                                "pptx"  or "ppt"         => ("fa-solid fa-file-powerpoint",  "text-orange-500"),
+                                "docx"  or "doc"         => ("fa-solid fa-file-word",        "text-blue-700"),
+                                "xlsx"  or "xls"         => ("fa-solid fa-file-excel",       "text-green-600"),
+                                "zip"   or "rar"         => ("fa-solid fa-file-zipper",      "text-yellow-600"),
+                                _                        => ("fa-solid fa-file-lines",       "text-slate-400")
                             };
                         }
-                        <span class="text-2xl">@icon</span>
+                        <span class="text-2xl"><i class="@iconClass @iconColor"></i></span>
                         <div class="flex-1 min-w-0">
                             <p class="text-sm font-medium text-gray-800 truncate">@m.Title</p>
                             <p class="text-xs text-gray-400">@m.Module?.Course?.Title � @m.Module?.Title</p>

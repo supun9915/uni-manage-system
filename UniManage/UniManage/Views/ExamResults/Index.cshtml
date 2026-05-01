@@ -1,0 +1,89 @@
+@model IEnumerable<UniManage.Models.ExamResultModel>
+@{
+    ViewData["Title"] = "Exam Results";
+    var role = ViewBag.CurrentUserRole as string;
+}
+<div class="page-card">
+    <div class="flex items-center justify-between mb-5">
+        <h2 class="text-sm text-slate-700 flex items-center gap-2">
+            <i class="fa-solid fa-chart-bar text-blue-700"></i> Exam Results
+        </h2>
+        @if (role != "student" && ViewBag.ExamId != null)
+        {
+            <a asp-action="Create" asp-route-examId="@ViewBag.ExamId" class="btn-primary">
+                <i class="fa-solid fa-plus"></i> Add Result
+            </a>
+        }
+    </div>
+    @if (!Model.Any())
+    {
+        <div class="flex flex-col items-center py-12 text-slate-400">
+            <i class="fa-solid fa-chart-bar text-4xl mb-3 opacity-30"></i>
+            <p class="text-sm">No results found.</p>
+        </div>
+    }
+    else
+    {
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead class="table-header">
+                    <tr>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-user mr-1"></i>Student</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-file-pen mr-1"></i>Exam</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-book mr-1"></i>Course</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-star mr-1"></i>Marks</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-circle-dot mr-1"></i>Status</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-calendar mr-1"></i>Date</th>
+                        @if (role != "student")
+                        {
+                            <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider">Actions</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    @foreach (var r in Model)
+                    {
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-4 py-3 font-medium text-slate-800">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-7 h-7 rounded-full bg-blue-700 flex items-center justify-center text-white text-xs flex-shrink-0">@(r.Student?.FirstName?[0])</div>
+                                    @r.Student?.FirstName @r.Student?.LastName
+                                </div>
+                            </td>
+                            <td class="px-4 py-3 text-slate-600">@r.Exam?.Title</td>
+                            <td class="px-4 py-3 text-slate-500">@r.Exam?.Module?.Course?.Title</td>
+                            <td class="px-4 py-3 text-slate-800 font-medium">
+                                @(r.MarksObtained.HasValue ? $"{r.MarksObtained} / {r.Exam?.TotalMarks}" : "—")
+                            </td>
+                            <td class="px-4 py-3">
+                                @{
+                                    var cls = r.Status switch {
+                                        "pass" => "bg-emerald-50 text-emerald-700",
+                                        "fail" => "bg-red-50 text-red-700",
+                                        "absent" => "bg-amber-50 text-amber-700",
+                                        _ => "bg-slate-100 text-slate-500"
+                                    };
+                                }
+                                <span class="inline-flex items-center gap-1 text-xs @cls px-2.5 py-0.5 rounded-full font-medium capitalize">@(r.Status ?? "—")</span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-400">@(r.SubmittedAt?.ToString("dd MMM yyyy") ?? "—")</td>
+                            @if (role != "student")
+                            {
+                                <td class="px-4 py-3">
+                                    <div class="flex gap-2">
+                                        <a asp-action="Edit" asp-route-id="@r.Id" class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full hover:bg-blue-100">
+                                            <i class="fa-solid fa-pen text-xs mr-0.5"></i>Edit
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@r.Id" class="text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100">
+                                            <i class="fa-solid fa-trash text-xs mr-0.5"></i>Delete
+                                        </a>
+                                    </div>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

@@ -1,0 +1,64 @@
+@model UniManage.Models.ExamModel
+@{
+    ViewData["Title"] = "Create Exam";
+}
+<div class="max-w-xl mx-auto">
+    <div class="page-card">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                <i class="fa-solid fa-file-pen text-blue-700"></i>
+            </div>
+            <div>
+                <h2 class="text-base text-slate-800">Create Exam</h2>
+                <p class="text-xs text-slate-400">Schedule a new exam for a module</p>
+            </div>
+        </div>
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-xs text-red-600 mb-4"></div>
+            <div class="mb-4">
+                <label asp-for="ModuleId" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-layer-group mr-1"></i>Module</label>
+                <select asp-for="ModuleId" asp-items="ViewBag.Modules" class="form-input" required>
+                    <option value="">-- Select Module --</option>
+                </select>
+                <span asp-validation-for="ModuleId" class="field-error"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Title" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-heading mr-1"></i>Title</label>
+                <input asp-for="Title" class="form-input" placeholder="Exam title" required />
+                <span asp-validation-for="Title" class="field-error"></span>
+            </div>
+            <div class="mb-4">
+                <label asp-for="Description" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-align-left mr-1"></i>Description</label>
+                <textarea asp-for="Description" rows="2" class="form-input" placeholder="Optional description"></textarea>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label asp-for="TotalMarks" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-star mr-1"></i>Total Marks</label>
+                    <input asp-for="TotalMarks" type="number" min="1" class="form-input" />
+                    <span asp-validation-for="TotalMarks" class="field-error"></span>
+                </div>
+                <div>
+                    <label asp-for="PassMarks" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-circle-check mr-1"></i>Pass Marks</label>
+                    <input asp-for="PassMarks" type="number" min="0" class="form-input" placeholder="Optional" />
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div>
+                    <label asp-for="DurationMinutes" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-clock mr-1"></i>Duration (min)</label>
+                    <input asp-for="DurationMinutes" type="number" min="1" class="form-input" placeholder="e.g. 60" />
+                </div>
+                <div>
+                    <label asp-for="ExamDate" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-calendar mr-1"></i>Exam Date</label>
+                    <input asp-for="ExamDate" type="datetime-local" class="form-input" />
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button type="submit" class="btn-primary">
+                    <i class="fa-solid fa-plus mr-1"></i> Create Exam
+                </button>
+                <a asp-action="Index" class="btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

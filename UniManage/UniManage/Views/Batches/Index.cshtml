@@ -1,18 +1,24 @@
 ﻿@model IEnumerable<UniManage.Models.BatchModel>
+@using Microsoft.AspNetCore.Mvc.Rendering
 @{
     ViewData["Title"] = "Batches";
     var role = ViewBag.CurrentUserRole as string;
 }
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+<div class="page-card">
     <div class="flex items-center justify-between mb-5">
-        <h2 class="text-base text-gray-800">Batches</h2>
+        <h2 class="text-sm text-slate-700 flex items-center gap-2">
+            <i class="fa-solid fa-layer-group text-blue-700"></i> Batches
+        </h2>
         @if (role == "administrator")
         {
-            <a asp-action="Create" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors">+ New Batch</a>
+            <a asp-action="Create" class="btn-primary">
+                <i class="fa-solid fa-plus"></i> New Batch
+            </a>
         }
     </div>
-    <form method="get" class="mb-4">
-        <select name="courseId" onchange="this.form.submit()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+    <form method="get" class="mb-4 flex items-center gap-3">
+        <label class="text-xs text-slate-500">Filter by Course:</label>
+        <select name="courseId" onchange="this.form.submit()" class="text-sm border border-slate-200 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-300">
             <option value="">All Courses</option>
             @foreach (SelectListItem item in ViewBag.Courses)
             {
@@ -26,40 +32,72 @@
                 }
             }
         </select>
+        @if (ViewBag.CourseId != null)
+        {
+            <a asp-action="Index" class="text-xs text-slate-400 hover:text-red-500">Clear</a>
+        }
     </form>
-    <div class="overflow-x-auto">
-        <table class="w-full text-sm">
-            <thead>
-                <tr class="text-left text-xs text-gray-500 border-b">
-                    <th class="pb-2 font-medium">Name</th>
-                    <th class="pb-2 font-medium">Course</th>
-                    <th class="pb-2 font-medium">Start</th>
-                    <th class="pb-2 font-medium">End</th>
-                    <th class="pb-2 font-medium">Max</th>
-                    <th class="pb-2 font-medium">Status</th>
-                    @if (role == "administrator") { <th class="pb-2 font-medium">Actions</th> }
-                </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-50">
-                @foreach (var b in Model)
-                {
+    @if (!Model.Any())
+    {
+        <div class="flex flex-col items-center py-12 text-slate-400">
+            <i class="fa-solid fa-layer-group text-4xl mb-3 opacity-30"></i>
+            <p class="text-sm">No batches found.</p>
+        </div>
+    }
+    else
+    {
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead class="table-header">
                     <tr>
-                        <td class="py-2.5 font-medium">@b.Name</td>
-                        <td class="py-2.5 text-gray-500">@b.Course?.Title</td>
-                        <td class="py-2.5 text-gray-400">@b.StartDate?.ToString("dd MMM yyyy")</td>
-                        <td class="py-2.5 text-gray-400">@b.EndDate?.ToString("dd MMM yyyy")</td>
-                        <td class="py-2.5">@(b.MaxStudents?.ToString() ?? "?")</td>
-                        <td class="py-2.5"><span class="text-xs bg-green-50 text-green-700 px-2 py-0.5 rounded-full capitalize">@b.Status</span></td>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-tag mr-1"></i>Name</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-book mr-1"></i>Course</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-calendar-plus mr-1"></i>Start</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-calendar-xmark mr-1"></i>End</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-users mr-1"></i>Max</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-circle-dot mr-1"></i>Status</th>
                         @if (role == "administrator")
                         {
-                            <td class="py-2.5 flex gap-2">
-                                <a asp-action="Edit" asp-route-id="@b.Id" class="text-xs bg-yellow-50 text-yellow-700 px-3 py-1 rounded-full hover:bg-yellow-100">Edit</a>
-                                <a asp-action="Delete" asp-route-id="@b.Id" class="text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100">Delete</a>
-                            </td>
+                            <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider">Actions</th>
                         }
                     </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    @foreach (var b in Model)
+                    {
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-4 py-3 font-medium text-slate-800">@b.Name</td>
+                            <td class="px-4 py-3 text-slate-600">@b.Course?.Title</td>
+                            <td class="px-4 py-3 text-slate-400">@(b.StartDate?.ToString("dd MMM yyyy") ?? "—")</td>
+                            <td class="px-4 py-3 text-slate-400">@(b.EndDate?.ToString("dd MMM yyyy") ?? "—")</td>
+                            <td class="px-4 py-3 text-slate-600">@(b.MaxStudents?.ToString() ?? "—")</td>
+                            <td class="px-4 py-3">
+                                @{
+                                    var cls = b.Status?.ToLower() switch {
+                                        "active"   => "bg-emerald-50 text-emerald-700",
+                                        "inactive" => "bg-red-50 text-red-700",
+                                        _          => "bg-slate-100 text-slate-500"
+                                    };
+                                }
+                                <span class="inline-flex items-center text-xs @cls px-2.5 py-0.5 rounded-full font-medium capitalize">@b.Status</span>
+                            </td>
+                            @if (role == "administrator")
+                            {
+                                <td class="px-4 py-3">
+                                    <div class="flex gap-2">
+                                        <a asp-action="Edit" asp-route-id="@b.Id" class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full hover:bg-blue-100">
+                                            <i class="fa-solid fa-pen text-xs mr-0.5"></i>Edit
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@b.Id" class="text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100">
+                                            <i class="fa-solid fa-trash text-xs mr-0.5"></i>Delete
+                                        </a>
+                                    </div>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
 </div>

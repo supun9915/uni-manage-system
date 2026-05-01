@@ -1,0 +1,68 @@
+@model IEnumerable<UniManage.Models.AnnouncementModel>
+@{
+    ViewData["Title"] = "Announcements";
+    var role = ViewBag.CurrentUserRole as string;
+}
+<div class="page-card">
+    <div class="flex items-center justify-between mb-5">
+        <h2 class="text-sm text-slate-700 flex items-center gap-2">
+            <i class="fa-solid fa-bullhorn text-blue-700"></i> Announcements
+        </h2>
+        @if (role != "student")
+        {
+            <a asp-action="Create" class="btn-primary">
+                <i class="fa-solid fa-plus"></i> New Announcement
+            </a>
+        }
+    </div>
+    @if (!Model.Any())
+    {
+        <div class="flex flex-col items-center py-12 text-slate-400">
+            <i class="fa-solid fa-bullhorn text-4xl mb-3 opacity-30"></i>
+            <p class="text-sm">No announcements found.</p>
+        </div>
+    }
+    else
+    {
+        <div class="space-y-4">
+            @foreach (var a in Model)
+            {
+                <div class="border border-slate-100 rounded-xl p-4 hover:shadow-md transition-shadow">
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-2.5 py-0.5 rounded-full font-medium">
+                                    <i class="fa-solid fa-book text-xs"></i> @a.Course?.Title
+                                </span>
+                                @if (!string.IsNullOrEmpty(a.TargetRole) && a.TargetRole != "all")
+                                {
+                                    <span class="inline-flex items-center gap-1 text-xs bg-slate-100 text-slate-500 px-2.5 py-0.5 rounded-full capitalize">@a.TargetRole</span>
+                                }
+                            </div>
+                            <h3 class="text-sm font-semibold text-slate-800 mb-1">@a.Title</h3>
+                            <p class="text-xs text-slate-500 line-clamp-2">@a.Content</p>
+                            <p class="text-xs text-slate-400 mt-2">
+                                <i class="fa-solid fa-clock mr-1"></i>@a.CreatedAt.ToString("dd MMM yyyy HH:mm")
+                                @if (a.PublishDate.HasValue)
+                                {
+                                    <span class="ml-3"><i class="fa-solid fa-calendar-check mr-1"></i>Published: @a.PublishDate.Value.ToString("dd MMM yyyy")</span>
+                                }
+                            </p>
+                        </div>
+                        @if (role != "student")
+                        {
+                            <div class="flex gap-2 flex-shrink-0">
+                                <a asp-action="Edit" asp-route-id="@a.Id" class="text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full hover:bg-blue-100">
+                                    <i class="fa-solid fa-pen text-xs mr-0.5"></i>Edit
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@a.Id" class="text-xs bg-red-50 text-red-700 px-3 py-1 rounded-full hover:bg-red-100">
+                                    <i class="fa-solid fa-trash text-xs mr-0.5"></i>Delete
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

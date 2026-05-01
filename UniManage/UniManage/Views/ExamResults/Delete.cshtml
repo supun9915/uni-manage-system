@@ -1,0 +1,33 @@
+@model UniManage.Models.ExamResultModel
+@{
+    ViewData["Title"] = "Delete Exam Result";
+}
+<div class="max-w-md mx-auto">
+    <div class="page-card">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+            <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center">
+                <i class="fa-solid fa-trash text-red-600"></i>
+            </div>
+            <div>
+                <h2 class="text-base text-slate-800">Delete Exam Result</h2>
+                <p class="text-xs text-slate-400">This action cannot be undone</p>
+            </div>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-4 mb-6 space-y-2 text-sm text-slate-700">
+            <p><span class="text-xs text-slate-400 uppercase tracking-wide">Student:</span> @Model.Student?.FirstName @Model.Student?.LastName</p>
+            <p><span class="text-xs text-slate-400 uppercase tracking-wide">Exam:</span> @Model.Exam?.Title</p>
+            <p><span class="text-xs text-slate-400 uppercase tracking-wide">Marks:</span> @(Model.MarksObtained.HasValue ? $"{Model.MarksObtained} / {Model.Exam?.TotalMarks}" : "—")</p>
+            <p><span class="text-xs text-slate-400 uppercase tracking-wide">Status:</span> <span class="capitalize">@(Model.Status ?? "—")</span></p>
+        </div>
+        <form asp-action="Delete" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Id" />
+            <div class="flex gap-3">
+                <button type="submit" class="btn-danger">
+                    <i class="fa-solid fa-trash mr-1"></i> Delete
+                </button>
+                <a asp-action="Index" asp-route-examId="@Model.ExamId" class="btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

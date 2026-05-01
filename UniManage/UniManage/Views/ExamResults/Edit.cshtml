@@ -1,0 +1,46 @@
+@model UniManage.Models.ExamResultModel
+@{
+    ViewData["Title"] = "Edit Exam Result";
+}
+<div class="max-w-xl mx-auto">
+    <div class="page-card">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                <i class="fa-solid fa-chart-bar text-blue-700"></i>
+            </div>
+            <div>
+                <h2 class="text-base text-slate-800">Edit Exam Result</h2>
+                <p class="text-xs text-slate-400">@Model.Student?.FirstName @Model.Student?.LastName &mdash; @Model.Exam?.Title</p>
+            </div>
+        </div>
+        <form asp-action="Edit" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="ExamId" />
+            <input type="hidden" asp-for="StudentId" />
+            <div asp-validation-summary="ModelOnly" class="text-xs text-red-600 mb-4"></div>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div>
+                    <label asp-for="MarksObtained" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-star mr-1"></i>Marks Obtained</label>
+                    <input asp-for="MarksObtained" type="number" min="0" class="form-input" />
+                    <span asp-validation-for="MarksObtained" class="field-error"></span>
+                </div>
+                <div>
+                    <label asp-for="Status" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-circle-dot mr-1"></i>Status</label>
+                    <select asp-for="Status" class="form-input">
+                        <option value="">-- Auto --</option>
+                        <option value="pass">Pass</option>
+                        <option value="fail">Fail</option>
+                        <option value="absent">Absent</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button type="submit" class="btn-primary">
+                    <i class="fa-solid fa-floppy-disk mr-1"></i> Save Changes
+                </button>
+                <a asp-action="Index" asp-route-examId="@Model.ExamId" class="btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

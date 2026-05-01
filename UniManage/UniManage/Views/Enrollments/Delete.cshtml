@@ -1,0 +1,32 @@
+@model UniManage.Models.EnrollmentModel
+@{
+    ViewData["Title"] = "Remove Enrollment";
+}
+<div class="max-w-md mx-auto">
+    <div class="page-card">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+            <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center">
+                <i class="fa-solid fa-user-minus text-red-600"></i>
+            </div>
+            <div>
+                <h2 class="text-base text-slate-800">Remove Enrollment</h2>
+                <p class="text-xs text-slate-400">This action cannot be undone</p>
+            </div>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-4 mb-6 space-y-2 text-sm text-slate-700">
+            <p><span class="text-xs text-slate-400 uppercase tracking-wide">Student:</span> @Model.User?.FirstName @Model.User?.LastName</p>
+            <p><span class="text-xs text-slate-400 uppercase tracking-wide">Course:</span> @Model.Course?.Title</p>
+            <p><span class="text-xs text-slate-400 uppercase tracking-wide">Enrolled At:</span> @Model.EnrolledAt.ToString("dd MMM yyyy")</p>
+        </div>
+        <form asp-action="Delete" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="Id" />
+            <div class="flex gap-3">
+                <button type="submit" class="btn-danger">
+                    <i class="fa-solid fa-trash mr-1"></i> Remove
+                </button>
+                <a asp-action="Index" class="btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

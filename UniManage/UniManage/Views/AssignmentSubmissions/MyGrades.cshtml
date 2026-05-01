@@ -1,0 +1,78 @@
+@model IEnumerable<UniManage.Models.AssignmentSubmissionModel>
+@{
+    ViewData["Title"] = "My Grades";
+}
+<div class="page-card">
+    <div class="flex items-center justify-between mb-5">
+        <h2 class="text-sm text-slate-700 flex items-center gap-2">
+            <i class="fa-solid fa-star text-blue-700"></i> My Grades
+        </h2>
+    </div>
+    @if (!Model.Any())
+    {
+        <div class="flex flex-col items-center py-12 text-slate-400">
+            <i class="fa-solid fa-star text-4xl mb-3 opacity-30"></i>
+            <p class="text-sm">No graded submissions yet.</p>
+        </div>
+    }
+    else
+    {
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead class="table-header">
+                    <tr>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-clipboard-list mr-1"></i>Assignment</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-book mr-1"></i>Course</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-layer-group mr-1"></i>Module</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-star mr-1"></i>Marks</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-circle-dot mr-1"></i>Status</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-comment mr-1"></i>Feedback</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider"><i class="fa-solid fa-clock mr-1"></i>Submitted</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    @foreach (var s in Model)
+                    {
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-4 py-3 font-medium text-slate-800">@s.Assignment?.Title</td>
+                            <td class="px-4 py-3 text-slate-600">@s.Assignment?.Module?.Course?.Title</td>
+                            <td class="px-4 py-3 text-slate-500">@s.Assignment?.Module?.Title</td>
+                            <td class="px-4 py-3">
+                                @if (s.MarksObtained.HasValue)
+                                {
+                                    <span class="font-semibold text-slate-800">@s.MarksObtained</span>
+                                    <span class="text-slate-400 text-xs"> / @s.Assignment?.MaxMarks</span>
+                                }
+                                else
+                                {
+                                    <span class="text-slate-400 text-xs">&mdash;</span>
+                                }
+                            </td>
+                            <td class="px-4 py-3">
+                                @{
+                                    var cls = s.Status switch {
+                                        "graded"  => "bg-emerald-50 text-emerald-700",
+                                        "late"    => "bg-red-50 text-red-700",
+                                        _         => "bg-amber-50 text-amber-700"
+                                    };
+                                    var ico = s.Status switch {
+                                        "graded"  => "fa-circle-check",
+                                        "late"    => "fa-clock",
+                                        _         => "fa-hourglass-half"
+                                    };
+                                }
+                                <span class="inline-flex items-center gap-1 text-xs @cls px-2.5 py-0.5 rounded-full font-medium capitalize">
+                                    <i class="fa-solid @ico text-xs"></i> @s.Status
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-slate-500 text-xs max-w-xs truncate">
+                                @(string.IsNullOrWhiteSpace(s.Feedback) ? "—" : s.Feedback)
+                            </td>
+                            <td class="px-4 py-3 text-slate-400">@s.SubmittedAt.ToString("dd MMM yyyy HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
