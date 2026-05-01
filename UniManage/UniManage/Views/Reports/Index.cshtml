@@ -1,0 +1,50 @@
+@{
+    ViewData["Title"] = "Reports";
+    var role = ViewBag.CurrentUserRole as string;
+}
+
+<div class="space-y-6">
+    <div class="page-card">
+        <p class="text-sm text-slate-500 mb-6">Select a report to generate and download as PDF.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <!-- Course Popularity -->
+            <div class="border border-blue-100 rounded-xl p-6 hover:shadow-md transition-shadow bg-gradient-to-br from-blue-50 to-white">
+                <div class="w-11 h-11 rounded-xl bg-blue-100 flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-chart-bar text-blue-700 text-lg"></i>
+                </div>
+                <h3 class="text-sm font-semibold text-slate-800 mb-1">Course Popularity</h3>
+                <p class="text-xs text-slate-500 mb-4">View enrollment counts per course, ranked by popularity.</p>
+                <a asp-controller="Reports" asp-action="CoursePopularity"
+                   class="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white text-xs px-4 py-2 rounded-lg transition-all">
+                    <i class="fa-solid fa-arrow-right"></i> Generate Report
+                </a>
+            </div>
+
+            <!-- Student Performance -->
+            <div class="border border-emerald-100 rounded-xl p-6 hover:shadow-md transition-shadow bg-gradient-to-br from-emerald-50 to-white">
+                <div class="w-11 h-11 rounded-xl bg-emerald-100 flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-user-graduate text-emerald-700 text-lg"></i>
+                </div>
+                <h3 class="text-sm font-semibold text-slate-800 mb-1">Student Performance</h3>
+                <p class="text-xs text-slate-500 mb-4">Analyse exam results and assignment grades across students.</p>
+                <a asp-controller="Reports" asp-action="StudentPerformance"
+                   class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-4 py-2 rounded-lg transition-all">
+                    <i class="fa-solid fa-arrow-right"></i> Generate Report
+                </a>
+            </div>
+
+            <!-- Workload Analysis -->
+            <div class="border border-amber-100 rounded-xl p-6 hover:shadow-md transition-shadow bg-gradient-to-br from-amber-50 to-white">
+                <div class="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-chart-pie text-amber-600 text-lg"></i>
+                </div>
+                <h3 class="text-sm font-semibold text-slate-800 mb-1">Workload Analysis</h3>
+                <p class="text-xs text-slate-500 mb-4">Review module, assignment and exam load per lecturer.</p>
+                <a asp-controller="Reports" asp-action="WorkloadAnalysis"
+                   class="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white text-xs px-4 py-2 rounded-lg transition-all">
+                    <i class="fa-solid fa-arrow-right"></i> Generate Report
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

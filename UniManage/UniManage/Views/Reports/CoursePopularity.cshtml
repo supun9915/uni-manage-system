@@ -1,0 +1,135 @@
+@using UniManage.Models
+@model List<CourseModel>
+@{
+    ViewData["Title"] = "Course Popularity Report";
+    DateTime generatedAt = ViewBag.GeneratedAt ?? DateTime.Now;
+    int totalEnrollments = Model.Sum(c => c.Enrollments.Count);
+}
+
+<div class="space-y-4">
+    <!-- Toolbar -->
+    <div class="flex items-center justify-between">
+        <a asp-controller="Reports" asp-action="Index" class="btn-secondary text-xs">
+            <i class="fa-solid fa-arrow-left"></i> Back to Reports
+        </a>
+        <button onclick="downloadPdf()" class="btn-primary text-xs">
+            <i class="fa-solid fa-file-pdf"></i> Download PDF
+        </button>
+    </div>
+
+    <!-- Report Content -->
+    <div id="report-content" class="page-card space-y-6">
+        <!-- Header -->
+        <div class="border-b border-slate-100 pb-5">
+            <div class="flex items-start justify-between">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <div class="w-7 h-7 rounded-lg bg-blue-700 flex items-center justify-center">
+                            <i class="fa-solid fa-graduation-cap text-white text-xs"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-blue-800">UniManage</span>
+                    </div>
+                    <h1 class="text-xl font-bold text-slate-800 mt-2">Course Popularity Report</h1>
+                    <p class="text-xs text-slate-400 mt-0.5">Generated on @generatedAt.ToString("dd MMMM yyyy, HH:mm")</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-xs text-slate-500">Total Courses</p>
+                    <p class="text-2xl font-bold text-blue-700">@Model.Count</p>
+                    <p class="text-xs text-slate-500 mt-1">Total Enrollments</p>
+                    <p class="text-2xl font-bold text-emerald-600">@totalEnrollments</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-3 gap-4">
+            <div class="bg-blue-50 rounded-xl p-4 text-center">
+                <p class="text-xs text-slate-500 mb-1">Published Courses</p>
+                <p class="text-2xl font-bold text-blue-700">@Model.Count(c => c.Status == "published")</p>
+            </div>
+            <div class="bg-emerald-50 rounded-xl p-4 text-center">
+                <p class="text-xs text-slate-500 mb-1">Avg. Enrollments</p>
+                <p class="text-2xl font-bold text-emerald-600">
+                    @(Model.Count > 0 ? (totalEnrollments / (double)Model.Count).ToString("F1") : "0")
+                </p>
+            </div>
+            <div class="bg-amber-50 rounded-xl p-4 text-center">
+                <p class="text-xs text-slate-500 mb-1">Most Enrolled</p>
+                <p class="text-sm font-bold text-amber-700 truncate">
+                    @(Model.FirstOrDefault()?.Title ?? "—")
+                </p>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead class="table-header">
+                    <tr>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider">#</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider">Course</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider">Code</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider">Department</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider">Status</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider">Enrollments</th>
+                        <th class="px-4 py-3 text-left text-xs text-white uppercase tracking-wider">Share</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        var course = Model[i];
+                        double share = totalEnrollments > 0 ? (course.Enrollments.Count / (double)totalEnrollments) * 100 : 0;
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-4 py-3 text-slate-400 text-xs">@(i + 1)</td>
+                            <td class="px-4 py-3">
+                                <p class="text-slate-800 font-medium">@course.Title</p>
+                            </td>
+                            <td class="px-4 py-3 text-slate-500 text-xs">@(course.Code ?? "—")</td>
+                            <td class="px-4 py-3 text-slate-500 text-xs">@(course.Department?.Name ?? "—")</td>
+                            <td class="px-4 py-3">
+                                @{
+                                    var (bg, text) = course.Status switch
+                                    {
+                                        "published" => ("bg-emerald-50 text-emerald-700", ""),
+                                        "draft" => ("bg-slate-100 text-slate-600", ""),
+                                        _ => ("bg-amber-50 text-amber-700", "")
+                                    };
+                                }
+                                <span class="status-badge @bg">@course.Status</span>
+                            </td>
+                            <td class="px-4 py-3">
+                                <span class="font-semibold text-blue-700">@course.Enrollments.Count</span>
+                            </td>
+                            <td class="px-4 py-3">
+                                <div class="flex items-center gap-2">
+                                    <div class="flex-1 bg-slate-100 rounded-full h-1.5">
+                                        <div class="bg-blue-600 h-1.5 rounded-full" style="width:@(share.ToString("F0"))%"></div>
+                                    </div>
+                                    <span class="text-xs text-slate-500 w-8 text-right">@share.ToString("F0")%</span>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <p class="text-xs text-slate-400 text-right pt-2 border-t border-slate-100">UniManage &mdash; Confidential</p>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+    function downloadPdf() {
+        const element = document.getElementById('report-content');
+        const opt = {
+            margin: [10, 10, 10, 10],
+            filename: 'course-popularity-report-@(generatedAt.ToString("yyyyMMdd-HHmm")).pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, logging: false },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+        html2pdf().set(opt).from(element).save();
+    }
+</script>

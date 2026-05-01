@@ -22,4 +22,9 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UniManage\Controllers\" />
+    <Folder Include="UniManage\Views\Reports\" />
+  </ItemGroup>
+
 </Project>

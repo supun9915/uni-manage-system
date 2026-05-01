@@ -180,8 +180,11 @@
                     <a asp-controller="Roles" asp-action="Index" class="sidebar-link @(ctrl=="Roles"?"active":"")">
                         <i class="fa-solid fa-shield-halved fa-fw"></i> Roles
                     </a>
-                    <a asp-controller="ExamResults" asp-action="Index" class="sidebar-link @(ctrl=="ExamResults"?"active":"")">
+                    <a asp-controller="ExamResults" asp-action="Index" class="sidebar-link @(ctrl=="ExamResults"?"active":"")">  
                         <i class="fa-solid fa-ranking-star fa-fw"></i> Exam Results
+                    </a>
+                    <a asp-controller="Reports" asp-action="Index" class="sidebar-link @(ctrl=="Reports"?"active":"")">  
+                        <i class="fa-solid fa-chart-line fa-fw"></i> Reports
                     </a>
                 }
                 @if (role == "lecturer")
@@ -198,6 +201,9 @@
                     </a>
                     <a asp-controller="EnrollmentApplications" asp-action="Index" class="sidebar-link @(ctrl=="EnrollmentApplications"?"active":"")">  
                         <i class="fa-solid fa-inbox fa-fw"></i> Applications
+                    </a>
+                    <a asp-controller="Reports" asp-action="Index" class="sidebar-link @(ctrl=="Reports"?"active":"")">  
+                        <i class="fa-solid fa-chart-line fa-fw"></i> Reports
                     </a>
                 }
             </nav>
