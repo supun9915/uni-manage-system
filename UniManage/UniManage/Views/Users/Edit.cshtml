@@ -42,9 +42,16 @@
                 <label asp-for="RoleId" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-shield-halved mr-1"></i>Role</label>
                 <select asp-for="RoleId" asp-items="ViewBag.Roles" class="form-input"></select>
             </div>
-            <div class="mb-4">
-                <label asp-for="Phone" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-phone mr-1"></i>Phone</label>
-                <input asp-for="Phone" class="form-input" />
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label asp-for="Phone" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-phone mr-1"></i>Phone</label>
+                    <input asp-for="Phone" class="form-input" />
+                </div>
+                <div>
+                    <label asp-for="NIC" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-id-card mr-1"></i>NIC</label>
+                    <input asp-for="NIC" class="form-input" />
+                    <span asp-validation-for="NIC" class="field-error"></span>
+                </div>
             </div>
             <div class="mb-6 flex items-center gap-2.5 p-3 bg-slate-50 rounded-lg">
                 <input asp-for="IsActive" type="checkbox" class="w-4 h-4 rounded accent-blue-700" />

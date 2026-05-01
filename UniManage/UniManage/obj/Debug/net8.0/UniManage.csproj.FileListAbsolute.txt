@@ -612,7 +612,6 @@ D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\obj\Debug
 D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\obj\Debug\net8.0\staticwebassets.build.json.cache
 D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\obj\Debug\net8.0\staticwebassets.development.json
 D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\obj\Debug\net8.0\UniManage.csproj.Up2Date
 D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\obj\Debug\net8.0\UniManage.dll
 D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\obj\Debug\net8.0\refint\UniManage.dll
@@ -922,3 +921,4 @@ D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\bin\Debug
 D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\bin\Debug\net8.0\refs\System.Xml.XPath.dll
 D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\bin\Debug\net8.0\refs\System.Xml.XPath.XDocument.dll
 D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\bin\Debug\net8.0\refs\WindowsBase.dll
+D:\Top Up\AD\Coursework 2\System\uni-manage-system\UniManage\UniManage\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -30,6 +30,12 @@ namespace UniManage.Models
         [MaxLength(20)]
         public string? Phone { get; set; }
 
+        [MaxLength(20)]
+        public string? NIC { get; set; }
+
+        [MaxLength(20)]
+        public string? UID { get; set; }
+
         public string? ProfilePicture { get; set; }
 
         public bool IsActive { get; set; } = true;

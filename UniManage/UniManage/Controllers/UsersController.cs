@@ -18,13 +18,25 @@ namespace UniManage.Controllers
             _hasher = hasher;
         }
 
-        public async Task<IActionResult> Index(string? search)
+        public async Task<IActionResult> Index(string? search, int? roleId)
         {
             if (!IsAdmin) return Forbid();
             var query = _context.Users.Include(u => u.Role).AsQueryable();
+
             if (!string.IsNullOrWhiteSpace(search))
-                query = query.Where(u => u.FirstName.Contains(search) || u.LastName.Contains(search) || u.Email.Contains(search));
+                query = query.Where(u =>
+                    u.FirstName.Contains(search) ||
+                    u.LastName.Contains(search) ||
+                    u.Email.Contains(search) ||
+                    (u.NIC != null && u.NIC.Contains(search)) ||
+                    (u.UID != null && u.UID.Contains(search)));
+
+            if (roleId.HasValue)
+                query = query.Where(u => u.RoleId == roleId.Value);
+
             ViewBag.Search = search;
+            ViewBag.RoleId = roleId;
+            ViewBag.Roles = new SelectList(await _context.Roles.ToListAsync(), "Id", "Name");
             return View(await query.OrderBy(u => u.FirstName).ToListAsync());
         }
 
@@ -50,6 +62,7 @@ namespace UniManage.Controllers
                 }
                 user.PasswordHash = _hasher.HashPassword(user, password);
                 user.CreatedAt = DateTime.UtcNow;
+                user.UID = await GenerateUIDAsync(user.RoleId);
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
                 TempData["Success"] = "User created.";
@@ -83,6 +96,7 @@ namespace UniManage.Controllers
                 existing.Email = user.Email;
                 existing.RoleId = user.RoleId;
                 existing.Phone = user.Phone;
+                existing.NIC = user.NIC;
                 existing.IsActive = user.IsActive;
                 existing.UpdatedAt = DateTime.UtcNow;
                 if (!string.IsNullOrWhiteSpace(newPassword))
@@ -111,6 +125,32 @@ namespace UniManage.Controllers
             if (user != null) { _context.Users.Remove(user); await _context.SaveChangesAsync(); }
             TempData["Success"] = "User deleted.";
             return RedirectToAction(nameof(Index));
+        }
+
+        private async Task<string> GenerateUIDAsync(int roleId)
+        {
+            var role = await _context.Roles.FindAsync(roleId);
+            var prefix = (role?.Name?.ToLower()) switch {
+                "student"       => "STU",
+                "lecturer"      => "LEC",
+                "administrator" => "ADM",
+                _               => "USR"
+            };
+            int year = DateTime.UtcNow.Year;
+            string pattern = $"{prefix}{year}";
+
+            // Find the highest existing index for this prefix+year to avoid reuse after deletions
+            var lastIndex = await _context.Users
+                .Where(u => u.UID != null && u.UID.StartsWith(pattern))
+                .Select(u => u.UID!)
+                .ToListAsync();
+
+            int maxIndex = lastIndex
+                .Select(uid => int.TryParse(uid.Substring(pattern.Length), out int idx) ? idx : 999)
+                .DefaultIfEmpty(999)
+                .Max();
+
+            return $"{prefix}{year}{maxIndex + 1}";
         }
     }
 }

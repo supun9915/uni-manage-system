@@ -1,0 +1,42 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace UniManage.Migrations
+{
+    /// <inheritdoc />
+    public partial class AddNicUidToUsers : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.AddColumn<string>(
+                name: "NIC",
+                table: "Users",
+                type: "varchar(20)",
+                maxLength: 20,
+                nullable: true)
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.AddColumn<string>(
+                name: "UID",
+                table: "Users",
+                type: "varchar(20)",
+                maxLength: 20,
+                nullable: true)
+                .Annotation("MySql:CharSet", "utf8mb4");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "NIC",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "UID",
+                table: "Users");
+        }
+    }
+}
