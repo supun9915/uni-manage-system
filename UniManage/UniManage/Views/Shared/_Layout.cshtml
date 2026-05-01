@@ -136,6 +136,12 @@
                 </a>
                 @if (role == "student")
                 {
+                    <a asp-controller="EnrollmentApplications" asp-action="Browse" class="sidebar-link @(ctrl=="EnrollmentApplications"&&action=="Browse"?"active":"")">  
+                        <i class="fa-solid fa-compass fa-fw"></i> Browse Courses
+                    </a>
+                    <a asp-controller="EnrollmentApplications" asp-action="MyApplications" class="sidebar-link @(ctrl=="EnrollmentApplications"&&action=="MyApplications"?"active":"")">  
+                        <i class="fa-solid fa-file-circle-check fa-fw"></i> My Applications
+                    </a>
                     <a asp-controller="AssignmentSubmissions" asp-action="MyGrades" class="sidebar-link @(ctrl=="AssignmentSubmissions"&&action=="MyGrades"?"active":"")">
                         <i class="fa-solid fa-chart-bar fa-fw"></i> My Grades
                     </a>
@@ -165,8 +171,11 @@
                     <a asp-controller="Batches" asp-action="Index" class="sidebar-link @(ctrl=="Batches"?"active":"")">
                         <i class="fa-solid fa-people-group fa-fw"></i> Batches
                     </a>
-                    <a asp-controller="Enrollments" asp-action="Index" class="sidebar-link @(ctrl=="Enrollments"?"active":"")">
+                    <a asp-controller="Enrollments" asp-action="Index" class="sidebar-link @(ctrl=="Enrollments"?"active":"")">  
                         <i class="fa-solid fa-user-plus fa-fw"></i> Enrollments
+                    </a>
+                    <a asp-controller="EnrollmentApplications" asp-action="Index" class="sidebar-link @(ctrl=="EnrollmentApplications"?"active":"")">  
+                        <i class="fa-solid fa-inbox fa-fw"></i> Applications
                     </a>
                     <a asp-controller="Roles" asp-action="Index" class="sidebar-link @(ctrl=="Roles"?"active":"")">
                         <i class="fa-solid fa-shield-halved fa-fw"></i> Roles
@@ -184,8 +193,11 @@
                     <a asp-controller="ExamResults" asp-action="Index" class="sidebar-link @(ctrl=="ExamResults"?"active":"")">
                         <i class="fa-solid fa-ranking-star fa-fw"></i> Exam Results
                     </a>
-                    <a asp-controller="Enrollments" asp-action="Index" class="sidebar-link @(ctrl=="Enrollments"?"active":"")">
+                    <a asp-controller="Enrollments" asp-action="Index" class="sidebar-link @(ctrl=="Enrollments"?"active":"")">  
                         <i class="fa-solid fa-user-plus fa-fw"></i> Enrollments
+                    </a>
+                    <a asp-controller="EnrollmentApplications" asp-action="Index" class="sidebar-link @(ctrl=="EnrollmentApplications"?"active":"")">  
+                        <i class="fa-solid fa-inbox fa-fw"></i> Applications
                     </a>
                 }
             </nav>

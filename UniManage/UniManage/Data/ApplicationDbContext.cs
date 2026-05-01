@@ -32,8 +32,6 @@ namespace UniManage.Data
         public DbSet<Models.ExamResultModel> ExamResults { get; set; }
         public DbSet<Models.AnnouncementModel> Announcements { get; set; }
         public DbSet<Models.BatchModel> BatchModels { get; set; }
-
-
-
+        public DbSet<Models.EnrollmentApplicationModel> EnrollmentApplications { get; set; }
     }
 }

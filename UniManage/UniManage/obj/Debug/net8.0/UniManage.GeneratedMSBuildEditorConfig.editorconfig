@@ -160,6 +160,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/EnrollmentApplications/Apply.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5yb2xsbWVudEFwcGxpY2F0aW9uc1xBcHBseS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/EnrollmentApplications/Browse.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5yb2xsbWVudEFwcGxpY2F0aW9uc1xCcm93c2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/EnrollmentApplications/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5yb2xsbWVudEFwcGxpY2F0aW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/EnrollmentApplications/MyApplications.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5yb2xsbWVudEFwcGxpY2F0aW9uc1xNeUFwcGxpY2F0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/EnrollmentApplications/Review.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5yb2xsbWVudEFwcGxpY2F0aW9uc1xSZXZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Enrollments/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5yb2xsbWVudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

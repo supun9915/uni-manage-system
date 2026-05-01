@@ -29,6 +29,8 @@ namespace UniManage.Models
         [MaxLength(20)]
         public string Status { get; set; } = "draft"; // draft, published, archived
 
+        public string? PrerequisiteCourses { get; set; }
+
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation

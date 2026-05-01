@@ -38,6 +38,11 @@
                 <label asp-for="Description" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-align-left mr-1"></i>Description</label>
                 <textarea asp-for="Description" rows="3" class="form-input" placeholder="Course description"></textarea>
             </div>
+            <div class="mb-4">
+                <label asp-for="PrerequisiteCourses" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-list-check mr-1"></i>Prerequisite Courses</label>
+                <textarea asp-for="PrerequisiteCourses" rows="2" class="form-input" placeholder="e.g. Introduction to Programming, Mathematics I (leave blank if none)"></textarea>
+                <p class="text-xs text-slate-400 mt-1">List any courses students must complete before enrolling.</p>
+            </div>
             <div class="mb-6">
                 <label asp-for="Status" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-circle-dot mr-1"></i>Status</label>
                 <select asp-for="Status" class="form-input">

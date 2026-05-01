@@ -1,0 +1,155 @@
+@model UniManage.Models.EnrollmentApplicationModel
+@{
+    ViewData["Title"] = "Review Application";
+    bool canDecide = Model.Status == "pending";
+}
+
+<div class="page-card max-w-2xl mx-auto">
+    <div class="flex items-center gap-3 mb-6">
+        <div class="w-8 h-8 rounded-lg bg-blue-700 flex items-center justify-center flex-shrink-0">
+            <i class="fa-solid fa-clipboard-check text-white text-sm"></i>
+        </div>
+        <div>
+            <h2 class="text-sm font-semibold text-slate-800">Review Enrollment Application</h2>
+            <p class="text-xs text-slate-400">#@Model.Id &nbsp;&middot;&nbsp; Submitted @Model.AppliedAt.ToString("dd MMM yyyy")</p>
+        </div>
+    </div>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="mb-4 p-3 rounded-lg bg-red-50 border border-red-200">
+            <ul class="list-disc list-inside text-xs text-red-700">
+                @foreach (var e in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@e.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+
+    <!-- Application details card -->
+    <div class="rounded-xl border border-slate-200 divide-y divide-slate-100 mb-6">
+        <div class="grid grid-cols-2 gap-0">
+            <div class="p-4">
+                <div class="text-xs text-slate-400 mb-0.5">Student</div>
+                <div class="text-sm font-medium text-slate-800">@Model.Student?.FirstName @Model.Student?.LastName</div>
+                <div class="text-xs text-slate-400">@Model.Student?.Email</div>
+            </div>
+            <div class="p-4 border-l border-slate-100">
+                <div class="text-xs text-slate-400 mb-0.5">Course</div>
+                <div class="text-sm font-medium text-slate-800">@Model.Course?.Title</div>
+                <div class="text-xs text-slate-400">@Model.Course?.Department?.Name</div>
+            </div>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.Course?.PrerequisiteCourses))
+        {
+            <div class="p-4">
+                <div class="text-xs text-slate-400 mb-0.5">Course Prerequisites</div>
+                <div class="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg p-2 mt-1">@Model.Course.PrerequisiteCourses</div>
+            </div>
+        }
+        <div class="p-4">
+            <div class="text-xs text-slate-400 mb-0.5">Document Type</div>
+            <div class="text-sm text-slate-700">@Model.DocumentType</div>
+        </div>
+        @if (Model.DocumentData != null)
+        {
+            <div class="p-4">
+                <div class="text-xs text-slate-400 mb-1">Uploaded Document</div>
+                <a asp-action="DownloadDocument" asp-route-id="@Model.Id"
+                   class="inline-flex items-center gap-2 text-xs text-blue-700 bg-blue-50 px-3 py-1.5 rounded-lg hover:bg-blue-100 transition-colors">
+                    <i class="fa-solid fa-file-arrow-down"></i> Download &ldquo;@Model.DocumentFileName&rdquo;
+                </a>
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.StudentNote))
+        {
+            <div class="p-4">
+                <div class="text-xs text-slate-400 mb-0.5">Student Note</div>
+                <div class="text-sm text-slate-600">@Model.StudentNote</div>
+            </div>
+        }
+        <div class="p-4 flex items-center gap-3">
+            <div>
+                <div class="text-xs text-slate-400 mb-0.5">Current Status</div>
+                @{
+                    var (bg, fg) = Model.Status switch
+                    {
+                        "approved" => ("bg-emerald-50", "text-emerald-700"),
+                        "rejected" => ("bg-red-50", "text-red-700"),
+                        _          => ("bg-amber-50", "text-amber-700")
+                    };
+                }
+                <span class="inline-flex items-center gap-1 text-xs px-2.5 py-1 rounded-full font-medium @bg @fg">
+                    @System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Model.Status)
+                </span>
+            </div>
+            @if (Model.ReviewedAt.HasValue)
+            {
+                <div>
+                    <div class="text-xs text-slate-400 mb-0.5">Reviewed</div>
+                    <div class="text-xs text-slate-600">@Model.ReviewedAt.Value.ToString("dd MMM yyyy HH:mm")</div>
+                </div>
+            }
+        </div>
+        @if (!string.IsNullOrEmpty(Model.AdminNote))
+        {
+            <div class="p-4">
+                <div class="text-xs text-slate-400 mb-0.5">Admin Note</div>
+                <div class="text-sm text-slate-600">@Model.AdminNote</div>
+            </div>
+        }
+    </div>
+
+    @if (canDecide)
+    {
+        <form method="post" asp-action="Review" asp-route-id="@Model.Id">
+            @Html.AntiForgeryToken()
+
+            <!-- Batch selection (needed for approve) -->
+            <div class="mb-4">
+                <label class="block text-xs font-medium text-slate-600 mb-1">
+                    Assign to Batch <span class="text-slate-400 text-xs">(required when approving)</span>
+                </label>
+                <select name="batchId" class="form-input text-sm">
+                    <option value="">-- Select a batch --</option>
+                    @foreach (var batch in ViewBag.Batches as IEnumerable<UniManage.Models.BatchModel> ?? [])
+                    {
+                        <option value="@batch.Id">@batch.Name</option>
+                    }
+                </select>
+            </div>
+
+            <!-- Admin note -->
+            <div class="mb-5">
+                <label class="block text-xs font-medium text-slate-600 mb-1">Admin Note <span class="text-slate-400">(optional)</span></label>
+                <textarea name="adminNote" rows="3" class="form-input resize-none text-sm"
+                          placeholder="Reason for approval or rejection..."></textarea>
+            </div>
+
+            <div class="flex items-center justify-between pt-4 border-t border-slate-100">
+                <a asp-action="Index" class="text-sm text-slate-500 hover:text-slate-700 flex items-center gap-1">
+                    <i class="fa-solid fa-arrow-left text-xs"></i> Back
+                </a>
+                <div class="flex gap-2">
+                    <button type="submit" name="decision" value="reject"
+                            class="inline-flex items-center gap-2 bg-red-600 text-white text-sm px-5 py-2 rounded-lg hover:bg-red-700 transition-colors">
+                        <i class="fa-solid fa-circle-xmark"></i> Reject
+                    </button>
+                    <button type="submit" name="decision" value="approve"
+                            class="inline-flex items-center gap-2 bg-emerald-600 text-white text-sm px-5 py-2 rounded-lg hover:bg-emerald-700 transition-colors">
+                        <i class="fa-solid fa-circle-check"></i> Approve &amp; Enroll
+                    </button>
+                </div>
+            </div>
+        </form>
+    }
+    else
+    {
+        <div class="flex justify-start">
+            <a asp-action="Index" class="text-sm text-slate-500 hover:text-slate-700 flex items-center gap-1">
+                <i class="fa-solid fa-arrow-left text-xs"></i> Back to Applications
+            </a>
+        </div>
+    }
+</div>
