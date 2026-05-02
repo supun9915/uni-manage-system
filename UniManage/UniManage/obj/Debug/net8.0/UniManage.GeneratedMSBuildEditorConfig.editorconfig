@@ -28,6 +28,14 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/UniManage/Views/Dashboard/Lecturer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VW5pTWFuYWdlXFZpZXdzXERhc2hib2FyZFxMZWN0dXJlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/UniManage/Views/Dashboard/Student.cshtml]
+build_metadata.AdditionalFiles.TargetPath = VW5pTWFuYWdlXFZpZXdzXERhc2hib2FyZFxTdHVkZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Top Up/AD/Coursework 2/System/uni-manage-system/UniManage/UniManage/Views/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

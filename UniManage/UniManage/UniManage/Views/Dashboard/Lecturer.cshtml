@@ -1,9 +1,9 @@
 @{
     ViewData["Title"] = "Lecturer Dashboard";
-    var courses           = ViewBag.Courses           as List<UniManage.Models.CourseModel>               ?? new();
-    var recentSubmissions = ViewBag.RecentSubmissions as List<UniManage.Models.AssignmentSubmissionModel> ?? new();
-    var assignments       = ViewBag.Assignments       as List<UniManage.Models.AssignmentModel>           ?? new();
-    int pendingGrading    = ViewBag.PendingGrading    ?? 0;
+    var courses            = ViewBag.Courses            as List<UniManage.Models.CourseModel>                    ?? new();
+    var recentSubmissions  = ViewBag.RecentSubmissions  as List<UniManage.Models.AssignmentSubmissionModel>      ?? new();
+    var assignments        = ViewBag.Assignments        as List<UniManage.Models.AssignmentModel>                ?? new();
+    int pendingGrading     = ViewBag.PendingGrading     ?? 0;
 
     var gradedCount    = recentSubmissions.Count(s => s.Status == "graded");
     var submittedCount = recentSubmissions.Count(s => s.Status == "submitted" || s.Status == "late");
