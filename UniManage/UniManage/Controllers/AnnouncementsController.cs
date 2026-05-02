@@ -25,7 +25,8 @@ namespace UniManage.Controllers
                     && (a.TargetRole == "all" || a.TargetRole == "student" || a.TargetRole == null));
             }
             else if (IsLecturer)
-                query = query.Where(a => a.Course != null && a.Course.CreatedBy == CurrentUserId);
+                query = query.Where(a => a.Course != null
+                    && a.Course.Modules.Any(m => m.LecturerId == CurrentUserId));
 
             if (courseId.HasValue) query = query.Where(a => a.CourseId == courseId.Value);
 
@@ -37,7 +38,8 @@ namespace UniManage.Controllers
             if (!IsAdmin && !IsLecturer) return Forbid();
             var courses = IsAdmin
                 ? await _context.Courses.ToListAsync()
-                : await _context.Courses.Where(c => c.CreatedBy == CurrentUserId).ToListAsync();
+                : await _context.Courses.Include(c => c.Modules)
+                    .Where(c => c.Modules.Any(m => m.LecturerId == CurrentUserId)).ToListAsync();
             ViewBag.Courses = new SelectList(courses, "Id", "Title");
             ViewBag.TargetRoles = new SelectList(new[] { "all", "student", "lecturer" });
             return View();
@@ -58,7 +60,8 @@ namespace UniManage.Controllers
             }
             var courses = IsAdmin
                 ? await _context.Courses.ToListAsync()
-                : await _context.Courses.Where(c => c.CreatedBy == CurrentUserId).ToListAsync();
+                : await _context.Courses.Include(c => c.Modules)
+                    .Where(c => c.Modules.Any(m => m.LecturerId == CurrentUserId)).ToListAsync();
             ViewBag.Courses = new SelectList(courses, "Id", "Title");
             ViewBag.TargetRoles = new SelectList(new[] { "all", "student", "lecturer" });
             return View(ann);
@@ -71,7 +74,8 @@ namespace UniManage.Controllers
             if (ann == null) return NotFound();
             var courses = IsAdmin
                 ? await _context.Courses.ToListAsync()
-                : await _context.Courses.Where(c => c.CreatedBy == CurrentUserId).ToListAsync();
+                : await _context.Courses.Include(c => c.Modules)
+                    .Where(c => c.Modules.Any(m => m.LecturerId == CurrentUserId)).ToListAsync();
             ViewBag.Courses = new SelectList(courses, "Id", "Title", ann.CourseId);
             ViewBag.TargetRoles = new SelectList(new[] { "all", "student", "lecturer" }, ann.TargetRole);
             return View(ann);
@@ -91,7 +95,8 @@ namespace UniManage.Controllers
             }
             var courses = IsAdmin
                 ? await _context.Courses.ToListAsync()
-                : await _context.Courses.Where(c => c.CreatedBy == CurrentUserId).ToListAsync();
+                : await _context.Courses.Include(c => c.Modules)
+                    .Where(c => c.Modules.Any(m => m.LecturerId == CurrentUserId)).ToListAsync();
             ViewBag.Courses = new SelectList(courses, "Id", "Title", ann.CourseId);
             ViewBag.TargetRoles = new SelectList(new[] { "all", "student", "lecturer" }, ann.TargetRole);
             return View(ann);

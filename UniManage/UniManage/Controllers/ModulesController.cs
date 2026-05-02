@@ -26,7 +26,7 @@ namespace UniManage.Controllers
                 query = query.Where(m => enrolled.Contains(m.CourseId) && m.IsPublished);
             }
             else if (IsLecturer)
-                query = query.Where(m => m.Course != null && m.Course.CreatedBy == CurrentUserId);
+                query = query.Where(m => m.LecturerId == CurrentUserId);
 
             if (courseId.HasValue) query = query.Where(m => m.CourseId == courseId.Value);
 
@@ -46,10 +46,11 @@ namespace UniManage.Controllers
 
         public async Task<IActionResult> Create()
         {
-            if (!IsAdmin && !IsLecturer) return Forbid();
+            if (!IsAdmin) return Forbid();
             var courses = IsAdmin
                 ? await _context.Courses.ToListAsync()
-                : await _context.Courses.Where(c => c.CreatedBy == CurrentUserId).ToListAsync();
+                : await _context.Courses.Include(c => c.Modules)
+                    .Where(c => c.Modules.Any(m => m.LecturerId == CurrentUserId)).ToListAsync();
             ViewBag.Courses = new SelectList(courses, "Id", "Title");
             return View();
         }
@@ -57,7 +58,7 @@ namespace UniManage.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ModuleModel module)
         {
-            if (!IsAdmin && !IsLecturer) return Forbid();
+            if (!IsAdmin) return Forbid();
             if (ModelState.IsValid)
             {
                 _context.Modules.Add(module);
@@ -67,7 +68,8 @@ namespace UniManage.Controllers
             }
             var courses = IsAdmin
                 ? await _context.Courses.ToListAsync()
-                : await _context.Courses.Where(c => c.CreatedBy == CurrentUserId).ToListAsync();
+                : await _context.Courses.Include(c => c.Modules)
+                    .Where(c => c.Modules.Any(m => m.LecturerId == CurrentUserId)).ToListAsync();
             ViewBag.Courses = new SelectList(courses, "Id", "Title");
             return View(module);
         }
@@ -79,7 +81,8 @@ namespace UniManage.Controllers
             if (module == null) return NotFound();
             var courses = IsAdmin
                 ? await _context.Courses.ToListAsync()
-                : await _context.Courses.Where(c => c.CreatedBy == CurrentUserId).ToListAsync();
+                : await _context.Courses.Include(c => c.Modules)
+                    .Where(c => c.Modules.Any(m => m.LecturerId == CurrentUserId)).ToListAsync();
             ViewBag.Courses = new SelectList(courses, "Id", "Title", module.CourseId);
             return View(module);
         }
@@ -98,7 +101,8 @@ namespace UniManage.Controllers
             }
             var courses = IsAdmin
                 ? await _context.Courses.ToListAsync()
-                : await _context.Courses.Where(c => c.CreatedBy == CurrentUserId).ToListAsync();
+                : await _context.Courses.Include(c => c.Modules)
+                    .Where(c => c.Modules.Any(m => m.LecturerId == CurrentUserId)).ToListAsync();
             ViewBag.Courses = new SelectList(courses, "Id", "Title", module.CourseId);
             return View(module);
         }

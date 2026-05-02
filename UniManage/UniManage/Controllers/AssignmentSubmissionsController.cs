@@ -15,21 +15,56 @@ namespace UniManage.Controllers
             _context = context;
         }
 
-        // Lecturer/Admin: view all submissions for an assignment
-        public async Task<IActionResult> Index(int assignmentId)
+        // Lecturer/Admin: view all submissions (optionally filtered by assignment)
+        public async Task<IActionResult> Index(int? assignmentId)
         {
             if (!IsAdmin && !IsLecturer) return Forbid();
-            var assignment = await _context.Assignments
-                .Include(a => a.Module).ThenInclude(m => m!.Course)
-                .FirstOrDefaultAsync(a => a.Id == assignmentId);
-            if (assignment == null) return NotFound();
-            var submissions = await _context.AssignmentSubmissions
+
+            // If a specific assignment is requested, show only that assignment's submissions
+            if (assignmentId.HasValue && assignmentId.Value > 0)
+            {
+                var assignment = await _context.Assignments
+                    .Include(a => a.Module).ThenInclude(m => m!.Course)
+                    .FirstOrDefaultAsync(a => a.Id == assignmentId.Value);
+                if (assignment == null) return NotFound();
+
+                var submissions = await _context.AssignmentSubmissions
+                    .Include(s => s.Student)
+                    .Where(s => s.AssignmentId == assignmentId.Value)
+                    .OrderByDescending(s => s.SubmittedAt)
+                    .ToListAsync();
+
+                ViewBag.Assignment = assignment;
+                ViewBag.Assignments = await GetAccessibleAssignmentsAsync();
+                return View(submissions);
+            }
+
+            // No specific assignment — show all submissions across accessible modules
+            var allSubmissions = await _context.AssignmentSubmissions
                 .Include(s => s.Student)
-                .Where(s => s.AssignmentId == assignmentId)
+                .Include(s => s.Assignment).ThenInclude(a => a!.Module).ThenInclude(m => m!.Course)
+                .Where(s => IsAdmin
+                    ? true
+                    : s.Assignment != null && s.Assignment.Module != null
+                      && s.Assignment.Module.LecturerId == CurrentUserId)
                 .OrderByDescending(s => s.SubmittedAt)
                 .ToListAsync();
-            ViewBag.Assignment = assignment;
-            return View(submissions);
+
+            ViewBag.Assignment = null;
+            ViewBag.Assignments = await GetAccessibleAssignmentsAsync();
+            return View(allSubmissions);
+        }
+
+        private async Task<List<AssignmentModel>> GetAccessibleAssignmentsAsync()
+        {
+            var query = _context.Assignments
+                .Include(a => a.Module).ThenInclude(m => m!.Course)
+                .AsQueryable();
+
+            if (IsLecturer)
+                query = query.Where(a => a.Module != null && a.Module.LecturerId == CurrentUserId);
+
+            return await query.OrderBy(a => a.Title).ToListAsync();
         }
 
         // Student: submit form

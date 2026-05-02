@@ -52,18 +52,29 @@ namespace UniManage.Controllers
             }
             else if (role == "lecturer")
             {
-                var courses = await _context.Courses
-                    .Include(c => c.Department)
-                    .Where(c => c.CreatedBy == uid)
+                // Modules directly assigned to this lecturer
+                var assignedModuleIds = await _context.Modules
+                    .Where(m => m.LecturerId == uid)
+                    .Select(m => m.Id)
                     .ToListAsync();
 
-                var courseIds = courses.Select(c => c.Id).ToList();
+                // Course IDs: only from assigned modules
+                var assignedCourseIds = await _context.Modules
+                    .Where(m => m.LecturerId == uid)
+                    .Select(m => m.CourseId)
+                    .Distinct()
+                    .ToListAsync();
+
+                var courses = await _context.Courses
+                    .Include(c => c.Department)
+                    .Where(c => assignedCourseIds.Contains(c.Id))
+                    .ToListAsync();
 
                 var recentSubmissions = await _context.AssignmentSubmissions
                     .Include(s => s.Assignment).ThenInclude(a => a!.Module)
                     .Include(s => s.Student)
                     .Where(s => s.Assignment != null && s.Assignment.Module != null
-                                && courseIds.Contains(s.Assignment.Module.CourseId))
+                                && s.Assignment.Module.LecturerId == uid)
                     .OrderByDescending(s => s.SubmittedAt)
                     .Take(10)
                     .ToListAsync();
@@ -72,7 +83,7 @@ namespace UniManage.Controllers
 
                 var assignments = await _context.Assignments
                     .Include(a => a.Module)
-                    .Where(a => a.Module != null && courseIds.Contains(a.Module.CourseId))
+                    .Where(a => a.Module != null && a.Module.LecturerId == uid)
                     .OrderByDescending(a => a.CreatedAt)
                     .Take(5)
                     .ToListAsync();

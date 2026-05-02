@@ -13,7 +13,9 @@ namespace UniManage.Controllers
 
         public async Task<IActionResult> Index(int? moduleId)
         {
-            var query = _context.Exams.Include(e => e.Module).ThenInclude(m => m!.Course).AsQueryable();
+            var query = _context.Exams
+                .Include(e => e.Module).ThenInclude(m => m!.Course)
+                .AsQueryable();
 
             if (IsStudent)
             {
@@ -23,10 +25,10 @@ namespace UniManage.Controllers
                 query = query.Where(e => e.Module != null && enrolled.Contains(e.Module.CourseId));
             }
             else if (IsLecturer)
-                query = query.Where(e => e.Module != null && e.Module.Course != null
-                                         && e.Module.Course.CreatedBy == CurrentUserId);
+                query = query.Where(e => e.Module != null && e.Module.LecturerId == CurrentUserId);
 
             if (moduleId.HasValue) query = query.Where(e => e.ModuleId == moduleId.Value);
+
             return View(await query.OrderByDescending(e => e.ExamDate).ToListAsync());
         }
 
@@ -36,8 +38,10 @@ namespace UniManage.Controllers
             var modules = IsAdmin
                 ? await _context.Modules.Include(m => m.Course).ToListAsync()
                 : await _context.Modules.Include(m => m.Course)
-                    .Where(m => m.Course != null && m.Course.CreatedBy == CurrentUserId).ToListAsync();
-            ViewBag.Modules = new SelectList(modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} – {m.Title}" }), "Id", "Name", moduleId);
+                    .Where(m => m.LecturerId == CurrentUserId).ToListAsync();
+            ViewBag.Modules = new SelectList(
+                modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} \u2013 {m.Title}" }),
+                "Id", "Name", moduleId);
             return View(new ExamModel { ModuleId = moduleId ?? 0 });
         }
 
@@ -57,8 +61,10 @@ namespace UniManage.Controllers
             var modules = IsAdmin
                 ? await _context.Modules.Include(m => m.Course).ToListAsync()
                 : await _context.Modules.Include(m => m.Course)
-                    .Where(m => m.Course != null && m.Course.CreatedBy == CurrentUserId).ToListAsync();
-            ViewBag.Modules = new SelectList(modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} – {m.Title}" }), "Id", "Name", exam.ModuleId);
+                    .Where(m => m.LecturerId == CurrentUserId).ToListAsync();
+            ViewBag.Modules = new SelectList(
+                modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} \u2013 {m.Title}" }),
+                "Id", "Name", exam.ModuleId);
             return View(exam);
         }
 
@@ -70,8 +76,10 @@ namespace UniManage.Controllers
             var modules = IsAdmin
                 ? await _context.Modules.Include(m => m.Course).ToListAsync()
                 : await _context.Modules.Include(m => m.Course)
-                    .Where(m => m.Course != null && m.Course.CreatedBy == CurrentUserId).ToListAsync();
-            ViewBag.Modules = new SelectList(modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} – {m.Title}" }), "Id", "Name", exam.ModuleId);
+                    .Where(m => m.LecturerId == CurrentUserId).ToListAsync();
+            ViewBag.Modules = new SelectList(
+                modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} \u2013 {m.Title}" }),
+                "Id", "Name", exam.ModuleId);
             return View(exam);
         }
 
@@ -90,15 +98,19 @@ namespace UniManage.Controllers
             var modules = IsAdmin
                 ? await _context.Modules.Include(m => m.Course).ToListAsync()
                 : await _context.Modules.Include(m => m.Course)
-                    .Where(m => m.Course != null && m.Course.CreatedBy == CurrentUserId).ToListAsync();
-            ViewBag.Modules = new SelectList(modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} – {m.Title}" }), "Id", "Name", exam.ModuleId);
+                    .Where(m => m.LecturerId == CurrentUserId).ToListAsync();
+            ViewBag.Modules = new SelectList(
+                modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} \u2013 {m.Title}" }),
+                "Id", "Name", exam.ModuleId);
             return View(exam);
         }
 
         public async Task<IActionResult> Delete(int id)
         {
             if (!IsAdmin && !IsLecturer) return Forbid();
-            var exam = await _context.Exams.Include(e => e.Module).FirstOrDefaultAsync(e => e.Id == id);
+            var exam = await _context.Exams
+                .Include(e => e.Module)
+                .FirstOrDefaultAsync(e => e.Id == id);
             if (exam == null) return NotFound();
             return View(exam);
         }
@@ -108,7 +120,11 @@ namespace UniManage.Controllers
         {
             if (!IsAdmin && !IsLecturer) return Forbid();
             var exam = await _context.Exams.FindAsync(id);
-            if (exam != null) { _context.Exams.Remove(exam); await _context.SaveChangesAsync(); }
+            if (exam != null)
+            {
+                _context.Exams.Remove(exam);
+                await _context.SaveChangesAsync();
+            }
             TempData["Success"] = "Exam deleted.";
             return RedirectToAction(nameof(Index));
         }

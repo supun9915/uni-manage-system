@@ -22,8 +22,7 @@ namespace UniManage.Controllers
                 query = query.Where(r => r.StudentId == CurrentUserId);
             else if (IsLecturer)
                 query = query.Where(r => r.Exam != null && r.Exam.Module != null
-                                         && r.Exam.Module.Course != null
-                                         && r.Exam.Module.Course.CreatedBy == CurrentUserId);
+                    && r.Exam.Module.LecturerId == CurrentUserId);
 
             if (examId.HasValue) query = query.Where(r => r.ExamId == examId.Value);
 

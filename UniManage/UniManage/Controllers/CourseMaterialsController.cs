@@ -28,8 +28,7 @@ namespace UniManage.Controllers
                 query = query.Where(cm => cm.Module != null && enrolled.Contains(cm.Module.CourseId));
             }
             else if (IsLecturer)
-                query = query.Where(cm => cm.Module != null && cm.Module.Course != null
-                                          && cm.Module.Course.CreatedBy == CurrentUserId);
+                query = query.Where(cm => cm.Module != null && cm.Module.LecturerId == CurrentUserId);
 
             if (moduleId.HasValue) query = query.Where(cm => cm.ModuleId == moduleId.Value);
 
@@ -44,8 +43,8 @@ namespace UniManage.Controllers
             var modules = IsAdmin
                 ? await _context.Modules.Include(m => m.Course).ToListAsync()
                 : await _context.Modules.Include(m => m.Course)
-                    .Where(m => m.Course != null && m.Course.CreatedBy == CurrentUserId).ToListAsync();
-            ViewBag.Modules = new SelectList(modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} – {m.Title}" }), "Id", "Name", moduleId);
+                    .Where(m => m.LecturerId == CurrentUserId).ToListAsync();
+            ViewBag.Modules = new SelectList(modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} ï¿½ {m.Title}" }), "Id", "Name", moduleId);
             var model = new CourseMaterialModel { ModuleId = moduleId ?? 0 };
             return View(model);
         }
@@ -92,8 +91,8 @@ namespace UniManage.Controllers
             var modules = IsAdmin
                 ? await _context.Modules.Include(m => m.Course).ToListAsync()
                 : await _context.Modules.Include(m => m.Course)
-                    .Where(m => m.Course != null && m.Course.CreatedBy == CurrentUserId).ToListAsync();
-            ViewBag.Modules = new SelectList(modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} – {m.Title}" }), "Id", "Name", material.ModuleId);
+                    .Where(m => m.LecturerId == CurrentUserId).ToListAsync();
+            ViewBag.Modules = new SelectList(modules.Select(m => new { m.Id, Name = $"{m.Course?.Title} ï¿½ {m.Title}" }), "Id", "Name", material.ModuleId);
             return View(material);
         }
 

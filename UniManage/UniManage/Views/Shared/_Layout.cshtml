@@ -190,7 +190,7 @@
                 @if (role == "lecturer")
                 {
                     <div class="pt-4 pb-1 px-3" style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);">Management</div>
-                    <a asp-controller="AssignmentSubmissions" asp-action="Index" asp-route-assignmentId="0" class="sidebar-link @(ctrl=="AssignmentSubmissions"&&action!="MyGrades"?"active":"")">
+                    <a asp-controller="AssignmentSubmissions" asp-action="Index" class="sidebar-link @(ctrl=="AssignmentSubmissions"&&action!="MyGrades"?"active":"")">
                         <i class="fa-solid fa-inbox fa-fw"></i> Submissions
                     </a>
                     <a asp-controller="ExamResults" asp-action="Index" class="sidebar-link @(ctrl=="ExamResults"?"active":"")">

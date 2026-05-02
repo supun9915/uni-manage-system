@@ -16,7 +16,7 @@ namespace UniManage.Controllers
             var query = _context.Courses.Include(c => c.Department).AsQueryable();
 
             if (IsLecturer)
-                query = query.Where(c => c.CreatedBy == CurrentUserId);
+                query = query.Where(c => c.Modules.Any(m => m.LecturerId == CurrentUserId));
             else if (IsStudent)
             {
                 var enrolled = await _context.Enrollments

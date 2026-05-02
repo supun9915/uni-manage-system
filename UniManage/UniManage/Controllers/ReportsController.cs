@@ -34,7 +34,7 @@ namespace UniManage.Controllers
                 .AsQueryable();
 
             if (IsLecturer)
-                query = query.Where(c => c.CreatedBy == CurrentUserId);
+                query = query.Where(c => c.Modules.Any(m => m.LecturerId == CurrentUserId));
 
             var courses = await query
                 .OrderByDescending(c => c.Enrollments.Count)
@@ -54,7 +54,7 @@ namespace UniManage.Controllers
                 .AsQueryable();
 
             if (IsLecturer)
-                courseQuery = courseQuery.Where(c => c.CreatedBy == CurrentUserId);
+                courseQuery = courseQuery.Where(c => c.Modules.Any(m => m.LecturerId == CurrentUserId));
 
             var courses = await courseQuery.OrderBy(c => c.Title).ToListAsync();
 
@@ -66,8 +66,7 @@ namespace UniManage.Controllers
             if (IsLecturer)
                 resultsQuery = resultsQuery.Where(r =>
                     r.Exam != null && r.Exam.Module != null &&
-                    r.Exam.Module.Course != null &&
-                    r.Exam.Module.Course.CreatedBy == CurrentUserId);
+                    r.Exam.Module.LecturerId == CurrentUserId);
 
             if (courseId.HasValue)
                 resultsQuery = resultsQuery.Where(r =>
@@ -85,8 +84,7 @@ namespace UniManage.Controllers
             if (IsLecturer)
                 submissionsQuery = submissionsQuery.Where(s =>
                     s.Assignment != null && s.Assignment.Module != null &&
-                    s.Assignment.Module.Course != null &&
-                    s.Assignment.Module.Course.CreatedBy == CurrentUserId);
+                    s.Assignment.Module.LecturerId == CurrentUserId);
 
             if (courseId.HasValue)
                 submissionsQuery = submissionsQuery.Where(s =>
