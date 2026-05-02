@@ -1,0 +1,170 @@
+@{
+    ViewData["Title"] = "Verify OTP";
+    Layout = null;
+    var maskedEmail = ViewBag.Email as string ?? "";
+    var parts = maskedEmail.Split('@');
+    var masked = parts.Length == 2
+        ? (parts[0].Length > 2 ? parts[0][..2] + new string('*', parts[0].Length - 2) : parts[0]) + "@" + parts[1]
+        : maskedEmail;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verify OTP – UniManage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'] } } } }</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        .otp-input { width:3rem; height:3.5rem; border:1.5px solid #cbd5e1; border-radius:0.6rem; font-size:1.5rem; font-weight:700; text-align:center; color:#1e293b; outline:none; transition:border-color 150ms,box-shadow 150ms; background:#fff; }
+        .otp-input:focus { border-color:#1d4ed8; box-shadow:0 0 0 3px rgba(29,78,216,0.12); }
+        .otp-input.err { border-color:#ef4444; box-shadow:0 0 0 3px rgba(239,68,68,0.1); }
+    </style>
+</head>
+<body class="font-sans" style="background:linear-gradient(135deg,#0d1b2a 0%,#0f2042 45%,#1e3a8a 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;">
+    <div style="width:100%;max-width:430px;">
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <!-- Header -->
+            <div style="background:linear-gradient(90deg,#0f172a,#1e3a8a);padding:2rem 2rem 1.75rem;" class="flex flex-col items-center text-center">
+                <div class="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center mb-4 shadow-lg" style="box-shadow:0 8px 24px rgba(29,78,216,0.5);">
+                    <i class="fa-solid fa-shield-halved text-white text-xl"></i>
+                </div>
+                <h1 class="text-xl text-white tracking-tight">Verify OTP</h1>
+                <p class="text-sm mt-1" style="color:rgba(255,255,255,0.55);">Enter the 6-digit code we sent you</p>
+            </div>
+
+            <!-- Body -->
+            <div class="px-8 py-7">
+                <!-- Step indicator -->
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-7 h-7 rounded-full bg-emerald-500 text-white text-xs flex items-center justify-center"><i class="fa-solid fa-check text-xs"></i></span>
+                        <span class="text-xs text-emerald-600 font-medium">Email</span>
+                    </div>
+                    <div class="flex-1 h-px bg-blue-300"></div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-7 h-7 rounded-full bg-blue-700 text-white text-xs font-bold flex items-center justify-center">2</span>
+                        <span class="text-xs font-medium text-blue-700">OTP</span>
+                    </div>
+                    <div class="flex-1 h-px bg-slate-200"></div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="w-7 h-7 rounded-full bg-slate-200 text-slate-400 text-xs font-bold flex items-center justify-center">3</span>
+                        <span class="text-xs text-slate-400">Reset</span>
+                    </div>
+                </div>
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="mb-5 flex items-start gap-2.5 bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-lg">
+                        <i class="fa-solid fa-circle-xmark mt-0.5 flex-shrink-0"></i>
+                        <span>@ViewBag.Error</span>
+                    </div>
+                }
+
+                <p class="text-sm text-slate-500 mb-1">A 6-digit OTP was sent to:</p>
+                <p class="text-sm font-semibold text-slate-800 mb-5 flex items-center gap-2">
+                    <i class="fa-solid fa-envelope text-blue-600 text-xs"></i> @masked
+                </p>
+
+                <!-- Countdown -->
+                <div class="flex items-center justify-between mb-5">
+                    <p class="text-xs text-slate-400">OTP expires in</p>
+                    <span id="countdown" class="text-xs font-mono font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full">10:00</span>
+                </div>
+
+                <form method="post" asp-action="VerifyOtp" id="otpForm" novalidate>
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="email" value="@ViewBag.Email" />
+                    <input type="hidden" id="otpHidden" name="otp" />
+
+                    <!-- 6-box OTP input -->
+                    <div class="flex justify-between gap-2 mb-6" id="otpBoxes">
+                        @for (int i = 0; i < 6; i++)
+                        {
+                            <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]"
+                                   class="otp-input" data-index="@i" autocomplete="off" />
+                        }
+                    </div>
+                    <p id="otpErr" class="text-red-600 text-xs mb-4 hidden flex items-center gap-1">
+                        <i class="fa-solid fa-triangle-exclamation"></i> Please enter the complete 6-digit OTP.
+                    </p>
+
+                    <button type="submit" id="verifyBtn"
+                            class="w-full py-3 text-white rounded-lg transition-all flex items-center justify-center gap-2 text-sm font-medium"
+                            style="background:linear-gradient(90deg,#1d4ed8,#1e40af);box-shadow:0 4px 14px rgba(29,78,216,0.35);">
+                        <i class="fa-solid fa-circle-check"></i> Verify OTP
+                    </button>
+                </form>
+
+                <div class="mt-4 text-center">
+                    <a asp-action="ForgotPassword" class="text-xs text-blue-700 hover:underline inline-flex items-center gap-1">
+                        <i class="fa-solid fa-rotate-left text-xs"></i> Resend OTP
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // OTP box navigation
+        var boxes = document.querySelectorAll('.otp-input');
+        boxes.forEach(function (box, i) {
+            box.addEventListener('input', function () {
+                this.value = this.value.replace(/[^0-9]/g, '');
+                if (this.value && i < 5) boxes[i + 1].focus();
+                syncHidden();
+            });
+            box.addEventListener('keydown', function (e) {
+                if (e.key === 'Backspace' && !this.value && i > 0) boxes[i - 1].focus();
+            });
+            box.addEventListener('paste', function (e) {
+                e.preventDefault();
+                var data = (e.clipboardData || window.clipboardData).getData('text').replace(/[^0-9]/g, '').slice(0, 6);
+                data.split('').forEach(function (ch, idx) { if (boxes[idx]) boxes[idx].value = ch; });
+                if (boxes[Math.min(data.length, 5)]) boxes[Math.min(data.length, 5)].focus();
+                syncHidden();
+            });
+        });
+
+        function syncHidden() {
+            document.getElementById('otpHidden').value = Array.from(boxes).map(b => b.value).join('');
+        }
+
+        document.getElementById('otpForm').addEventListener('submit', function (e) {
+            syncHidden();
+            var val = document.getElementById('otpHidden').value;
+            if (val.length < 6) {
+                boxes.forEach(b => b.classList.add('err'));
+                document.getElementById('otpErr').classList.remove('hidden');
+                e.preventDefault();
+                return;
+            }
+            boxes.forEach(b => b.classList.remove('err'));
+            document.getElementById('otpErr').classList.add('hidden');
+            var btn = document.getElementById('verifyBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Verifying...';
+        });
+
+        // Countdown timer (10 min)
+        var seconds = 600;
+        var el = document.getElementById('countdown');
+        var timer = setInterval(function () {
+            seconds--;
+            if (seconds <= 0) {
+                clearInterval(timer);
+                el.textContent = 'Expired';
+                el.className = 'text-xs font-mono font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-full';
+                return;
+            }
+            var m = Math.floor(seconds / 60), s = seconds % 60;
+            el.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+            if (seconds <= 60) el.className = 'text-xs font-mono font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-full';
+        }, 1000);
+    </script>
+</body>
+</html>

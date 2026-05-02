@@ -25,6 +25,7 @@ builder.Services.AddSession(options =>
 
 // Used to verify passwords hashed via ASP.NET Identity PasswordHasher in seed
 builder.Services.AddScoped<IPasswordHasher<UserModel>, PasswordHasher<UserModel>>();
+builder.Services.AddScoped<UniManage.Services.IEmailService, UniManage.Services.EmailService>();
 
 var app = builder.Build();
 

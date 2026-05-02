@@ -49,6 +49,13 @@
             <div class="px-8 py-7">
                 <p class="text-base text-slate-800 mb-6 text-center">Sign in to your account</p>
 
+                @if (TempData["Success"] != null)
+                {
+                    <div class="mb-5 flex items-start gap-2.5 bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm px-4 py-3 rounded-lg">
+                        <i class="fa-solid fa-circle-check mt-0.5 flex-shrink-0"></i>
+                        <span>@TempData["Success"]</span>
+                    </div>
+                }
                 @if (TempData["Error"] != null)
                 {
                     <div class="mb-5 flex items-start gap-2.5 bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-lg">
@@ -76,7 +83,10 @@
                         <p id="emailErr" class="fe" style="display:none;"><i class="fa-solid fa-triangle-exclamation"></i> <span></span></p>
                     </div>
                     <div class="mb-7">
-                        <label for="password" class="lbl"><i class="fa-solid fa-lock mr-1"></i>Password</label>
+                        <div class="flex items-center justify-between mb-[0.4rem]">
+                            <label for="password" class="lbl mb-0"><i class="fa-solid fa-lock mr-1"></i>Password</label>
+                            <a asp-action="ForgotPassword" class="text-xs text-blue-600 hover:text-blue-800 hover:underline">Forgot password?</a>
+                        </div>
                         <div class="relative">
                             <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"><i class="fa-solid fa-lock"></i></span>
                             <input type="password" id="password" name="password" required placeholder="••••••••"
