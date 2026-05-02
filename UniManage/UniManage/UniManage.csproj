@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="UniManage\Views\Messages\" />
     <Folder Include="UniManage\Views\Reports\" />
   </ItemGroup>
 

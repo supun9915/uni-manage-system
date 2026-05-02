@@ -34,5 +34,6 @@ namespace UniManage.Data
         public DbSet<Models.BatchModel> BatchModels { get; set; }
         public DbSet<Models.EnrollmentApplicationModel> EnrollmentApplications { get; set; }
         public DbSet<Models.PasswordResetOtpModel> PasswordResetOtps { get; set; }
+        public DbSet<Models.MessageModel> Messages { get; set; }
     }
 }

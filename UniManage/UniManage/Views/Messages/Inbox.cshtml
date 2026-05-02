@@ -1,0 +1,89 @@
+@using UniManage.Models
+@model List<UniManage.Models.MessageModel>
+@{
+    ViewData["Title"] = "Inbox";
+    var unread = ViewBag.UnreadCount as int? ?? 0;
+    var currentUserId = (int?)ViewBag.CurrentUserId;
+}
+
+<div class="space-y-4">
+    <!-- Header -->
+    <div class="page-card">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <h2 class="text-sm font-semibold text-slate-700 flex items-center gap-2">
+                    <i class="fa-solid fa-inbox text-blue-700"></i> Inbox
+                    @if (unread > 0)
+                    {
+                        <span class="text-xs bg-blue-700 text-white px-2 py-0.5 rounded-full font-bold">@unread unread</span>
+                    }
+                </h2>
+            </div>
+            <div class="flex items-center gap-2">
+                <a asp-action="Sent"
+                   class="inline-flex items-center gap-1.5 text-xs text-slate-600 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg transition-colors">
+                    <i class="fa-solid fa-paper-plane text-xs"></i> Sent
+                </a>
+                <a asp-action="Compose"
+                   class="inline-flex items-center gap-1.5 text-xs text-white bg-blue-700 hover:bg-blue-800 px-3 py-1.5 rounded-lg transition-colors shadow-sm">
+                    <i class="fa-solid fa-pen text-xs"></i> Compose
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message list -->
+    <div class="page-card p-0 overflow-hidden">
+        @if (!Model.Any())
+        {
+            <div class="flex flex-col items-center py-16 text-slate-300">
+                <i class="fa-solid fa-envelope-open text-5xl mb-3"></i>
+                <p class="text-sm font-medium text-slate-400">Your inbox is empty</p>
+                <p class="text-xs text-slate-300 mt-1">Messages from your lecturers or students will appear here.</p>
+                <a asp-action="Compose" class="mt-4 inline-flex items-center gap-1.5 text-xs text-white bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded-lg">
+                    <i class="fa-solid fa-pen"></i> Send a message
+                </a>
+            </div>
+        }
+        else
+        {
+            <ul class="divide-y divide-slate-100">
+                @foreach (var m in Model)
+                {
+                    var isSentByMe = m.SenderId == currentUserId;
+                    var otherParty = isSentByMe ? m.Receiver : m.Sender;
+                    var isUnread = !isSentByMe && !m.IsReadByReceiver;
+                    <li class="@(isUnread ? "bg-blue-50/60" : "bg-white") hover:bg-blue-50 transition-colors">
+                        <a asp-action="Read" asp-route-id="@m.Id" class="flex items-start gap-4 px-5 py-4">
+                            <!-- Avatar -->
+                            <div class="w-9 h-9 rounded-full @(isSentByMe ? "bg-slate-500" : "bg-blue-700") flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5">
+                                @(otherParty?.FirstName?.Substring(0, 1).ToUpper())
+                            </div>
+                            <!-- Content -->
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between gap-2">
+                                    <p class="text-sm @(isUnread ? "font-bold text-slate-900" : "font-medium text-slate-700") truncate">
+                                        @if (isSentByMe)
+                                        {
+                                            <span class="text-xs font-normal text-slate-400 mr-1">To:</span>
+                                        }
+                                        @otherParty?.FirstName @otherParty?.LastName
+                                        <span class="text-xs font-normal text-slate-400 ml-1">(@otherParty?.Role?.Name)</span>
+                                    </p>
+                                    <span class="text-xs text-slate-400 flex-shrink-0">@m.SentAt.ToString("dd MMM, HH:mm")</span>
+                                </div>
+                                <p class="text-sm @(isUnread ? "font-semibold text-slate-800" : "text-slate-600") truncate mt-0.5">@m.Subject</p>
+                                <p class="text-xs text-slate-400 truncate mt-0.5">@m.Body</p>
+                            </div>
+                            <!-- Unread dot -->
+                            @if (isUnread)
+                            {
+                                <div class="w-2.5 h-2.5 rounded-full bg-blue-600 flex-shrink-0 mt-2"></div>
+                            }
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>

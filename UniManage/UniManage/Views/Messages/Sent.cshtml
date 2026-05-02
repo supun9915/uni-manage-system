@@ -1,0 +1,79 @@
+@model List<UniManage.Models.MessageModel>
+@{
+    ViewData["Title"] = "Sent Messages";
+}
+
+<div class="space-y-4">
+    <!-- Header -->
+    <div class="page-card">
+        <div class="flex items-center justify-between">
+            <h2 class="text-sm font-semibold text-slate-700 flex items-center gap-2">
+                <i class="fa-solid fa-paper-plane text-blue-700"></i> Sent Messages
+            </h2>
+            <div class="flex items-center gap-2">
+                <a asp-action="Inbox"
+                   class="inline-flex items-center gap-1.5 text-xs text-slate-600 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg transition-colors">
+                    <i class="fa-solid fa-inbox text-xs"></i> Inbox
+                </a>
+                <a asp-action="Compose"
+                   class="inline-flex items-center gap-1.5 text-xs text-white bg-blue-700 hover:bg-blue-800 px-3 py-1.5 rounded-lg transition-colors shadow-sm">
+                    <i class="fa-solid fa-pen text-xs"></i> Compose
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message list -->
+    <div class="page-card p-0 overflow-hidden">
+        @if (!Model.Any())
+        {
+            <div class="flex flex-col items-center py-16 text-slate-300">
+                <i class="fa-solid fa-paper-plane text-5xl mb-3"></i>
+                <p class="text-sm font-medium text-slate-400">No sent messages</p>
+                <a asp-action="Compose" class="mt-4 inline-flex items-center gap-1.5 text-xs text-white bg-blue-700 hover:bg-blue-800 px-4 py-2 rounded-lg">
+                    <i class="fa-solid fa-pen"></i> Compose a message
+                </a>
+            </div>
+        }
+        else
+        {
+            <ul class="divide-y divide-slate-100">
+                @foreach (var m in Model)
+                {
+                    <li class="bg-white hover:bg-slate-50 transition-colors">
+                        <a asp-action="Read" asp-route-id="@m.Id" class="flex items-start gap-4 px-5 py-4">
+                            <div class="w-9 h-9 rounded-full bg-slate-400 flex items-center justify-center text-white text-sm font-bold flex-shrink-0 mt-0.5">
+                                @(m.Receiver?.FirstName?.Substring(0, 1).ToUpper())
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between gap-2">
+                                    <p class="text-sm font-medium text-slate-700 truncate">
+                                        To: @m.Receiver?.FirstName @m.Receiver?.LastName
+                                        <span class="text-xs font-normal text-slate-400 ml-1">(@m.Receiver?.Role?.Name)</span>
+                                    </p>
+                                    <span class="text-xs text-slate-400 flex-shrink-0">@m.SentAt.ToString("dd MMM, HH:mm")</span>
+                                </div>
+                                <p class="text-sm text-slate-600 truncate mt-0.5">@m.Subject</p>
+                                <p class="text-xs text-slate-400 truncate mt-0.5">@m.Body</p>
+                            </div>
+                            <div class="flex-shrink-0 mt-1">
+                                @if (m.IsReadByReceiver)
+                                {
+                                    <span class="inline-flex items-center gap-1 text-xs text-emerald-600">
+                                        <i class="fa-solid fa-check-double text-xs"></i> Read
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="inline-flex items-center gap-1 text-xs text-slate-400">
+                                        <i class="fa-solid fa-check text-xs"></i> Sent
+                                    </span>
+                                }
+                            </div>
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>
