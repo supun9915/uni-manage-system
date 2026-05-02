@@ -33,10 +33,25 @@
                 <input asp-for="Email" type="email" class="form-input" />
             </div>
             <div class="mb-4">
-                <label for="newPassword" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5">
+                <label for="editPassword" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5">
                     <i class="fa-solid fa-lock mr-1"></i>New Password <span class="normal-case font-normal text-slate-400">(leave blank to keep current)</span>
                 </label>
-                <input type="password" name="newPassword" class="form-input" placeholder="Leave blank to keep current" minlength="6" />
+                <div class="relative">
+                    <input type="password" id="editPassword" name="newPassword" class="form-input" placeholder="Leave blank to keep current" autocomplete="new-password" />
+                    <button type="button" onclick="togglePwd('editPassword','editEye')" tabindex="-1"
+                            class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                        <i id="editEye" class="fa-solid fa-eye text-sm"></i>
+                    </button>
+                </div>
+                <span id="editPwdErr" class="text-red-600 text-xs mt-1 hidden flex items-center gap-1"><i class="fa-solid fa-triangle-exclamation"></i><span></span></span>
+                <!-- Live rules (shown only when typing) -->
+                <div class="mt-2 space-y-1 pl-0.5" id="editRules" style="display:none">
+                    <p class="pwd-rule" id="er-len"><i class="fa-solid fa-circle text-xs"></i> At least 6 characters</p>
+                    <p class="pwd-rule" id="er-low"><i class="fa-solid fa-circle text-xs"></i> One lowercase letter</p>
+                    <p class="pwd-rule" id="er-up"><i class="fa-solid fa-circle text-xs"></i> One uppercase letter</p>
+                    <p class="pwd-rule" id="er-num"><i class="fa-solid fa-circle text-xs"></i> One number</p>
+                    <p class="pwd-rule" id="er-spc"><i class="fa-solid fa-circle text-xs"></i> One special character (e.g. @@ # ! $)</p>
+                </div>
             </div>
             <div class="mb-4">
                 <label asp-for="RoleId" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-shield-halved mr-1"></i>Role</label>
@@ -64,3 +79,54 @@
         </form>
     </div>
 </div>
+
+<style>
+    .pwd-rule { display:flex; align-items:center; gap:0.4rem; font-size:0.72rem; color:#94a3b8; }
+    .pwd-rule.pass { color:#16a34a; }
+</style>
+
+@section Scripts {
+<script>
+    function togglePwd(id, eyeId) {
+        var el = document.getElementById(id);
+        var ic = document.getElementById(eyeId);
+        el.type = el.type === 'password' ? 'text' : 'password';
+        ic.className = el.type === 'text' ? 'fa-solid fa-eye-slash text-sm' : 'fa-solid fa-eye text-sm';
+    }
+    function pwdRule(id, pass) {
+        var el = document.getElementById(id);
+        el.className = 'pwd-rule' + (pass ? ' pass' : '');
+        el.querySelector('i').className = pass ? 'fa-solid fa-circle-check text-xs' : 'fa-solid fa-circle text-xs';
+    }
+    var pwdRegex = { len:/^.{6,}$/, low:/[a-z]/, up:/[A-Z]/, num:/[0-9]/, spc:/[^a-zA-Z0-9]/ };
+    document.getElementById('editPassword').addEventListener('input', function() {
+        var v = this.value;
+        var rules = document.getElementById('editRules');
+        rules.style.display = v.length > 0 ? 'block' : 'none';
+        pwdRule('er-len', pwdRegex.len.test(v));
+        pwdRule('er-low', pwdRegex.low.test(v));
+        pwdRule('er-up',  pwdRegex.up.test(v));
+        pwdRule('er-num', pwdRegex.num.test(v));
+        pwdRule('er-spc', pwdRegex.spc.test(v));
+    });
+    document.querySelector('form').addEventListener('submit', function(e) {
+        var v = document.getElementById('editPassword').value;
+        if (!v) return; // blank = keep current, skip validation
+        var errEl = document.getElementById('editPwdErr');
+        var msg = '';
+        if (!pwdRegex.len.test(v))      msg = 'At least 6 characters required.';
+        else if (!pwdRegex.low.test(v)) msg = 'At least one lowercase letter required.';
+        else if (!pwdRegex.up.test(v))  msg = 'At least one uppercase letter required.';
+        else if (!pwdRegex.num.test(v)) msg = 'At least one number required.';
+        else if (!pwdRegex.spc.test(v)) msg = 'At least one special character required.';
+        if (msg) {
+            e.preventDefault();
+            errEl.querySelector('span').textContent = msg;
+            errEl.classList.remove('hidden');
+            errEl.style.display = 'flex';
+        } else {
+            errEl.classList.add('hidden');
+        }
+    });
+</script>
+}

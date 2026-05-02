@@ -12,6 +12,21 @@ namespace UniManage.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IPasswordHasher<UserModel> _hasher;
 
+        private static string? ValidatePassword(string pwd)
+        {
+            if (string.IsNullOrWhiteSpace(pwd) || pwd.Length < 6)
+                return "Password must be at least 6 characters.";
+            if (!System.Text.RegularExpressions.Regex.IsMatch(pwd, @"[A-Z]"))
+                return "Password must contain at least one uppercase letter.";
+            if (!System.Text.RegularExpressions.Regex.IsMatch(pwd, @"[a-z]"))
+                return "Password must contain at least one lowercase letter.";
+            if (!System.Text.RegularExpressions.Regex.IsMatch(pwd, @"[0-9]"))
+                return "Password must contain at least one number.";
+            if (!System.Text.RegularExpressions.Regex.IsMatch(pwd, @"[^a-zA-Z0-9]"))
+                return "Password must contain at least one special character (e.g. @, #, !, $).";
+            return null;
+        }
+
         public UsersController(ApplicationDbContext context, IPasswordHasher<UserModel> hasher)
         {
             _context = context;
@@ -52,6 +67,9 @@ namespace UniManage.Controllers
         {
             if (!IsAdmin) return Forbid();
             ModelState.Remove("PasswordHash");
+            var pwdError = ValidatePassword(password);
+            if (pwdError != null) ModelState.AddModelError("password", pwdError);
+
             if (ModelState.IsValid)
             {
                 if (await _context.Users.AnyAsync(u => u.Email == user.Email))
@@ -100,7 +118,16 @@ namespace UniManage.Controllers
                 existing.IsActive = user.IsActive;
                 existing.UpdatedAt = DateTime.UtcNow;
                 if (!string.IsNullOrWhiteSpace(newPassword))
+                {
+                    var pwdErr = ValidatePassword(newPassword);
+                    if (pwdErr != null)
+                    {
+                        ModelState.AddModelError("newPassword", pwdErr);
+                        ViewBag.Roles = new SelectList(await _context.Roles.ToListAsync(), "Id", "Name", user.RoleId);
+                        return View(user);
+                    }
                     existing.PasswordHash = _hasher.HashPassword(existing, newPassword);
+                }
                 await _context.SaveChangesAsync();
                 TempData["Success"] = "User updated.";
                 return RedirectToAction(nameof(Index));

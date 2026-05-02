@@ -13,6 +13,21 @@ namespace UniManage.Controllers
         private readonly IPasswordHasher<UserModel> _hasher;
         private readonly IEmailService _emailService;
 
+        private static string? ValidatePassword(string pwd)
+        {
+            if (string.IsNullOrWhiteSpace(pwd) || pwd.Length < 6)
+                return "Password must be at least 6 characters.";
+            if (!System.Text.RegularExpressions.Regex.IsMatch(pwd, @"[A-Z]"))
+                return "Password must contain at least one uppercase letter.";
+            if (!System.Text.RegularExpressions.Regex.IsMatch(pwd, @"[a-z]"))
+                return "Password must contain at least one lowercase letter.";
+            if (!System.Text.RegularExpressions.Regex.IsMatch(pwd, @"[0-9]"))
+                return "Password must contain at least one number.";
+            if (!System.Text.RegularExpressions.Regex.IsMatch(pwd, @"[^a-zA-Z0-9]"))
+                return "Password must contain at least one special character (e.g. @, #, !, $).";
+            return null;
+        }
+
         public AccountController(ApplicationDbContext context, IPasswordHasher<UserModel> hasher, IEmailService emailService)
         {
             _context = context;
@@ -194,9 +209,10 @@ namespace UniManage.Controllers
         {
             ViewBag.Email = email;
 
-            if (string.IsNullOrWhiteSpace(newPassword) || newPassword.Length < 6)
+            var pwdError = ValidatePassword(newPassword);
+            if (pwdError != null)
             {
-                ViewBag.Error = "Password must be at least 6 characters.";
+                ViewBag.Error = pwdError;
                 return View();
             }
             if (newPassword != confirmPassword)
