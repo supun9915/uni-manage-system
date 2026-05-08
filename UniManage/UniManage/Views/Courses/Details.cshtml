@@ -60,7 +60,7 @@
                             <div class="w-7 h-7 rounded-lg bg-blue-700 flex items-center justify-center text-white text-xs flex-shrink-0">@m.OrderIndex</div>
                             <div>
                                 <p class="text-sm text-slate-800">@m.Title</p>
-                                <p class="text-xs text-slate-400"><i class="fa-solid fa-file-lines mr-1"></i>@m.CourseMaterials.Count materials &mdash; <i class="fa-solid fa-clipboard-list mr-1"></i>@m.Assignments.Count assignments</p>
+                                <p class="text-xs text-slate-400"><i class="fa-solid fa-file-lines mr-1"></i>@m.CourseMaterials.Count materials &mdash; <i class="fa-solid fa-clipboard-list mr-1"></i>@m.Assignments.Count assignments &mdash; <i class="fa-solid fa-pen-to-square mr-1"></i>@m.Exams.Count exams</p>
                                 @if (m.Lecturer != null)
                                 {
                                     <p class="text-xs text-indigo-600 mt-0.5"><i class="fa-solid fa-chalkboard-user mr-1"></i>@m.Lecturer.FirstName @m.Lecturer.LastName</p>
@@ -74,9 +74,11 @@
                         <div class="flex flex-col items-end gap-2">
                             <div class="flex gap-2">
                                 <a asp-controller="CourseMaterials" asp-action="Index" asp-route-moduleId="@m.Id"
-                                   class="inline-flex items-center gap-1 text-xs bg-blue-50 text-blue-700 px-3 py-1 rounded-full hover:bg-blue-100 transition-colors"><i class="fa-solid fa-file-lines text-xs"></i>Materials</a>
+                                   class="inline-flex items-center gap-1 text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full hover:bg-emerald-100 transition-colors"><i class="fa-solid fa-file-lines text-xs"></i>Materials</a>
                                 <a asp-controller="Assignments" asp-action="Index" asp-route-moduleId="@m.Id"
                                    class="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full hover:bg-amber-100 transition-colors"><i class="fa-solid fa-clipboard-list text-xs"></i>Assignments</a>
+                                <a asp-controller="Exams" asp-action="Index" asp-route-moduleId="@m.Id"
+                                   class="inline-flex items-center gap-1 text-xs bg-pink-50 text-pink-700 px-3 py-1 rounded-full hover:bg-pink-100 transition-colors"><i class="fa-solid fa-pen-to-square text-xs"></i>Exams</a>
                             </div>
                             @if (role == "administrator" || (role == "lecturer" && m.LecturerId == ViewBag.CurrentUserId))
                             {
@@ -84,7 +86,9 @@
                                     <a asp-controller="CourseMaterials" asp-action="Create" asp-route-moduleId="@m.Id"
                                        class="inline-flex items-center gap-1 text-xs bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full hover:bg-emerald-100 transition-colors"><i class="fa-solid fa-plus text-xs"></i>Add Material</a>
                                     <a asp-controller="Assignments" asp-action="Create" asp-route-moduleId="@m.Id"
-                                       class="inline-flex items-center gap-1 text-xs bg-purple-50 text-purple-700 px-3 py-1 rounded-full hover:bg-purple-100 transition-colors"><i class="fa-solid fa-plus text-xs"></i>Add Assignment</a>
+                                       class="inline-flex items-center gap-1 text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full hover:bg-amber-100 transition-colors"><i class="fa-solid fa-plus text-xs"></i>Add Assignment</a>
+                                    <a asp-controller="Exams" asp-action="Create" asp-route-moduleId="@m.Id"
+                                       class="inline-flex items-center gap-1 text-xs bg-pink-50 text-pink-700 px-3 py-1 rounded-full hover:bg-pink-100 transition-colors"><i class="fa-solid fa-plus text-xs"></i>Add Exam</a>
                                 </div>
                             }
                             @if (role == "administrator")

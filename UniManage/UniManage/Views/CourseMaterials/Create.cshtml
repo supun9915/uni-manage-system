@@ -15,7 +15,7 @@
         </div>
         <form asp-action="Create" method="post" enctype="multipart/form-data" data-val="true">
             @Html.AntiForgeryToken()
-            <div asp-validation-summary="All" class="mb-4 p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700"></div>
+            @* <div asp-validation-summary="All" class="mb-4 p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700"></div> *@
             <div class="mb-4">
                 <label asp-for="ModuleId" class="block text-xs text-slate-500 uppercase tracking-wide mb-1.5"><i class="fa-solid fa-layer-group mr-1"></i>Module</label>
                 <select asp-for="ModuleId" asp-items="ViewBag.Modules" class="form-input">

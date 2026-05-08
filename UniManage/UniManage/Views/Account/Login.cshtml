@@ -30,9 +30,31 @@
         .fi.err { border-color:#ef4444; box-shadow:0 0 0 3px rgba(239,68,68,0.1); }
         .fe { color:#dc2626; font-size:0.72rem; margin-top:0.25rem; display:flex; align-items:center; gap:0.25rem; }
         .lbl { display:block; font-size:0.7rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#64748b; margin-bottom:0.4rem; }
+
+        /* ── Full-page background image ────────────────────────────────── */
+        body {
+            background-image: url('/images/unimanage.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        /* Dark overlay so the card remains readable over any image */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 20, 45, 0.62);
+            z-index: 0;
+        }
+        /* Card must sit above the overlay */
+        body > div {
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
-<body class="font-sans" style="background:linear-gradient(135deg,#0d1b2a 0%,#0f2042 45%,#1e3a8a 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;">
+<body class="font-sans" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;">
     <div style="width:100%;max-width:430px;">
         <!-- Card -->
         <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
@@ -107,16 +129,6 @@
             <!-- Footer -->
             <div class="px-8 pb-6 text-center text-xs text-slate-400">
                 <i class="fa-solid fa-shield-halved mr-1"></i> Secure login &mdash; UniManage &copy; @DateTime.Now.Year
-            </div>
-        </div>
-
-        <!-- Demo hint -->
-        <div class="mt-4 rounded-xl px-5 py-4 text-xs" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65);">
-            <p class="mb-2 font-normal" style="color:rgba(255,255,255,0.85);"><i class="fa-solid fa-circle-info mr-1"></i>Demo Accounts</p>
-            <div class="space-y-1">
-                <p><span style="color:rgba(255,255,255,0.5);">Admin &nbsp;&nbsp;&nbsp;:</span> admin@unimanage.com / Admin@123</p>
-                <p><span style="color:rgba(255,255,255,0.5);">Lecturer:</span> lecturer@unimanage.com / Lecturer@123</p>
-                <p><span style="color:rgba(255,255,255,0.5);">Student :</span> student@unimanage.com / Student@123</p>
             </div>
         </div>
     </div>

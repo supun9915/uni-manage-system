@@ -34,6 +34,7 @@ namespace UniManage.Controllers
                 .Include(c => c.Department)
                 .Include(c => c.Modules).ThenInclude(m => m.CourseMaterials)
                 .Include(c => c.Modules).ThenInclude(m => m.Assignments)
+                .Include(c => c.Modules).ThenInclude(m => m.Exams)
                 .Include(c => c.Modules).ThenInclude(m => m.Lecturer)
                 .FirstOrDefaultAsync(c => c.Id == id);
             if (course == null) return NotFound();

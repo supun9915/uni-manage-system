@@ -1,4 +1,4 @@
-﻿# Authentication & Authorization in UniManage
+# Authentication & Authorization in UniManage
 
 This document explains how the UniManage system handles **who can log in** (authentication) and **what each user is allowed to do** (authorization).
 
@@ -32,11 +32,11 @@ UniManage uses **custom session-based authentication** — not ASP.NET Core Iden
 
 There are **three roles** in the system:
 
-| Role | Description |
-|---|---|
-| `administrator` | Full access to all features |
-| `lecturer` | Access to their own modules, assignments, exams, and student submissions |
-| `student` | Read-only access to enrolled course content; can submit assignments and apply for courses |
+| Role            | Description                                                                               |
+| --------------- | ----------------------------------------------------------------------------------------- |
+| `administrator` | Full access to all features                                                               |
+| `lecturer`      | Access to their own modules, assignments, exams, and student submissions                  |
+| `student`       | Read-only access to enrolled course content; can submit assignments and apply for courses |
 
 ---
 
@@ -46,13 +46,13 @@ There are **three roles** in the system:
 
 On a successful login, the following keys are written to `HttpContext.Session`:
 
-| Session Key | Type | Value |
-|---|---|---|
-| `UserId` | `int` | Database primary key of the user |
-| `UserName` | `string` | `"{FirstName} {LastName}"` |
-| `UserEmail` | `string` | User's email address |
-| `UserRole` | `string` | Role name in **lower-case** (e.g. `"administrator"`) |
-| `RoleId` | `int` | Database primary key of the role |
+| Session Key | Type     | Value                                                |
+| ----------- | -------- | ---------------------------------------------------- |
+| `UserId`    | `int`    | Database primary key of the user                     |
+| `UserName`  | `string` | `"{FirstName} {LastName}"`                           |
+| `UserEmail` | `string` | User's email address                                 |
+| `UserRole`  | `string` | Role name in **lower-case** (e.g. `"administrator"`) |
+| `RoleId`    | `int`    | Database primary key of the role                     |
 
 ```csharp
 // AccountController.cs – after password verification passes
@@ -97,6 +97,7 @@ Browser                     AccountController              Database
 ```
 
 **Key points:**
+
 - The user must have `IsActive = true` to be found at all.
 - Passwords are hashed using **`PasswordHasher<UserModel>`** (ASP.NET Identity's hasher), so plain-text passwords are never stored.
 - The same generic error `"Invalid email or password."` is shown for both a missing user AND a wrong password — this prevents user-enumeration attacks.
@@ -122,12 +123,12 @@ Calling `Session.Clear()` removes every key, effectively ending the session imme
 
 Both the **account creation** and **password reset** flows enforce these rules (defined in the static `ValidatePassword()` method in `AccountController` and `UsersController`):
 
-| Rule | Minimum Requirement |
-|---|---|
-| Length | At least **6 characters** |
-| Uppercase | At least **1** uppercase letter (`A–Z`) |
-| Lowercase | At least **1** lowercase letter (`a–z`) |
-| Digit | At least **1** number (`0–9`) |
+| Rule              | Minimum Requirement                             |
+| ----------------- | ----------------------------------------------- |
+| Length            | At least **6 characters**                       |
+| Uppercase         | At least **1** uppercase letter (`A–Z`)         |
+| Lowercase         | At least **1** lowercase letter (`a–z`)         |
+| Digit             | At least **1** number (`0–9`)                   |
 | Special character | At least **1** symbol (e.g. `@`, `#`, `!`, `$`) |
 
 ```csharp
@@ -159,14 +160,14 @@ The password reset flow is a **3-step process** that uses a one-time PIN sent vi
 
 The `PasswordResetOtpModel` table tracks each OTP:
 
-| Field | Purpose |
-|---|---|
-| `Email` | Which account the OTP was issued for |
-| `OtpCode` | 6-digit random code |
-| `ExpiresAt` | UTC timestamp — OTP is invalid after this point (10 minutes) |
-| `IsVerified` | Set to `true` after the user enters the correct OTP |
-| `IsUsed` | Set to `true` after the password is successfully changed |
-| `CreatedAt` | When the OTP was generated |
+| Field        | Purpose                                                      |
+| ------------ | ------------------------------------------------------------ |
+| `Email`      | Which account the OTP was issued for                         |
+| `OtpCode`    | 6-digit random code                                          |
+| `ExpiresAt`  | UTC timestamp — OTP is invalid after this point (10 minutes) |
+| `IsVerified` | Set to `true` after the user enters the correct OTP          |
+| `IsUsed`     | Set to `true` after the password is successfully changed     |
+| `CreatedAt`  | When the OTP was generated                                   |
 
 ---
 
@@ -275,42 +276,42 @@ return View("Admin");
 
 ### 5.3 Role Permissions Matrix
 
-| Feature / Action | Administrator | Lecturer | Student |
-|---|:---:|:---:|:---:|
-| **Dashboard** | Admin stats view | Own module summary | Enrolled courses & assignments |
-| **Users** – View list | ✅ | ❌ | ❌ |
-| **Users** – Create / Edit / Delete | ✅ | ❌ | ❌ |
-| **Roles** – CRUD | ✅ | ❌ | ❌ |
-| **Departments** – CRUD | ✅ | ❌ | ❌ |
-| **Courses** – View | ✅ All | ✅ Assigned modules only | ✅ Enrolled only |
-| **Courses** – Create / Edit / Delete | ✅ | ❌ | ❌ |
-| **Modules** – View | ✅ All | ✅ Own modules | ✅ Published & enrolled |
-| **Modules** – Create | ✅ | ❌ | ❌ |
-| **Modules** – Edit / Delete | ✅ | ✅ Own | ❌ |
-| **Modules** – Assign Lecturer | ✅ | ❌ | ❌ |
-| **Course Materials** – View | ✅ | ✅ Own | ✅ Enrolled |
-| **Course Materials** – Upload / Delete | ✅ | ✅ Own | ❌ |
-| **Assignments** – View | ✅ | ✅ Own | ✅ Enrolled |
-| **Assignments** – Create / Edit / Delete | ✅ | ✅ Own | ❌ |
-| **Submissions** – View all | ✅ | ✅ Own modules | ❌ |
-| **Submissions** – Submit | ❌ | ❌ | ✅ |
-| **Submissions** – Grade | ✅ | ✅ | ❌ |
-| **Submissions** – View own grades | ❌ | ❌ | ✅ |
-| **Batches** – CRUD | ✅ | ❌ | ❌ |
-| **Enrollments** – View | ✅ | ✅ Own courses | ❌ |
-| **Enrollments** – Create / Delete | ✅ | ❌ | ❌ |
-| **Enrollment Applications** – Browse courses | ❌ | ❌ | ✅ |
-| **Enrollment Applications** – Apply | ❌ | ❌ | ✅ |
-| **Enrollment Applications** – View own | ❌ | ❌ | ✅ |
-| **Enrollment Applications** – Review / Approve / Reject | ✅ | ✅ | ❌ |
-| **Exams** – View | ✅ | ✅ Own | ✅ Enrolled |
-| **Exams** – Create / Edit / Delete | ✅ | ✅ Own | ❌ |
-| **Exam Results** – View | ✅ All | ✅ Own | ✅ Own only |
-| **Exam Results** – Create / Edit / Delete | ✅ | ✅ | ❌ |
-| **Announcements** – View | ✅ | ✅ Own | ✅ Enrolled |
-| **Announcements** – Create / Edit / Delete | ✅ | ✅ | ❌ |
-| **Messages** – Send / Read / Delete | ✅ Anyone | ✅ Students in modules | ✅ Lecturers only |
-| **Reports** – View | ✅ | ✅ Own data | ❌ (redirected) |
+| Feature / Action                                        |  Administrator   |         Lecturer         |            Student             |
+| ------------------------------------------------------- | :--------------: | :----------------------: | :----------------------------: |
+| **Dashboard**                                           | Admin stats view |    Own module summary    | Enrolled courses & assignments |
+| **Users** – View list                                   |        ✅        |            ❌            |               ❌               |
+| **Users** – Create / Edit / Delete                      |        ✅        |            ❌            |               ❌               |
+| **Roles** – CRUD                                        |        ✅        |            ❌            |               ❌               |
+| **Departments** – CRUD                                  |        ✅        |            ❌            |               ❌               |
+| **Courses** – View                                      |      ✅ All      | ✅ Assigned modules only |        ✅ Enrolled only        |
+| **Courses** – Create / Edit / Delete                    |        ✅        |            ❌            |               ❌               |
+| **Modules** – View                                      |      ✅ All      |      ✅ Own modules      |    ✅ Published & enrolled     |
+| **Modules** – Create                                    |        ✅        |            ❌            |               ❌               |
+| **Modules** – Edit / Delete                             |        ✅        |          ✅ Own          |               ❌               |
+| **Modules** – Assign Lecturer                           |        ✅        |            ❌            |               ❌               |
+| **Course Materials** – View                             |        ✅        |          ✅ Own          |          ✅ Enrolled           |
+| **Course Materials** – Upload / Delete                  |        ✅        |          ✅ Own          |               ❌               |
+| **Assignments** – View                                  |        ✅        |          ✅ Own          |          ✅ Enrolled           |
+| **Assignments** – Create / Edit / Delete                |        ✅        |          ✅ Own          |               ❌               |
+| **Submissions** – View all                              |        ✅        |      ✅ Own modules      |               ❌               |
+| **Submissions** – Submit                                |        ❌        |            ❌            |               ✅               |
+| **Submissions** – Grade                                 |        ✅        |            ✅            |               ❌               |
+| **Submissions** – View own grades                       |        ❌        |            ❌            |               ✅               |
+| **Batches** – CRUD                                      |        ✅        |            ❌            |               ❌               |
+| **Enrollments** – View                                  |        ✅        |      ✅ Own courses      |               ❌               |
+| **Enrollments** – Create / Delete                       |        ✅        |            ❌            |               ❌               |
+| **Enrollment Applications** – Browse courses            |        ❌        |            ❌            |               ✅               |
+| **Enrollment Applications** – Apply                     |        ❌        |            ❌            |               ✅               |
+| **Enrollment Applications** – View own                  |        ❌        |            ❌            |               ✅               |
+| **Enrollment Applications** – Review / Approve / Reject |        ✅        |            ✅            |               ❌               |
+| **Exams** – View                                        |        ✅        |          ✅ Own          |          ✅ Enrolled           |
+| **Exams** – Create / Edit / Delete                      |        ✅        |          ✅ Own          |               ❌               |
+| **Exam Results** – View                                 |      ✅ All      |          ✅ Own          |          ✅ Own only           |
+| **Exam Results** – Create / Edit / Delete               |        ✅        |            ✅            |               ❌               |
+| **Announcements** – View                                |        ✅        |          ✅ Own          |          ✅ Enrolled           |
+| **Announcements** – Create / Edit / Delete              |        ✅        |            ✅            |               ❌               |
+| **Messages** – Send / Read / Delete                     |    ✅ Anyone     |  ✅ Students in modules  |       ✅ Lecturers only        |
+| **Reports** – View                                      |        ✅        |       ✅ Own data        |        ❌ (redirected)         |
 
 ---
 
@@ -342,19 +343,19 @@ SMTP settings are read from `appsettings.json`:
 
 ## 7. Security Design Decisions
 
-| Decision | Reason |
-|---|---|
-| **Session-based auth** (not JWT) | Simpler server-side approach; sessions are invalidated instantly on logout |
-| **ASP.NET Identity PasswordHasher** | Industry-standard adaptive hashing (PBKDF2 with HMAC-SHA256); avoids writing custom crypto |
-| **`HttpOnly` session cookie** | Prevents JavaScript from reading the cookie — protects against XSS token theft |
-| **Generic login error message** | `"Invalid email or password."` — does not reveal whether the email exists |
-| **Generic OTP request message** | `"If that email is registered, an OTP has been sent."` — same protection for the reset flow |
-| **OTP invalidation on re-request** | Previous unused OTPs are deleted when a new one is requested — prevents OTP accumulation |
-| **OTP 10-minute expiry** | Limits the window of opportunity if an OTP is intercepted |
-| **`IsVerified` + `IsUsed` flags** | Two-stage check: OTP must be verified before the reset form is shown, and marked used after |
-| **`IsActive` check on login** | Disabled accounts cannot log in even with the correct password |
-| **CSRF protection** | `[ValidateAntiForgeryToken]` on every `POST` action prevents cross-site request forgery |
-| **`return Forbid()`** | Returns HTTP 403 for role violations — distinguishes "not authenticated" (401/redirect) from "not authorised" (403) |
+| Decision                            | Reason                                                                                                              |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **Session-based auth** (not JWT)    | Simpler server-side approach; sessions are invalidated instantly on logout                                          |
+| **ASP.NET Identity PasswordHasher** | Industry-standard adaptive hashing (PBKDF2 with HMAC-SHA256); avoids writing custom crypto                          |
+| **`HttpOnly` session cookie**       | Prevents JavaScript from reading the cookie — protects against XSS token theft                                      |
+| **Generic login error message**     | `"Invalid email or password."` — does not reveal whether the email exists                                           |
+| **Generic OTP request message**     | `"If that email is registered, an OTP has been sent."` — same protection for the reset flow                         |
+| **OTP invalidation on re-request**  | Previous unused OTPs are deleted when a new one is requested — prevents OTP accumulation                            |
+| **OTP 10-minute expiry**            | Limits the window of opportunity if an OTP is intercepted                                                           |
+| **`IsVerified` + `IsUsed` flags**   | Two-stage check: OTP must be verified before the reset form is shown, and marked used after                         |
+| **`IsActive` check on login**       | Disabled accounts cannot log in even with the correct password                                                      |
+| **CSRF protection**                 | `[ValidateAntiForgeryToken]` on every `POST` action prevents cross-site request forgery                             |
+| **`return Forbid()`**               | Returns HTTP 403 for role violations — distinguishes "not authenticated" (401/redirect) from "not authorised" (403) |
 
 ---
 
